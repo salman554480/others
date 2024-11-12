@@ -5,6 +5,7 @@ body {
 
 body {
   padding-top: 56px;
+  background-color: #f7f7f7 !important;
 }
 
 @media (max-width: 991px) {
@@ -78,3 +79,119 @@ body {
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* Homepage */
+
+.video-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.video-card img.thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+.video-card .card-body {
+  padding: 15px;
+}
+.card-title {
+  font-size: 15px;
+}
+.video-duration {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.author-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.author-info {
+  display: flex;
+  align-items: center;
+}
+.author-name {
+  font-size: 14px;
+  color: #555;
+}
+.video-meta {
+  font-size: 12px;
+  color: #888;
+}
+
+.info-banner {
+    background-image: url('https://picsum.photos/1600/600'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0; /* Vertical padding */
+}
+.info-banner h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+.info-banner p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.info-banner .btn-subscribe {
+    background-color: #ff6200;
+    color: white;
+    font-size: 16px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+.info-banner .btn-subscribe:hover {
+    background-color: #ff4500;
+}
+
+
+/* Custom styles */
+.top-creators .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .top-creators .card-img-top {
+    border-radius: 50%;
+    height: 200px;  /* Optional: adjust based on image sizes */
+    width: 200px;
+    object-fit: cover;
+    margin: 10px auto;
+    display: block;
+  }
+  
+  .top-creators .card-body {
+    padding: 1.25rem;
+  }
+  
+  .top-creators h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .top-creators .card-title {
+    font-size: 1.05rem;
+    color: #333;
+  }
+  
+  .top-creators .card-text {
+    font-size: 0.7rem;
+    color: #777;
+  }
+  
