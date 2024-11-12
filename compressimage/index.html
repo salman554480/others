@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compression Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="file"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .download-link {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .download-link a {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .download-link a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Image Compression Tool</h1>
+
+    <!-- Image Upload Form -->
+    <form id="imageForm" enctype="multipart/form-data" method="POST">
+        <div class="input-group">
+            <label for="image">Select Image to Compress</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+        </div>
+
+        <div class="input-group">
+            <label for="quality">Compression Quality (1-100)</label>
+            <input type="number" name="quality" id="quality" min="1" max="100" value="75" required>
+        </div>
+
+        <button type="submit">Upload and Compress</button>
+    </form>
+
+    <!-- Download Link (hidden initially) -->
+    <div class="download-link" id="downloadLink">
+        <p>Click below to download the compressed image:</p>
+        <a href="#" id="downloadBtn" download>Download Compressed Image</a>
+    </div>
+</div>
+
+<script>
+    // Form submission handler
+    const form = document.getElementById('imageForm');
+    form.onsubmit = async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const quality = document.getElementById('quality').value;
+
+        // Send the image to the server for compression via AJAX
+        const response = await fetch('compress_image.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            // Show the download link
+            document.getElementById('downloadLink').style.display = 'block';
+            document.getElementById('downloadBtn').href = result.download_url;
+        } else {
+            alert('Error compressing the image.');
+        }
+    };
+</script>
+
+</body>
+</html>
