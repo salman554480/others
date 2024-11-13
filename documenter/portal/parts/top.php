@@ -1,3 +1,23 @@
+<?php session_start();
+require_once('parts/db.php');
+
+if (!isset($_SESSION['user_email'])) {
+    // echo "no session";
+    echo "<script>window.open('login.php','_self');</script>";
+} else {
+    $user_email = $_SESSION['user_email'];
+
+    $select_user = "SELECT * FROM user WHERE user_email='$user_email' ";
+    $run_user = mysqli_query($conn, $select_user);
+    $row_user = mysqli_fetch_array($run_user);
+
+    $user_id = $row_user['user_id'];
+    $user_email = $row_user['user_email'];
+    $user_name = $row_user['user_name'];
+    $user_image = $row_user['user_image'];
+    $user_password = $row_user['user_password'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
