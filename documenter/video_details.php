@@ -149,9 +149,16 @@
                                 class="video-thumbnail">
                             <div class="video-info">
                                 <div class="video-title">How to Learn Web Development</div>
-                                <div class="video-author">By John Doe</div>
-                                <div class="video-views"><i class="fas fa-eye"></i> 1.5K views</div>
-                                <div class="video-time"><i class="fas fa-clock"></i> 2 days ago</div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="video-author">By John Doe</div>
+                                    <div class="video-author">3:00</div>
+
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="video-views"><i class="fas fa-eye"></i> 1.5K views</div>
+                                    <div class="video-time"><i class="fas fa-clock"></i> 2 days ago</div>
+
+                                </div>
                             </div>
                         </div>
                     <?php $i++;
