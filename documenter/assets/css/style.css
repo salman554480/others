@@ -103,10 +103,21 @@ body {
   border-radius: 8px 8px 0 0;
 }
 .video-card .card-body {
-  padding: 15px;
+  padding: 5px 15px 15px 15px;
 }
 .video-card .card-title {
+  min-height: 40px;
+ }
+.video-card .card-title a{
+  line-height: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   font-size: 15px;
+  min-height: 36px;
+  color: #212529;
+  text-decoration: none !important;
 }
 .video-duration {
   position: absolute;

@@ -14,14 +14,11 @@
                     class="app-menu__icon bi bi-laptop"></i><span class="app-menu__label">UI Elements</span><i
                     class="treeview-indicator bi bi-chevron-right"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="bootstrap-components.html"><i class="icon bi bi-circle-fill"></i>
-                        Bootstrap Elements</a></li>
-                <li><a class="treeview-item" href="https://icons.getbootstrap.com/" target="_blank" rel="noopener"><i
-                            class="icon bi bi-circle-fill"></i> Font Icons</a></li>
-                <li><a class="treeview-item" href="ui-cards.html"><i class="icon bi bi-circle-fill"></i> Cards</a>
-                </li>
-                <li><a class="treeview-item" href="widgets.html"><i class="icon bi bi-circle-fill"></i> Widgets</a>
-                </li>
+                <li><a class="treeview-item" href="video_upload.php"><i class="icon bi bi-circle-fill"></i>
+                        Upload Videos</a></li>
+                <li><a class="treeview-item" href="video_view.php" target="_blank" rel="noopener"><i
+                            class="icon bi bi-circle-fill"></i> My Videos</a></li>
+
             </ul>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i

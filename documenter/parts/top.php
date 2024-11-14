@@ -1,3 +1,4 @@
+<?php require_once('portal/parts/db.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 

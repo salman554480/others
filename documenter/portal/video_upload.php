@@ -131,6 +131,7 @@
                             if ($run_video) {
                                 move_uploaded_file($video_thumbnail_tmpname, 'images/thumbnail/' . $video_thumbnail_name);
                                 echo '<script>alert("Video uploaded successfully")</script>';
+                                echo '<script>window.location.href="video_view.php"</script>';
                             } else {
                                 echo '<script>alert("Failed to upload video")</script>';
                             }
