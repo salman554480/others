@@ -9,11 +9,17 @@
         $select_video = "SELECT * From video WHERE video_guid='$video_guid'";
         $result_video = mysqli_query($conn, $select_video);
         $row_video = mysqli_fetch_array($result_video);
+        $video_id =  $row_video['video_id'];
+        $video_views =  $row_video['video_views'];
         $video_title =  $row_video['video_title'];
         $video_access_key =  $row_video['video_access_key'];
         $dbcategory_id =  $row_video['category_id'];
         $video_tags =  $row_video['video_tags'];
         $video_description =  $row_video['video_description'];
+
+        $incremented_video_views =  $video_views + 1;
+        $update_views = "UPDATE video SET video_views='$incremented_video_views' WHERE video_id='$video_id'";
+        $run_update_views =  mysqli_query($conn, $update_views);
     }
     ?>
 
