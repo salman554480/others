@@ -26,6 +26,7 @@
                                         <th>Views</th>
                                         <th>Date</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,6 +52,7 @@
                                         <td><?php echo $video_views; ?></td>
                                         <td><?php echo $video_date; ?> <?php echo $video_time; ?> </td>
                                         <td><?php echo $label; ?></td>
+                                        <td><a href="video_edit.php?video_id=<?php echo $video_id; ?>">Edit</a></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
