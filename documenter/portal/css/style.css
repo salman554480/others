@@ -1,0 +1,24 @@
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* Custom */
+#charCount {
+    font-size: 0.9rem !important; 
+  }
+  
+  .char-count-good {
+    color: green !important;
+  }
+  
+  .char-count-bad {
+    color: red !important;
+  }

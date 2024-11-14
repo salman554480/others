@@ -9,3 +9,5 @@ $(function () {
        $('.offcanvas-collapse').toggleClass('open')
     })
   })
+
+
