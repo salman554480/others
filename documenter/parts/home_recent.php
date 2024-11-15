@@ -22,7 +22,7 @@
     ?>
     <div class="col-md-2 mb-3">
         <div class="card video-card">
-            <img src="portal/images/thumbnail/<?php echo $video_thumbnail; ?>" alt="Thumbnail" class="thumbnail">
+            <img src="portal/assets/images/thumbnail/<?php echo $video_thumbnail; ?>" alt="Thumbnail" class="thumbnail">
             <div class="video-duration">5:23</div>
             <div class="card-body">
 

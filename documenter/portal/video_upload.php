@@ -129,7 +129,7 @@
                             $insert_video = "INSERT INTO video(user_id,video_access_key,video_title,category_id,video_guid,video_description,video_thumbnail,video_date,video_time,video_status) VALUES('$user_id','$video_access_key','$video_title','$category_id','$video_guid','$video_description','$video_thumbnail_name','$video_date','$video_time','$video_status')";
                             $run_video =  mysqli_query($conn, $insert_video);
                             if ($run_video) {
-                                move_uploaded_file($video_thumbnail_tmpname, 'images/thumbnail/' . $video_thumbnail_name);
+                                move_uploaded_file($video_thumbnail_tmpname, 'assets/images/thumbnail/' . $video_thumbnail_name);
                                 echo '<script>alert("Video uploaded successfully")</script>';
                                 echo '<script>window.location.href="video_view.php"</script>';
                             } else {

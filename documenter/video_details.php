@@ -20,16 +20,141 @@
         $incremented_video_views =  $video_views + 1;
         $update_views = "UPDATE video SET video_views='$incremented_video_views' WHERE video_id='$video_id'";
         $run_update_views =  mysqli_query($conn, $update_views);
+
+
+        //get from file
+        $select_file = "SELECT * FROM file WHERE file_access_key='$video_access_key'";
+        $run_select_file = mysqli_query($conn, $select_file);
+        $row_select_file =  mysqli_fetch_array($run_select_file);
+        $file_state = $row_select_file['file_state'];
+        $file_name = $row_select_file['file_name'];
+        if ($file_state == "wait") {
+            $file_name = $row_select_file['file_name'];
+            $video_source = "portal/assets/upload/" . $file_name;
+        } else {
+            echo "<script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.getElementById('videoContainer').style.display = 'none';
+                    });
+                  </script>";
+        }
     }
     ?>
 
     <main role="main" class="container-fluid my-4">
         <div class="row mb-4">
             <div class="col-md-8">
-                <div class="video-container">
+                <div class="image-container">
+                    <img src="https://picsum.photos/1280/720" alt="Image" class="image">
+                    <div class="play-icon-container">
+                        <span class="play-icon"><i class="fa-solid fa-play" id="startDownloadBtn"></i></span>
+                        <!-- Play icon -->
+                    </div>
+                </div>
+
+                <!-- Area to display the status of each download -->
+                <div id="statusContainer" class="pre-scrollable"></div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                $(document).ready(function() {
+                    let filesToDownload = []; // Array to store all files' data
+                    let fileAccessKey = "<?php echo $file_access_key ?>"; // Get the file_access_key from PHP
+                    let parts = "<?php echo $parts ?>";
+
+                    $('#startDownloadBtn').click(function() {
+                        startDownload();
+                    });
+
+                    function startDownload() {
+                        $('#startDownloadBtn').prop('disabled',
+                        true); // Disable the button to prevent multiple clicks
+                        $('#statusContainer').empty(); // Clear previous status
+
+                        // Fetch the list of files from the server first
+                        $.ajax({
+                            url: 'getFiles.php', // The PHP file that fetches the file data from DB
+                            method: 'GET',
+                            data: {
+                                file_access_key: fileAccessKey
+                            }, // Pass file_access_key via GET
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    filesToDownload = response.files; // Store the files' data
+                                    downloadNextFile(0); // Start downloading from the first file
+                                } else {
+                                    $('#statusContainer').append(
+                                        '<p class="status error">No files available for download.</p>'
+                                        );
+                                    $('#startDownloadBtn').prop('disabled',
+                                    false); // Re-enable the button
+                                }
+                            },
+                            error: function() {
+                                $('#statusContainer').append(
+                                    '<p class="status error">An error occurred while fetching files.</p>'
+                                    );
+                                $('#startDownloadBtn').prop('disabled',
+                                false); // Re-enable the button
+                            }
+                        });
+                    }
+
+                    function downloadNextFile(index) {
+                        if (index >= filesToDownload.length) {
+                            $('#statusContainer').append(
+                                '<p class="status success">All downloads complete!</p>');
+                            document.getElementById("link-ready").submit();
+                            $('#startDownloadBtn').prop('disabled',
+                            false); // Re-enable the button after all downloads
+                            return;
+                        }
+
+                        const file = filesToDownload[index];
+
+                        // Send the AJAX request to download the current file
+                        $.ajax({
+                            url: 'download.php', // The PHP file to handle the download of each file
+                            method: 'POST',
+                            data: {
+                                action: 'download',
+                                file_id: file.data_file_id,
+                                file_name: file.data_file_name,
+                                file_access_key: fileAccessKey // Pass the file_access_key to download.php
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    $('#statusContainer').append(
+                                        '<div class="p-1 bg-success text-light mt-1">File ' +
+                                        response.chunk_number + '/' + parts +
+                                        ' downloaded successfully!</div>');
+                                } else {
+                                    $('#statusContainer').append(
+                                        '<p class="status error">Error downloading "' + response
+                                        .file_name + '": ' + response.message + '</p>');
+                                }
+
+                                // Continue to the next file
+                                downloadNextFile(index + 1);
+                            },
+                            error: function() {
+                                $('#statusContainer').append(
+                                    '<p class="status error">An error occurred while downloading "' +
+                                    file.data_file_name + '".</p>');
+                                downloadNextFile(index +
+                                1); // Continue to the next file even if there is an error
+                            }
+                        });
+                    }
+                });
+                </script>
+
+
+                <div class="video-container" id="videoContainer">
                     <video controls>
-                        <source src="https://videos.pexels.com/video-files/4620490/4620490-uhd_2732_1440_25fps.mp4"
-                            type="video/mp4">
+                        <source src="<?php echo $video_source; ?>" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>

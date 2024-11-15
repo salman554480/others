@@ -304,3 +304,42 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Adjust image width */
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  filter: blur(3px); /* Apply the blur effect to the image */
+  transition: filter 0.3s ease; /* Smooth transition for blur effect */
+}
+
+.image-container:hover .image {
+  filter: blur(0); /* Remove blur effect on hover */
+}
+
+.play-icon-container {
+  position: absolute;
+  height: 90px;
+  width: 90px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  border-radius: 50%; /* Circle */
+  padding: 20px; /* Adjust the size of the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-icon {
+  font-size: 40px; /* Adjust the size of the play icon */
+  color: white; /* Icon color */
+}

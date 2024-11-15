@@ -1,0 +1,100 @@
+[02-Sep-2024 04:05:16 UTC] PHP Warning:  scandir(downloads/): Failed to open directory: No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:16 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:16 UTC] PHP Warning:  foreach() argument must be of type array|object, bool given in /home/vauldkga/foldious.com/admin/list_files.php on line 42
+[02-Sep-2024 04:05:40 UTC] PHP Warning:  scandir(downloads/): Failed to open directory: No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:40 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:40 UTC] PHP Warning:  foreach() argument must be of type array|object, bool given in /home/vauldkga/foldious.com/admin/list_files.php on line 42
+[02-Sep-2024 04:05:47 UTC] PHP Warning:  scandir(downloads/): Failed to open directory: No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:47 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:05:47 UTC] PHP Warning:  foreach() argument must be of type array|object, bool given in /home/vauldkga/foldious.com/admin/list_files.php on line 42
+[02-Sep-2024 04:06:28 UTC] PHP Warning:  scandir(downloads/): Failed to open directory: No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:06:28 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:06:28 UTC] PHP Warning:  foreach() argument must be of type array|object, bool given in /home/vauldkga/foldious.com/admin/list_files.php on line 42
+[02-Sep-2024 04:06:39 UTC] PHP Warning:  scandir(downloads/): Failed to open directory: No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:06:39 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/vauldkga/foldious.com/admin/list_files.php on line 35
+[02-Sep-2024 04:06:39 UTC] PHP Warning:  foreach() argument must be of type array|object, bool given in /home/vauldkga/foldious.com/admin/list_files.php on line 42
+[02-Sep-2024 10:30:14 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 61
+[02-Sep-2024 10:30:14 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:61
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 61
+[02-Sep-2024 10:30:19 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 61
+[02-Sep-2024 10:30:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:61
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 61
+[02-Sep-2024 10:31:03 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 59
+[02-Sep-2024 10:31:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:59
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 59
+[02-Sep-2024 10:31:11 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 59
+[02-Sep-2024 10:31:11 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:59
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 59
+[02-Sep-2024 10:31:41 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:31:41 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:32:46 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:32:46 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:32:50 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:32:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:07 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:12 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:18 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:33:18 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:00 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:05 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:05 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:38 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:43 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:35:43 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:36:00 UTC] PHP Warning:  require_once(db.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/login.php on line 55
+[02-Sep-2024 10:36:00 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'db.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/login.php:55
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/login.php on line 55
+[03-Sep-2024 16:40:27 UTC] PHP Warning:  require_once(parts/footer_cdn.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/edit_package.php on line 120
+[03-Sep-2024 16:40:27 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'parts/footer_cdn.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/edit_package.php:120
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/edit_package.php on line 120
+[03-Sep-2024 16:40:32 UTC] PHP Warning:  require_once(parts/footer_cdn.php): Failed to open stream: No such file or directory in /home/vauldkga/foldious.com/admin/edit_package.php on line 120
+[03-Sep-2024 16:40:32 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'parts/footer_cdn.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/vauldkga/foldious.com/admin/edit_package.php:120
+Stack trace:
+#0 {main}
+  thrown in /home/vauldkga/foldious.com/admin/edit_package.php on line 120
