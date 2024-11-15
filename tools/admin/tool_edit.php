@@ -1,18 +1,5 @@
 <?php echo require_once('parts/top.php');?>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-   tinymce.init({
-   	selector: '#mytextarea',
-   	plugins: [
-   		'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
-   		'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-   		'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-   	],
-   	toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-   		'alignleft aligncenter alignright alignjustify | ' +
-   		'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
-   });
-</script>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body class="sb-nav-fixed">
    <?php require_once('parts/navbar.php');?>
@@ -68,10 +55,10 @@
 								<label class="form-label">URL*</label>
 								<input type="text" name="tool_url" value="<?php echo $tool_url;?>"  class="form-control"  required />
 							 </div>
-							 <div class="col-md-12">
-								<label class="form-label">Content*</label>
-								 <textarea id="mytextarea" type="text" name="tool_content" class="add-new-post__editor mb-1"><?php echo $tool_content;?></textarea>
-							 </div>
+							 <label class="form-label">Content*</label>
+               <div id="editor-container"></div>
+        <!-- Hidden textarea to hold content for submission -->
+        <textarea id="content" name="content" class="add-new-post__editor mb-1" style="display:none;"></textarea>
 							 
 							 <div class="col-md-6">
 								<label class="form-label">Meta Title*</label>
@@ -133,6 +120,37 @@
 								<input type="submit" name="insert_btn" class="btn btn-sm btn-success"  value="Update Record" />
 							 </div>
 						  </form>
+
+						  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+         <script>
+    // Initialize Quill editor
+    var quill = new Quill('#editor-container', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                ['bold', 'italic', 'underline'],
+                ['link'],
+                [{ 'align': [] }],
+                ['image']
+            ]
+        }
+    });
+
+     // Set existing content from PHP variable ($page_content) into the Quill editor
+     var pageContent = <?php echo json_encode($tool_content); ?>;
+    
+    // Use Quill's dangerouslyPasteHTML method to insert the HTML content
+    quill.clipboard.dangerouslyPasteHTML(pageContent);
+
+
+    // Listen for the text-change event in Quill to update the hidden textarea
+   quill.on('text-change', function(delta, oldDelta, source) {
+            // Update the hidden textarea with the current HTML content of the editor
+            document.querySelector('#content').value = quill.root.innerHTML;
+        });
+</script>
 					   </div>
 					</div>
 				</div>
@@ -148,6 +166,7 @@
                $etool_name = $_POST['tool_name'];
                $etool_url = $_POST['tool_url'];
                $emeta_title = $_POST['meta_title'];
+               $etool_content = $_POST['content'];
                $emeta_keywords = $_POST['meta_keywords'];
                $emeta_description = $_POST['meta_description'];
                $etool_status = $_POST['tool_status'];

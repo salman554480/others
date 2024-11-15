@@ -116,8 +116,8 @@
             require_once('parts/db.php');
             if(isset($_POST['insert_btn'])){
 				
-                echo	$page_title = $_POST['page_title'];
-                echo	$page_url = $_POST['page_url'];
+                	$page_title = $_POST['page_title'];
+                	$page_url = $_POST['page_url'];
 				$meta_title = $_POST['meta_title'];
 				$meta_description = $_POST['meta_description'];
 				$meta_keywords = $_POST['meta_keywords'];

@@ -1,18 +1,6 @@
 <?php require_once('parts/top.php'); ?>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-  tinymce.init({
-    selector: '#mytextarea',
-    plugins: [
-      'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
-      'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-      'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
-    ],
-    toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
-      'alignleft aligncenter alignright alignjustify | ' +
-      'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
-  });
-</script>
+
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body class="sb-nav-fixed">
@@ -76,6 +64,11 @@
                 </div>
               </div>
 
+
+              <label class="form-label">Content*</label>
+            <div id="editor" style="height: 300px;"></div>
+        <textarea name="content" id="content" style="display:none;"></textarea>
+
               <div class="col-md-12">
                 <label class="form-label">HTML Code*</label>
                 <textarea id="" type="text" name="tool_html_code" class="form-control"></textarea>
@@ -105,6 +98,21 @@
               </div>
 
             </form>
+
+            <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+<script>
+    // Initialize Quill Editor
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+   // Listen for the text-change event in Quill to update the hidden textarea
+   quill.on('text-change', function(delta, oldDelta, source) {
+            // Update the hidden textarea with the current HTML content of the editor
+            document.querySelector('#content').value = quill.root.innerHTML;
+        });
+</script>
             <script>
               // Function to generate a slug from a string
               function generateSlug(title) {
@@ -132,12 +140,15 @@
         </div>
         <!-- form end -->
 
+
+
         <?php
         require_once('parts/db.php');
         if (isset($_POST['insert_btn'])) {
 
           $category_id = $_POST['category_id'];
           $tool_name = $_POST['tool_name'];
+          $tool_content = $_POST['content'];
           $tool_url = $_POST['tool_url'];
           $tool_html_code = mysqli_real_escape_string($conn, $_POST['tool_html_code']);
           $tool_css_code = mysqli_real_escape_string($conn, $_POST['tool_css_code']);
@@ -147,6 +158,7 @@
           $insert_admin = "INSERT INTO tool(
             category_id,
             tool_name,
+            tool_content,
             tool_url,
             tool_html,
             tool_css,
@@ -156,6 +168,7 @@
             )VALUES(
             '$category_id',
             '$tool_name',
+            '$tool_content',
             '$tool_url',
             '$tool_html_code',
             '$tool_css_code',
