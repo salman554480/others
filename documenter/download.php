@@ -1,10 +1,10 @@
 <?php
 // Database connection
-require_once('parts/db.php');
+require_once('portal/parts/db.php');
 $botToken = '7147572018:AAF_uX7c5FbA_V5DoglL1AuQbtHTWnix1Yg';
 
 // Folder where files will be saved
-$downloadDir = 'asssets/downloads/';
+$downloadDir = 'assets/downloads/';
 
 if (isset($_POST['action']) && $_POST['action'] == 'download') {
     $file_id = $_POST['file_id']; // Get the file ID from the request
@@ -19,7 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'download') {
     }
 
     // Fetch the file record based on file_access_key and file_id, just in case you need more validation
-    $select_file = "SELECT * FROM data WHERE file_access_code='$file_access_key' AND data_file_id='$file_id' LIMIT 1";
+    echo    $select_file = "SELECT * FROM data WHERE file_access_code='$file_access_key' AND data_file_id='$file_id' LIMIT 1";
     $result = mysqli_query($conn, $select_file);
 
     if (mysqli_num_rows($result) > 0) {
