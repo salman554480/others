@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect ('localhost','u636704665_foldioususer','45hABHUJ','u636704665_foldiousdb');	
+$conn =  mysqli_connect('localhost', 'root', '', 'videostreamer');
 if (isset($_FILES['file'])) {
     $file_tmp_path = $_FILES['file']['tmp_name'];
     $file_name = $_FILES['file']['name'];
@@ -11,8 +11,8 @@ if (isset($_FILES['file'])) {
     $file_url = $upload_dir . basename($file_name);
 
     if (move_uploaded_file($file_tmp_path, $file_url)) {
- // Your Telegram Bot Token
-         $botToken = '7147572018:AAF_uX7c5FbA_V5DoglL1AuQbtHTWnix1Yg';
+        // Your Telegram Bot Token
+        $botToken = '7147572018:AAF_uX7c5FbA_V5DoglL1AuQbtHTWnix1Yg';
         $chatId = '-1002230179133'; // Correct chat ID obtained from getUpdates
 
         // cURL to send the file
@@ -41,7 +41,7 @@ if (isset($_FILES['file'])) {
             $run_insert_data = mysqli_query($conn, $insert_data);
 
             echo "Data inserted for file: $file_name";
-            
+
             unlink($file_url);
         } else {
             echo "Failed to send file: $file_url. Error: " . $responseData['description'];
@@ -50,6 +50,3 @@ if (isset($_FILES['file'])) {
         echo "Error moving the uploaded file: $file_name";
     }
 }
-
-
-?>

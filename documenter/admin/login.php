@@ -43,34 +43,37 @@
                                     </div>
                                     <form class="user" action="" method="POST">
                                         <div class="form-group">
-                                            <input type="email" name="form_email" class="form-control form-control-user"placeholder="Enter Email Address...">
+                                            <input type="email" name="form_email" class="form-control form-control-user"
+                                                placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="form_password" class="form-control form-control-user" placeholder="Password">
+                                            <input type="password" name="form_password"
+                                                class="form-control form-control-user" placeholder="Password">
                                         </div>
-                                        <button name="login-btn" type="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                                        
+                                        <button name="login-btn" type="submit"
+                                            class="btn btn-primary btn-user btn-block">Login</button>
+
                                     </form>
                                     <?php
                                     require_once('parts/db.php');
                                     if (isset($_POST['login-btn'])) {
-                                        
+
                                         $email =  $_POST['form_email'];
                                         $password =  $_POST['form_password'];
-                
+
                                         $select = "SELECT * FROM admin WHERE admin_email='$email'";
                                         $run =  mysqli_query($conn, $select);
                                         if (mysqli_num_rows($run) > 0) {
-                
+
                                             $row =  mysqli_fetch_array($run);
-                
-                
+
+
                                             $admin_email =  $row['admin_email'];
                                             $admin_password =  $row['admin_password'];
-                
+
                                             if ($email ==   $admin_email && $password ==  $admin_password) {
                                                 //header('Location:index.php');
-                                                echo "<script>window.open('index.php','_self');</script>";
+                                                echo "<script>window.open('blank.php','_self');</script>";
                                                 $_SESSION['admin_email'] =  $admin_email;
                                             } else {
                                                 echo "Invalid Login";
@@ -80,7 +83,7 @@
                                         }
                                     }
                                     ?>
-                                   
+
                                 </div>
                             </div>
                         </div>
