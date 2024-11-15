@@ -22,6 +22,8 @@
         $run_update_views =  mysqli_query($conn, $update_views);
 
 
+
+
         //get from file
         $select_file = "SELECT * FROM file WHERE file_access_key='$video_access_key'";
         $run_select_file = mysqli_query($conn, $select_file);
@@ -57,98 +59,98 @@
 
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
-                $(document).ready(function() {
-                    let filesToDownload = []; // Array to store all files' data
-                    let fileAccessKey = "<?php echo $file_access_key ?>"; // Get the file_access_key from PHP
-                    let parts = "<?php echo $parts ?>";
+                    $(document).ready(function() {
+                        let filesToDownload = []; // Array to store all files' data
+                        let fileAccessKey = "<?php echo $file_access_key ?>"; // Get the file_access_key from PHP
+                        let parts = "<?php echo $parts ?>";
 
-                    $('#startDownloadBtn').click(function() {
-                        startDownload();
-                    });
-
-                    function startDownload() {
-                        $('#startDownloadBtn').prop('disabled',
-                        true); // Disable the button to prevent multiple clicks
-                        $('#statusContainer').empty(); // Clear previous status
-
-                        // Fetch the list of files from the server first
-                        $.ajax({
-                            url: 'getFiles.php', // The PHP file that fetches the file data from DB
-                            method: 'GET',
-                            data: {
-                                file_access_key: fileAccessKey
-                            }, // Pass file_access_key via GET
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    filesToDownload = response.files; // Store the files' data
-                                    downloadNextFile(0); // Start downloading from the first file
-                                } else {
-                                    $('#statusContainer').append(
-                                        '<p class="status error">No files available for download.</p>'
-                                        );
-                                    $('#startDownloadBtn').prop('disabled',
-                                    false); // Re-enable the button
-                                }
-                            },
-                            error: function() {
-                                $('#statusContainer').append(
-                                    '<p class="status error">An error occurred while fetching files.</p>'
-                                    );
-                                $('#startDownloadBtn').prop('disabled',
-                                false); // Re-enable the button
-                            }
+                        $('#startDownloadBtn').click(function() {
+                            startDownload();
                         });
-                    }
 
-                    function downloadNextFile(index) {
-                        if (index >= filesToDownload.length) {
-                            $('#statusContainer').append(
-                                '<p class="status success">All downloads complete!</p>');
-                            document.getElementById("link-ready").submit();
+                        function startDownload() {
                             $('#startDownloadBtn').prop('disabled',
-                            false); // Re-enable the button after all downloads
-                            return;
+                                true); // Disable the button to prevent multiple clicks
+                            $('#statusContainer').empty(); // Clear previous status
+
+                            // Fetch the list of files from the server first
+                            $.ajax({
+                                url: 'getFiles.php', // The PHP file that fetches the file data from DB
+                                method: 'GET',
+                                data: {
+                                    file_access_key: fileAccessKey
+                                }, // Pass file_access_key via GET
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        filesToDownload = response.files; // Store the files' data
+                                        downloadNextFile(0); // Start downloading from the first file
+                                    } else {
+                                        $('#statusContainer').append(
+                                            '<p class="status error">No files available for download.</p>'
+                                        );
+                                        $('#startDownloadBtn').prop('disabled',
+                                            false); // Re-enable the button
+                                    }
+                                },
+                                error: function() {
+                                    $('#statusContainer').append(
+                                        '<p class="status error">An error occurred while fetching files.</p>'
+                                    );
+                                    $('#startDownloadBtn').prop('disabled',
+                                        false); // Re-enable the button
+                                }
+                            });
                         }
 
-                        const file = filesToDownload[index];
-
-                        // Send the AJAX request to download the current file
-                        $.ajax({
-                            url: 'download.php', // The PHP file to handle the download of each file
-                            method: 'POST',
-                            data: {
-                                action: 'download',
-                                file_id: file.data_file_id,
-                                file_name: file.data_file_name,
-                                file_access_key: fileAccessKey // Pass the file_access_key to download.php
-                            },
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    $('#statusContainer').append(
-                                        '<div class="p-1 bg-success text-light mt-1">File ' +
-                                        response.chunk_number + '/' + parts +
-                                        ' downloaded successfully!</div>');
-                                } else {
-                                    $('#statusContainer').append(
-                                        '<p class="status error">Error downloading "' + response
-                                        .file_name + '": ' + response.message + '</p>');
-                                }
-
-                                // Continue to the next file
-                                downloadNextFile(index + 1);
-                            },
-                            error: function() {
+                        function downloadNextFile(index) {
+                            if (index >= filesToDownload.length) {
                                 $('#statusContainer').append(
-                                    '<p class="status error">An error occurred while downloading "' +
-                                    file.data_file_name + '".</p>');
-                                downloadNextFile(index +
-                                1); // Continue to the next file even if there is an error
+                                    '<p class="status success">All downloads complete!</p>');
+                                document.getElementById("link-ready").submit();
+                                $('#startDownloadBtn').prop('disabled',
+                                    false); // Re-enable the button after all downloads
+                                return;
                             }
-                        });
-                    }
-                });
+
+                            const file = filesToDownload[index];
+
+                            // Send the AJAX request to download the current file
+                            $.ajax({
+                                url: 'download.php', // The PHP file to handle the download of each file
+                                method: 'POST',
+                                data: {
+                                    action: 'download',
+                                    file_id: file.data_file_id,
+                                    file_name: file.data_file_name,
+                                    file_access_key: fileAccessKey // Pass the file_access_key to download.php
+                                },
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        $('#statusContainer').append(
+                                            '<div class="p-1 bg-success text-light mt-1">File ' +
+                                            response.chunk_number + '/' + parts +
+                                            ' downloaded successfully!</div>');
+                                    } else {
+                                        $('#statusContainer').append(
+                                            '<p class="status error">Error downloading "' + response
+                                            .file_name + '": ' + response.message + '</p>');
+                                    }
+
+                                    // Continue to the next file
+                                    downloadNextFile(index + 1);
+                                },
+                                error: function() {
+                                    $('#statusContainer').append(
+                                        '<p class="status error">An error occurred while downloading "' +
+                                        file.data_file_name + '".</p>');
+                                    downloadNextFile(index +
+                                        1); // Continue to the next file even if there is an error
+                                }
+                            });
+                        }
+                    });
                 </script>
 
 
@@ -225,19 +227,19 @@
                         $x = 1;
                         while ($x < 4) {
                         ?>
-                        <div class="comment">
-                            <img src="https://avatar.iran.liara.run/public/<?php echo $x ?>" alt="User Avatar"
-                                class="comment-avatar">
-                            <div class="comment-body">
-                                <div class="comment-author">John Doe</div>
-                                <div class="comment-text">This is a very informative video! I learned a lot about web
-                                    development concepts. Keep it up!</div>
-                                <div class="comment-meta">
-                                    <span class="comment-date">2 hours ago</span> •
-                                    <span class="comment-reply"><i class="fas fa-reply"></i> Reply</span>
+                            <div class="comment">
+                                <img src="https://avatar.iran.liara.run/public/<?php echo $x ?>" alt="User Avatar"
+                                    class="comment-avatar">
+                                <div class="comment-body">
+                                    <div class="comment-author">John Doe</div>
+                                    <div class="comment-text">This is a very informative video! I learned a lot about web
+                                        development concepts. Keep it up!</div>
+                                    <div class="comment-meta">
+                                        <span class="comment-date">2 hours ago</span> •
+                                        <span class="comment-reply"><i class="fas fa-reply"></i> Reply</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php $x++;
                         } ?>
 
@@ -255,23 +257,23 @@
                     $i = 1;
                     while ($i < 14) {
                     ?>
-                    <div class="list-group-item d-flex align-items-center video-item">
-                        <img src="https://picsum.photos/360/200?random=<?php echo $i; ?>" alt="Video Thumbnail"
-                            class="video-thumbnail">
-                        <div class="video-info">
-                            <div class="video-title">How to Learn Web Development</div>
-                            <div class="d-flex justify-content-between">
-                                <div class="video-author">By John Doe</div>
-                                <div class="video-author">3:00</div>
+                        <div class="list-group-item d-flex align-items-center video-item">
+                            <img src="https://picsum.photos/360/200?random=<?php echo $i; ?>" alt="Video Thumbnail"
+                                class="video-thumbnail">
+                            <div class="video-info">
+                                <div class="video-title">How to Learn Web Development</div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="video-author">By John Doe</div>
+                                    <div class="video-author">3:00</div>
 
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="video-views"><i class="fas fa-eye"></i> 1.5K views</div>
-                                <div class="video-time"><i class="fas fa-clock"></i> 2 days ago</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="video-views"><i class="fas fa-eye"></i> 1.5K views</div>
+                                    <div class="video-time"><i class="fas fa-clock"></i> 2 days ago</div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php $i++;
                     } ?>
 
