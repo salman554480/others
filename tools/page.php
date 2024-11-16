@@ -30,7 +30,7 @@ if (isset($_GET['page_url'])) {
                     <div class="col-md-12">
                         <h1><?php echo $get_page_title ?></h1>
                         <div class="content-area">
-                            <?php if ($page_url == "contact-us") { ?>
+                        <?php if ($page_url == "contact-us") { ?>
                             <form action="" method="POST">
                                 <div class="form-group">
                                     <label for="name">Name</label>
@@ -48,13 +48,13 @@ if (isset($_GET['page_url'])) {
                                         required></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                             </form>
 
                             <?php
 
 								// Check if form is submitted
-								if ($_SERVER["REQUEST_METHOD"] == "POST") {
+								if (isset($_POST['submit'])) {
 									// Get the form data
 									$user_name = mysqli_real_escape_string($conn, $_POST['user_name']);
 									$user_email = mysqli_real_escape_string($conn, $_POST['user_email']);
@@ -72,8 +72,6 @@ if (isset($_GET['page_url'])) {
 									}
 								}
 
-								// Close connection
-								$conn->close();
 								?>
 
                             <?php } ?>
