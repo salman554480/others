@@ -38,7 +38,8 @@
                                     <p><a href="#" class="text-success fw-bold">Category</a></p>
                                 </div>
 
-                                <h5 class="card-title"><a href="">Top 10 Technology Blogs for Latest Tech Updates,
+                                <h5 class="card-title"><a href="post_details.php">Top 10 Technology Blogs for Latest
+                                        Tech Updates,
                                         News</a></h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec
                                     elementum libero.</p>
