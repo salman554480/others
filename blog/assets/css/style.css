@@ -16,6 +16,9 @@ body {
 .text-white{
     color:white;
 }
+a{
+    text-decoration: none !important;
+}
 
 
 .fw-bold{
@@ -121,8 +124,9 @@ body {
 .blog-card .card-body{
     padding-top:5px ;
 }
-.blog-card .card-title{
+.blog-card .card-title a{
     font-size: 16px;
+    color: #212529;
 }
 .blog-card .card-text{
     font-size: 13px;
@@ -142,6 +146,10 @@ body {
     margin-right: 10px;
   }
   .author-details {
+    font-size: 14px;
+    color: #555;
+  }
+  .author-details a{
     font-size: 14px;
     color: #555;
   }
@@ -166,3 +174,12 @@ body {
     padding: 0px 0px 0px 15px;
   }
   
+
+  /* Registration */
+
+  .step-container {
+    display: none;
+  }
+  .step-container.active {
+    display: block;
+  }
