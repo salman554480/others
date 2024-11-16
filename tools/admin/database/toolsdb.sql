@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 15, 2024 at 07:20 AM
--- Server version: 10.6.19-MariaDB-cll-lve
--- PHP Version: 8.3.13
+-- Host: 127.0.0.1
+-- Generation Time: Nov 16, 2024 at 11:33 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vauldkga_tooldb`
+-- Database: `toolsdb`
 --
 
 -- --------------------------------------------------------
@@ -74,6 +74,26 @@ INSERT INTO `category` (`category_id`, `category_name`, `category_url`, `categor
 (2, 'Converter', 'converter', '', '', '', ''),
 (3, 'Others', 'others', '', '', '', ''),
 (4, 'Checker', 'checker', '', 'checker', 'checker', 'checker');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactform`
+--
+
+CREATE TABLE `contactform` (
+  `contactform_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_message` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contactform`
+--
+
+INSERT INTO `contactform` (`contactform_id`, `user_name`, `user_email`, `user_message`) VALUES
+(1, 'Salman Ansari', 'salman@gmail.com', 'Testing');
 
 -- --------------------------------------------------------
 
@@ -663,6 +683,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `contactform`
+--
+ALTER TABLE `contactform`
+  ADD PRIMARY KEY (`contactform_id`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -701,6 +727,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `contactform`
+--
+ALTER TABLE `contactform`
+  MODIFY `contactform_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menu`
