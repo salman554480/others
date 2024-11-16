@@ -17,6 +17,10 @@ body {
     color:white;
 }
 
+
+.fw-bold{
+    font-weight: bold;
+}
 /* Center the navbar brand/logo */
 .navbar-brand.mx-auto {
     position: absolute;
@@ -161,3 +165,4 @@ body {
   .side-img-area{
     padding: 0px 0px 0px 15px;
   }
+  

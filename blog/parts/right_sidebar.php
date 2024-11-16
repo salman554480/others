@@ -19,7 +19,7 @@
     $author = 1;
     while ($author < 6) {
     ?>
-    <div class="row mb-3">
+    <div class="row mb-4">
         <div class="col-md-3 side-img-area">
             <img src="https://picsum.photos/300/300?random=1" class="w-100" alt="">
         </div>
