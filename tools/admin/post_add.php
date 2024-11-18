@@ -90,7 +90,7 @@
                 <label class="form-label">Thumbnail</label>
                 <input type="file" name="post_thumbnail" id="videoThumbnail" onchange="validateImage()"
                   class="form-control">
-                <small class="text-muted">Size: 1280x720</small><br>
+                <small class="text-muted">Size: 600x430</small><br>
                 <div id="error-message" style="color: red; display: none;"></div>
                 <!-- Error message will be shown here -->
               </div>
@@ -220,8 +220,8 @@
             if (file) {
               var img = new Image(); // Create a new image object
               img.onload = function() {
-                // Check if the image dimensions are 1280x720
-                if (img.width === 1280 && img.height === 720) {
+                // Check if the image dimensions are 600x430
+                if (img.width === 600 && img.height === 430) {
                   // Valid image dimensions
                   document.getElementById('error-message').style.display =
                     'none'; // Hide error message
@@ -229,7 +229,7 @@
                   // Invalid image dimensions
                   document.getElementById('error-message').style.display = 'block';
                   document.getElementById('error-message').innerText =
-                    'Error: Image dimensions must be 1280x720. Your image is ' + img.width +
+                    'Error: Image dimensions must be 600x430. Your image is ' + img.width +
                     'x' + img.height + '.';
                   fileInput.value = ''; // Optionally, clear the file input
                 }

@@ -227,6 +227,16 @@ a:hover {
     color: #4183D7;
 }
 
+.blog-card .card-body{
+    padding: 5px 10px 10px 10px ;
+}
+
+.blog-card .card-title{
+    font-size: 15px;
+}
+.blog-card .card-text{
+    font-size: 11px;
+}
 
 
 footer {
