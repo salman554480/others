@@ -164,8 +164,8 @@
           $post_thumbnail_tmp = $_FILES['post_thumbnail']['tmp_name'];
 
           $meta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
-          $meta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
           $meta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
+          $meta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
 
           $post_date =  date('Y-m-d');
 
@@ -189,8 +189,16 @@
           $run_admin = mysqli_query($conn, $insert_admin);
 
           if ($run_admin == true) {
-            echo "data is inserted ";
             move_uploaded_file($post_thumbnail_tmp, "upload/$post_thumbnail");
+
+            $select_latest = "SELECT * FROM post where post_url='$post_url'";
+            $run_latest = mysqli_query($conn, $select_latest);
+            $row_latest_post =  mysqli_fetch_array($run_latest);
+            $post_id = $row_latest_post['post_id'];
+
+            $insert_meta = "INSERT INTO meta(meta_title,meta_description,meta_keyword,meta_source,meta_source_id) VALUES('$meta_title','$meta_description','$meta_keyword','post','$post_id')";
+            $run_meta = mysqli_query($conn, $insert_meta);
+
             echo "<script>alert('Record Added');</script>";
             echo "<script>window.open('post_view.php','_self');</script>";
           } else {
