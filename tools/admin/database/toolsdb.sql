@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 11:33 AM
+-- Generation Time: Nov 18, 2024 at 08:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -115,7 +115,32 @@ INSERT INTO `menu` (`menu_id`, `page_id`, `menu_location`) VALUES
 (1, 1, 'header'),
 (2, 2, 'header'),
 (3, 3, 'footer'),
-(4, 4, 'footer');
+(4, 4, 'footer'),
+(5, 6, 'header');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meta`
+--
+
+CREATE TABLE `meta` (
+  `meta_id` int(11) NOT NULL,
+  `meta_title` varchar(500) NOT NULL,
+  `meta_description` varchar(1000) NOT NULL,
+  `meta_keyword` varchar(500) NOT NULL,
+  `meta_source` varchar(255) NOT NULL,
+  `meta_source_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `meta`
+--
+
+INSERT INTO `meta` (`meta_id`, `meta_title`, `meta_description`, `meta_keyword`, `meta_source`, `meta_source_id`) VALUES
+(1, 'Me ipsum esse dicerem, inquam, nisi mihi viderer habere bene cognitam voluptatem et satis firme ', 'Me ipsum esse dicerem, inquam, nisi mihi viderer habere bene cognitam voluptatem et satis firme ', 'ashdjkshad,ajsdklsajkd,asjdhklsajd', 'post', 3),
+(2, 'change Ut perspiciatis omnisSit delectus est illum optio et accusantium beatae. In sunt sim', 'change aliquam doloremque sed repudiandae eni', 'change  reiciendis officiis quo repudiandae voluptate. At dolorem aliquid', 'post', 4),
+(3, 'change Ut perspiciatis omnisSit delectus est illum optio et accusantium beatae. In sunt sim', 'change  aliquam doloremque sed repudiandae eni', 'change  reiciendis officiis quo repudiandae voluptate. At dolorem aliquid', 'post', 5);
 
 -- --------------------------------------------------------
 
@@ -143,7 +168,37 @@ INSERT INTO `page` (`page_id`, `page`, `page_title`, `page_url`, `page_content`,
 (2, 'contact-us', 'Contact', 'contact-us', '<p>abc</p>', 'Contact Us', 'Contact Us', 'Contact Us'),
 (3, 'privacy-policy', 'Privacy Policy', 'privacy-policy', '<p>abc</p>', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy'),
 (4, 'terms-and-conditions', 'Terms & Conditions', 'terms-conditions', '<p>abc</p>', 'Terms & Conditions', 'Terms & Conditions', ''),
-(5, 'homepage', 'Homepage', '', '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"</p>\r\n<h3>Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC</h3>\r\n<p>\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"</p>\r\n<h3>1914 translation by H. Rackham</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>Section 1.10.33 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 translation by H. Rackham</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'Homepage Meta Title', 'Homepage Meta Description', 'calculator');
+(5, 'homepage', 'Homepage', '', '<h3>The standard Lorem Ipsum passage, used since the 1500s</h3>\r\n<p>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"</p>\r\n<h3>Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC</h3>\r\n<p>\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\"</p>\r\n<h3>1914 translation by H. Rackham</h3>\r\n<p>\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"</p>\r\n<h3>Section 1.10.33 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC</h3>\r\n<p>\"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.\"</p>\r\n<h3>1914 translation by H. Rackham</h3>\r\n<p>\"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.\"</p>', 'Homepage Meta Title', 'Homepage Meta Description', 'calculator'),
+(6, '', 'Blog', 'blog', '<p>Blog Content</p>', 'meta title', 'meta description', 'meta keyword');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
+  `post_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `post_title` varchar(500) NOT NULL,
+  `post_url` varchar(500) NOT NULL,
+  `post_content` varchar(2000) NOT NULL,
+  `post_thumbnail` varchar(500) NOT NULL,
+  `post_views` int(11) NOT NULL,
+  `post_date` varchar(255) NOT NULL,
+  `post_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `category_id`, `post_title`, `post_url`, `post_content`, `post_thumbnail`, `post_views`, `post_date`, `post_status`) VALUES
+(1, 1, 'Core Principles Of Design Thinking', 'core-principles-of-design-thinking', '&lt;p&gt;&amp;nbsp;&lt;/p&gt;', 'asdsad.png', 0, '2024-11-18', 'publish'),
+(2, 1, 'Data as a Product: Data Architecture Principles for Management Blueprint', 'data-as-a-product-data-architecture-principles-for-management-blueprint', '&lt;p&gt;Est asperiores rerum et minus tenetur vel ipsam quasi.&lt;/p&gt;&lt;p&gt;Lorem ipsum dolor sit amet. Est reprehenderit galisum ut neque harum eum voluptates delectus. Sed ullam obcaecati aut pariatur modi aut voluptatem aliquam ut maiores quod. Aut dicta aliquam in veritatis galisum vel deleniti optio in eius incidunt.&lt;/p&gt;&lt;h2&gt;Est voluptatem amet ut ipsam expedita nam suscipit laudantium.&lt;/h2&gt;&lt;p&gt;Qui molestiae dolor eos incidunt exercitationem et esse excepturi eum sint eveniet vel voluptas repellat aut saepe illum quo nihil voluptatem? Eos voluptatibus omnis qui suscipit molestias in voluptate voluptas est temporibus iusto ut aperiam recusandae et recusandae quidem.&lt;/p&gt;&lt;h3&gt;Aut recusandae consectetur quo dolor porro aut fuga accusantium.&lt;/h3&gt;&lt;p&gt;Est quae cumque est rerum velit ut ipsum corporis ut temporibus suscipit aut sunt error aut possimus impedit. Et pariatur quia qui repellat aspernatur non modi quidem cum excepturi repellat quo obcaecati veritatis sit magni dolorem ut quod molestiae?&lt;/p&gt;&lt;h4&gt;Sit nihil tenetur ut facere excepturi.&lt;/h4&gt;&lt;p&gt;Quo debitis esse aut minus similique ut illum ducimus. Et rerum veniam sit mollitia fugiat et molestias placeat ut nulla corrupti.&lt;/p&gt;&lt;p&gt;Quo quibusdam quasi hic cupiditate libero ea eligendi architecto.&lt;/p&gt;&lt;p&gt;Eum soluta ullam eum fugit omnis ut quod dolor ut quae sequi est aperiam natus et suscipit numquam ut dolor magni. Ut impedit voluptatem vel voluptatem molestiae et perferendis fugiat est aliquam accusamus est neque libero id officia sint cum deserunt quos!&lt;/p&gt;&lt;p&gt;Et voluptatem sint ut aliquid aperiam ut dolor explicabo. In dolorem fugiat 33 natus voluptatem sed corrupti numquam et recusandae beatae et cumque natus id quis voluptatibus? Aut dolorum sunt eum esse doloribus sit veniam nisi est laborum perferendis ut quidem omnis eos pariatur enim et provident fugit.&amp;nbsp;&lt;/p&gt;', '267-1280x720.jpg', 0, '2024-11-18', 'publish'),
+(3, 1, 'Data as a Product: The Role of Data Architecture and Data Modelling Strategy', 'data-as-a-product-the-role-of-data-architecture-and-data-modelling-strategy', '&lt;p&gt;Lorem ipsum dolor sit amet. Aut ullam praesentium &lt;i&gt;Quo consequuntur ea voluptatum ipsum aut quod illo&lt;/i&gt; aut recusandae quisquam. Et voluptate praesentium et eligendi doloremque &lt;strong&gt;Est odio et sint dignissimos&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Aut saepe veniam et ullam voluptatehic molestiae ut quod officia. Qui fuga voluptatem &lt;i&gt;Et rerum est corporis deserunt aut fuga reiciendis&lt;/i&gt; quo sequi facere. Et nihil excepturi &lt;strong&gt;Aut sint ut labore iusto ab omnis dolorem ex illo corporis&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Vel rerum possimus &lt;i&gt;Et alias At omnis corporis nam minima voluptatem et quia ullam&lt;/i&gt; et tenetur cumque in adipisci modi? Est quasi dolores &lt;strong&gt;Qui sunt&lt;/strong&gt; sed voluptas ipsa. Ut expedita repudiandae &lt;a href=&quot;https://www.loremipzum.com&quot;&gt;Est dolores qui sequi temporibus et corrupti quam&lt;/a&gt; ut internos quae.&lt;/p&gt;&lt;p&gt;At soluta quae &lt;a href=&quot;https://www.loremipzum.com&quot;&gt;Aut internos cum eveniet consequatur ut atque iste&lt;/a&gt; est optio magnam et nesciunt debitis ut rerum odit. Non possimus pariatur &lt;strong&gt;Et doloremque nam dicta quasi et eius sunt&lt;/strong&gt; qui adipisci inventore et quasi deleniti.&amp;nbsp;&lt;/p&gt;', '144-1280x720.jpg', 0, '2024-11-18', 'publish'),
+(4, 3, 'Key considerations for Greenfield Product Engineering to build futuristic solutions', 'key-considerations-for-greenfield-product-engineering-to-build-futuristic-solutions', '&lt;p&gt;change &amp;nbsp;Non tempore galisum sit harum cupiditate.&lt;/p&gt;&lt;p&gt;Lorem ipsum dolor sit amet. Vel dolorem dolor nam temporibus asperiores &lt;i&gt;At dolor ut odio sint non autem sunt&lt;/i&gt;! Quo ullam nulla aut facilis saepeEos necessitatibus. Non consequatur consequatur &lt;strong&gt;Et Quis sed ducimus quam&lt;/strong&gt;? Aut ipsam optioEa minus qui modi nulla et neque dolores sed eveniet harum et fugit quas.&lt;/p&gt;&lt;h2&gt;Aut iure nisi hic vitae error.&lt;/h2&gt;&lt;p&gt;Ut perspiciatis omnisSit delectus est illum optio et accusantium beatae. In sunt similique quo iure fugiat &lt;strong&gt;Aut mollitia et voluptatibus earum et ipsam quidem et consectetur iste&lt;/strong&gt;. Et harum voluptates &lt;i&gt;Sit omnis non dolor facilis aut tempora error&lt;/i&gt; qui commodi error. Id natus sapienteVel quos quo natus fugit sed dolor quos ut quia fugit et incidunt assumenda aut modi accusamus!&lt;/p&gt;&lt;h3&gt;Ex quis omnis hic odit reiciendis.&lt;/h3&gt;&lt;p&gt;Ab facere sunt sit recusandae quiaAut distinctio. Et quas esse et illum deleniti &lt;strong&gt;Est saepe eos libero aspernatur id nostrum possimus et officia eaque&lt;/strong&gt;. Aut fugit nihil ut internos vitaeeos quasi. Est repellat isteIn dolorum ad cumque sunt id repellendus ratione.&lt;/p&gt;&lt;h4&gt;Aut consequatur voluptas aut porro corrupti et architecto iste.&lt;/h4&gt;&lt;p&gt;Ab autem pariatur in illo omnisEt consectetur cum reiciendis officiis quo repudiandae voluptate. At dolorem aliquid et nulla nemorem quod qui odio inventore! Hic laboriosam recusandae aut perferendis suscipitqui maxime et aliquam doloremque sed repudiandae enim.&lt;/p&gt;&lt;p&gt;Ut animi aliquid non nihil ducimus.&lt;/p&gt;&lt;p&gt;Qui odit porro ut odio dignissimos &lt;i&gt;Et maiores ut assumenda deserunt aut earum voluptas&lt;/i&gt;. Aut nemo voluptas vel minima atquecum sunt!&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Et reiciendis porro qui omnis minima in ipsam cupiditate.&lt;/li&gt;&lt;li&gt;Et tota', '49-1280x720.jpg', 0, '2024-11-18', 'publish'),
+(5, 3, 'The future of data engineering in digital product engineering lies with Gen AI', 'the-future-of-data-engineering-in-digital-product-engineering-lies-with-gen-ai', '<p>Aut sunt dignissimos ea facilis distinctio non architecto fuga.</p><p>Lorem ipsum dolor sit amet. Non cupiditate dolorem ab tempore unde <i>Eum sapiente ut Quis odit et consequuntur recusandae</i>? Non fuga omnis et ullam nihil <a href=\"https://www.loremipzum.com\">Eum fugiat et repudiandae quaerat</a>. Aut voluptate laborum <strong>Rem rerum et alias consequatur et esse expedita</strong> sit reiciendis natus id error molestiae cum praesentium tenetur. Eum deserunt placeatUt labore in blanditiis minus quo corrupti nihil aut corporis eius ea quia modi?</p><h2>Aut alias magnam eos voluptatem nobis qui culpa incidunt.</h2><p>Vel possimus impedit est excepturi voluptate <strong>Ut eaque ut commodi maiores non ratione rerum</strong>. Qui quis aliquidAut pariatur et quos eligendi et facilis earum quo reprehenderit voluptatem ex iste accusantium eum nisi asperiores. Aut perferendis Quis <i>Ut optio non voluptatem porro et earum doloribus</i> aut magni odio. Et adipisci velitUt atque est iusto velit!</p><ul><li>Qui amet exercitationem non magni sunt et perspiciatis necessitatibus et galisum sunt.</li><li>Eos totam voluptas et quam itaque nam fugit velit cum sunt sapiente.</li><li>Sit quia beatae eum obcaecati beatae!</li><li>33 repellat suscipit et voluptates voluptatem quo quasi alias in fuga nihil.</li><li>Hic totam iure ab recusandae autem aut quibusdam error cum cumque harum?</li><li>Qui esse impedit ut maiores placeat!</li></ul><h3>At soluta aspernatur 33 beatae nisi.</h3><p>Aut nobis esse <a href=\"https://www.loremipzum.com\">Aut reiciendis ut earum accusamus sit perferendis labore</a> ut saepe ullam a consequuntur aperiam nam consequatur consectetur? Ut molestiae vero ut assumenda saepeut culpa sit veritatis tenetur. Qui aliquid laborum et deserunt oditet sunt a provident deserunt est tenetur reprehenderit! Et dolor quia ut asperiores doloret distinctio.</p><h4>Vel consectetur magnam At provident voluptate qui omnis cupiditate.</h4><p>Est minima perspiciatis qui dol', '35-1280x720.jpg', 17, '2024-11-18', 'publish');
 
 -- --------------------------------------------------------
 
@@ -173,7 +228,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`setting_id`, `website_title`, `website_url`, `website_logo`, `website_favicon`, `website_head_code`, `ad_code_one`, `ad_code_two`, `ad_code_three`, `footer_text`, `facebook`, `twitter`, `instagram`, `pinterest`) VALUES
-(1, 'Webster title', 'https://scripts.vaultifier.space/tools', 'mobile.png', 'Calculator-icon.png', '', '', '', '', 'About Section Data', 'aboutwebster', 'aboutwebster', 'aboutwebster', 'aboutwebster');
+(1, 'Webster title', 'https://scripts.vaultifier.space/tools', 'foldious-high-resolution-logo-white-transparent.png', 'Calculator-icon.png', '', '', '', '', 'About Section Data', 'aboutwebster', 'aboutwebster', 'aboutwebster', 'aboutwebster');
 
 -- --------------------------------------------------------
 
@@ -695,10 +750,22 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`menu_id`);
 
 --
+-- Indexes for table `meta`
+--
+ALTER TABLE `meta`
+  ADD PRIMARY KEY (`meta_id`);
+
+--
 -- Indexes for table `page`
 --
 ALTER TABLE `page`
   ADD PRIMARY KEY (`page_id`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`post_id`);
 
 --
 -- Indexes for table `setting`
@@ -738,13 +805,25 @@ ALTER TABLE `contactform`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `meta`
+--
+ALTER TABLE `meta`
+  MODIFY `meta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `setting`
