@@ -115,6 +115,8 @@
               <div class="col-md-6">
                 <label class="form-label">Thumbnail</label>
                 <input type="file" name="post_thumbnail" class="form-control">
+                <small class="text-muted">Size: 1280x720</small><br>
+                <div id="error-message" style="color: red; display: none;"></div>
                 <small>Selected: <a
                     href="upload/<?php echo $dbpost_thumbnail; ?>"><?php echo $dbpost_thumbnail; ?></a></small>
               </div>
@@ -238,6 +240,37 @@
 
         ?>
 
+
+        <!-- Image Validation -->
+        <script>
+          function validateImage() {
+            // Get the file input element
+            var fileInput = document.getElementById('videoThumbnail');
+            var file = fileInput.files[0];
+
+            // Ensure a file is selected
+            if (file) {
+              var img = new Image(); // Create a new image object
+              img.onload = function() {
+                // Check if the image dimensions are 1280x720
+                if (img.width === 1280 && img.height === 720) {
+                  // Valid image dimensions
+                  document.getElementById('error-message').style.display =
+                    'none'; // Hide error message
+                } else {
+                  // Invalid image dimensions
+                  document.getElementById('error-message').style.display = 'block';
+                  document.getElementById('error-message').innerText =
+                    'Error: Image dimensions must be 1280x720. Your image is ' + img.width +
+                    'x' + img.height + '.';
+                  fileInput.value = ''; // Optionally, clear the file input
+                }
+              };
+              // Read the image file to trigger the onload event
+              img.src = URL.createObjectURL(file);
+            }
+          }
+        </script>
 
       </div>
       <?php require_once('parts/footer.php'); ?>

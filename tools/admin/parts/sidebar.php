@@ -39,6 +39,15 @@
                                  <li><a class="dropdown-item" href="page_add.php">Add Record</a></li>
                              </ul>
                          </li>
+                         <li class="nav-item dropdown">
+                             <a class="nav-link dropdown " id="navbarDropdown" href="#" role="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false">Blog<div
+                                     class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
+                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                 <li><a class="dropdown-item" href="post_view.php">View Record*</a></li>
+                                 <li><a class="dropdown-item" href="post_add.php">Add Record</a></li>
+                             </ul>
+                         </li>
 
 
                          <li class="nav-item dropdown">
