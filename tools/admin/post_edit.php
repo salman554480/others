@@ -16,13 +16,34 @@
         <!-- Page Header -->
         <div class="page-header ">
           <div class="col-12 mt-4  mb-4">
-            <h4 class="mb-3">Add Post</h4>
+            <h4 class="mb-3">Edit Post</h4>
 
-            <a href="admin_view.php" class="btn btn-sm btn-outline-danger">View Record*</a>
-            <a href="admin_trash.php" class="btn btn-sm btn-outline-primary ">Trash Record*</a>
+            <a href="admin_view.php" class="btn btn-sm btn-outline-danger">View Record</a>
           </div>
         </div>
         <!-- End Page Header -->
+
+
+        <?php
+        if (isset($_GET['edit'])) {
+          $post_id = $_GET['edit'];
+          $query = "SELECT * FROM post WHERE post_id = '$post_id'";
+          $result = mysqli_query($conn, $query);
+          $row = mysqli_fetch_array($result);
+          $post_title = $row['post_title'];
+          $post_content = $row['post_content'];
+          $post_url = $row['post_url'];
+          $dbcategory_id = $row['category_id'];
+          $dbpost_thumbnail = $row['post_thumbnail'];
+
+          $select_meta = "SELECT * FROM meta WHERE meta_source='post' and meta_source_id='$post_id'";
+          $result_meta = mysqli_query($conn, $select_meta);
+          $row_meta = mysqli_fetch_array($result_meta);
+          $meta_title = $row_meta['meta_title'];
+          $meta_description = $row_meta['meta_description'];
+          $meta_keyword = $row_meta['meta_keyword'];
+        }
+        ?>
 
         <!-- form start -->
         <div class="card mb-1">
@@ -36,14 +57,14 @@
 
               <div class="col-md-4">
                 <label class="form-label">Title</label>
-                <input type="text" name="post_title" id="post_title" class="form-control" autofocus
-                  required />
+                <input type="text" name="post_title" id="post_title" value="<?php echo $post_title; ?>"
+                  class="form-control" autofocus required />
               </div>
 
               <div class="col-md-4">
                 <label class="form-label">URL*</label>
-                <input type="text" name="post_url" id="post_url" class="form-control" autofocus
-                  required />
+                <input type="text" name="post_url" value="<?php echo $post_url; ?>" id="post_url"
+                  class="form-control" autofocus required />
               </div>
 
               <div class="col-md-4">
@@ -60,7 +81,9 @@
                       $category_id = $row['category_id'];
                       $category_name = $row['category_name'];
                     ?>
-                      <option value="<?php echo $category_id; ?>"><?php echo $category_name; ?>
+                      <option <?php if ($dbcategory_id == $category_id) {
+                                echo "selected";
+                              } ?> value="<?php echo $category_id; ?>"><?php echo $category_name; ?>
                       </option>
                     <?php } ?>
                   </select>
@@ -69,26 +92,31 @@
 
               <div class="col-md-12">
                 <label class="form-label">Content*</label>
-                <textarea name="content" id="editor"></textarea>
+                <textarea name="content" id="editor"><?php echo $post_content; ?></textarea>
               </div>
 
               <div class="col-md-6">
                 <label class="form-label">Meta Title</label>
-                <input type="text" name="meta_title" class="form-control">
+                <input type="text" name="meta_title" value="<?php echo $meta_title; ?>"
+                  class="form-control">
               </div>
               <div class="col-md-6">
                 <label class="form-label">Meta Keywords</label>
-                <input type="text" name="meta_keyword" class="form-control">
+                <input type="text" name="meta_keyword" value="<?php echo $meta_keyword; ?>"
+                  class="form-control">
               </div>
 
               <div class="col-md-12">
                 <label class="form-label">Meta Description</label>
-                <textarea id="" type="text" name="meta_description" class="form-control"></textarea>
+                <textarea id="" type="text" name="meta_description"
+                  class="form-control"><?php echo $meta_description; ?></textarea>
               </div>
 
               <div class="col-md-6">
                 <label class="form-label">Thumbnail</label>
                 <input type="file" name="post_thumbnail" class="form-control">
+                <small>Selected: <a
+                    href="upload/<?php echo $dbpost_thumbnail; ?>"><?php echo $dbpost_thumbnail; ?></a></small>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Status</label>
@@ -151,54 +179,59 @@
         require_once('parts/db.php');
         if (isset($_POST['insert_btn'])) {
 
-          $category_id = $_POST['category_id'];
-          $post_title = $_POST['post_title'];
-          $post_url = $_POST['post_url'];
-          $post_content = htmlspecialchars($_POST['content'], ENT_QUOTES, 'UTF-8');
-          $post_status = $_POST['post_status'];
+          $ecategory_id = $_POST['category_id'];
+          $epost_title = $_POST['post_title'];
+          $epost_url = $_POST['post_url'];
+          $epost_content = htmlspecialchars($_POST['content'], ENT_QUOTES, 'UTF-8');
+          $epost_status = $_POST['post_status'];
           $post_thumbnail = $_FILES['post_thumbnail']['name'];
           $post_thumbnail_tmp = $_FILES['post_thumbnail']['tmp_name'];
 
-          $meta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
-          $meta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
-          $meta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
+          $emeta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
+          $emeta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
+          $emeta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
 
-          $post_date =  date('Y-m-d');
 
-          $insert_admin = "INSERT INTO post(
-            category_id,
-            post_title,
-            post_content,
-            post_url,
-            post_thumbnail,
-            post_date,
-            post_status
-            )VALUES(
-            '$category_id',
-            '$post_title',
-            '$post_content',
-            '$post_url',
-            '$post_thumbnail',
-            '$post_date',
-            '$post_status')";
 
-          $run_admin = mysqli_query($conn, $insert_admin);
+          if (empty($post_thumbnail)) {
+            $post_thumbnail = $dbpost_thumbnail;
+          } else {
+            // Define the file path
+            $file_path = "upload/" . $post_thumbnail;
 
-          if ($run_admin == true) {
+            // Check if the file exists
+            if (file_exists($file_path)) {
+              // Attempt to delete the file
+              unlink($file_path);
+            } else {
+              echo "Error: The file does not exist.";
+            }
+          }
+
+
+
+          $update_post = "UPDATE post SET 
+          post_title='$epost_title',
+          post_url='$epost_url',
+          category_id='$ecategory_id',
+          post_content='$epost_content',
+          post_thumbnail='$post_thumbnail',
+          post_status='$epost_status' 
+          WHERE post_id='$post_id'";
+
+          $run_update = mysqli_query($conn, $update_post);
+
+          if ($run_update == true) {
             move_uploaded_file($post_thumbnail_tmp, "upload/$post_thumbnail");
 
-            $select_latest = "SELECT * FROM post where post_url='$post_url'";
-            $run_latest = mysqli_query($conn, $select_latest);
-            $row_latest_post =  mysqli_fetch_array($run_latest);
-            $post_id = $row_latest_post['post_id'];
 
-            $insert_meta = "INSERT INTO meta(meta_title,meta_description,meta_keyword,meta_source,meta_source_id) VALUES('$meta_title','$meta_description','$meta_keyword','post','$post_id')";
-            $run_meta = mysqli_query($conn, $insert_meta);
 
-            echo "<script>alert('Record Added');</script>";
+            $update_meta = "UPDATE meta SET meta_title='$emeta_title',meta_description='$emeta_description',meta_keyword='$emeta_keyword' WHERE meta_source='post' and meta_source_id='$post_id'";
+            $run_meta = mysqli_query($conn, $update_meta);
+
+            echo "<script>alert('Record UPDATED');</script>";
             echo "<script>window.open('post_view.php','_self');</script>";
           } else {
-            //echo "fail";
             echo "<script>alert('Failed');</script>";
           }
         }
