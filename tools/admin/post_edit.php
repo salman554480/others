@@ -135,7 +135,7 @@
               <div class="col-md-12">
 
                 <input type="submit" name="insert_btn" class="btn btn-sm btn-success"
-                  value="Add Record" />
+                  value="Save Changes" />
               </div>
 
             </form>
@@ -186,7 +186,7 @@
           $ecategory_id = $_POST['category_id'];
           $epost_title = $_POST['post_title'];
           $epost_url = $_POST['post_url'];
-          $epost_content = htmlspecialchars($_POST['content'], ENT_QUOTES, 'UTF-8');
+          $epost_content = $_POST['content'];
           $epost_status = $_POST['post_status'];
           $post_thumbnail = $_FILES['post_thumbnail']['name'];
           $post_thumbnail_tmp = $_FILES['post_thumbnail']['tmp_name'];
