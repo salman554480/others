@@ -15,25 +15,7 @@
                 <p>Start a beautiful journey here</p>
             </div>
         </div>
-        <?php
-        function generate_guid()
-        {
-            return sprintf(
-                '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff), // 32 bits for "time_low"
-                mt_rand(0, 0xffff), // 16 bits for "time_mid"
-                mt_rand(0, 0x0fff) | 0x4000, // 16 bits for "time_high_and_version" with version 4
-                mt_rand(0, 0x3fff) | 0x8000, // 16 bits for "clk_seq_hi_res" with variant 1
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff) // 48 bits for "node"
-            );
-        }
 
-        $video_guid = generate_guid();
-        // Outputs a randomly generated GUID in the format xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
-        ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -49,6 +31,11 @@
                                         <small id="charCount" class="form-text ">0 / 60 characters</small>
                                     </div>
 
+                                    <div class="col-md-4">
+                                        <label class="form-label">URL*</label>
+                                        <input type="text" name="tool_url" id="posturl" class="form-control" autofocus
+                                            required />
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
                                         <textarea id="hidden-textarea" name="video_description"
@@ -153,6 +140,11 @@
 
                         // Update character count and apply color logic
                         titleInput.addEventListener('input', () => {
+
+                            const titleValue = titleInput.value;
+                            const slug = generateSlug(titleValue);
+                            urlInput.value = slug;
+
                             const currentLength = titleInput.value.length;
 
                             // Display the current length and max length
@@ -167,6 +159,16 @@
                                 charCountDisplay.classList.add('char-count-bad');
                             }
                         });
+
+
+                        // Function to generate a slug from a string
+                        function generateSlug(title) {
+                            return title
+                                .toLowerCase() // Convert to lowercase
+                                .replace(/\s+/g, '-') // Replace spaces with dashes
+                                .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters and dashes
+                                .replace(/--+/g, '-'); // Replace multiple dashes with a single dash
+                        }
                         </script>
 
                         <!-- Image Validation -->
@@ -201,43 +203,41 @@
                         </script>
 
 
-                        <!-- Include Quill's JavaScript -->
-                        <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+                        < !--Include Quill 's JavaScript --> 
+                            <script src = "https://cdn.quilljs.com/1.3.6/quill.min.js" > < /scriipt>
 
-                        <script>
-                        // Initialize Quill editor on the container
-                        var quill = new Quill('#editor-container', {
-                            theme: 'snow', // Theme: snow is the default
-                            modules: {
-                                toolbar: [
-                                    [{
-                                        'header': '1'
-                                    }, {
-                                        'header': '2'
-                                    }, {
-                                        'font': []
-                                    }],
-                                    [{
-                                        'list': 'ordered'
-                                    }, {
-                                        'list': 'bullet'
-                                    }],
-                                    ['bold', 'italic', 'underline'],
-                                    [{
-                                        'align': []
-                                    }],
-                                    ['link', 'image'],
-                                    ['blockquote', 'code-block']
-                                ]
-                            }
-                        });
-
-                        // Sync Quill content with the hidden textarea
-                        quill.on('text-change', function(delta, oldDelta, source) {
+                                <script >
+                                // Initialize Quill editor on the container
+                                var quill = new Quill(' #editor-container', { theme: 'snow' , // Theme: snow is the
+                            default modules: { toolbar: [ [{ 'header' : '1' }, { 'header' : '2' }, { 'font' : [] }],
+                            [{ 'list' : 'ordered' }, { 'list' : 'bullet' }], ['bold', 'italic' , 'underline' ],
+                            [{ 'align' : [] }], ['link', 'image' ], ['blockquote', 'code-block' ] ] } }); // Sync Quill
+                            content with the hidden textarea quill.on('text-change', function(delta, oldDelta, source) {
                             // Update the hidden textarea with the content of the Quill editor
-                            document.getElementById('hidden-textarea').value = quill.root.innerHTML;
-                        });
-                        </script>
+                            document.getElementById('hidden-textarea').value=quill.root.innerHTML; }); </script>
+
+
+                            <script>
+                            // Function to generate a slug from a string
+                            function generateSlug(title) {
+                                return title
+                                    .toLowerCase() // Convert to lowercase
+                                    .replace(/\s+/g, '-') // Replace spaces with dashes
+                                    .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters and dashes
+                                    .replace(/--+/g, '-'); // Replace multiple dashes with a single dash
+                            }
+
+
+                            const titleInput = document.getElementById('videoTitle');
+                            const urlInput = document.getElementById('posturl');
+
+
+                            titleInput.addEventListener('input', function() {
+                                const titleValue = titleInput.value;
+                                const slug = generateSlug(titleValue);
+                                urlInput.value = slug;
+                            });
+                            </script>
                     </div>
                 </div>
             </div>
