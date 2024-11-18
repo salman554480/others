@@ -17,8 +17,7 @@
                         <div class="col-12 mt-4 mb-4">
                             <h4 class="mb-3">Posts</h4>
 
-                            <a href="post_add.php" class="btn btn-sm  btn-outline-danger">Add Record*</a>
-                            <a href="post_trash.php" class="btn btn-sm  btn-outline-warning ">Record Trash*</a>
+                            <a href="post_add.php" class="btn btn-sm  btn-outline-danger">Add Record</a>
                         </div>
                     </div>
                     <div class="card mb-3 bg-white">

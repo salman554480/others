@@ -18,7 +18,7 @@
           <div class="col-12 mt-4  mb-4">
             <h4 class="mb-3">Edit Post</h4>
 
-            <a href="admin_view.php" class="btn btn-sm btn-outline-danger">View Record</a>
+            <a href="post_view.php" class="btn btn-sm btn-outline-danger">View Record</a>
           </div>
         </div>
         <!-- End Page Header -->
@@ -114,7 +114,8 @@
 
               <div class="col-md-6">
                 <label class="form-label">Thumbnail</label>
-                <input type="file" name="post_thumbnail" class="form-control">
+                <input type="file" name="post_thumbnail" id="videoThumbnail" onchange="validateImage()"
+                  class="form-control">
                 <small class="text-muted">Size: 1280x720</small><br>
                 <div id="error-message" style="color: red; display: none;"></div>
                 <small>Selected: <a
