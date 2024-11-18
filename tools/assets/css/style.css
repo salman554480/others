@@ -230,9 +230,13 @@ a:hover {
 .blog-card .card-body{
     padding: 5px 10px 10px 10px ;
 }
+.blog-card .card-img-top{
+    object-fit: cover;
+}
 
 .blog-card .card-title{
     font-size: 15px;
+    font-weight: 600;
 }
 .blog-card .card-text{
     font-size: 11px;

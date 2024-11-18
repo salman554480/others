@@ -57,7 +57,7 @@
                                     <?php
 
                                     require_once('parts/db.php');
-                                    $select = "SELECT * FROM post WHERE post_status='publish' ORDER BY post_id DESC";
+                                    $select = "SELECT * FROM post  ORDER BY post_id DESC";
                                     $run = mysqli_query($conn, $select);
                                     while ($row = mysqli_fetch_array($run)) {
 

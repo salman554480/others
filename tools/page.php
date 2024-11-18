@@ -33,20 +33,48 @@ if (isset($_GET['page_url'])) {
                             <?php if ($page_url == "blog") { ?>
                                 <div class="row">
                                     <!-- Blog Post 1 -->
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card blog-card">
-                                            <img class="card-img-top" src="https://via.placeholder.com/600x430"
-                                                alt="Card image cap">
-                                            <div class="card-body">
-                                                <a href="#">
-                                                    <h5 class="card-title">This is a short description or intro to the blog
-                                                        post.</h5>
+                                    <?php
+
+                                    require_once('admin/parts/db.php');
+                                    $select = "SELECT * FROM post WHERE post_status='publish' ORDER BY post_id DESC";
+                                    $run = mysqli_query($conn, $select);
+                                    while ($row = mysqli_fetch_array($run)) {
+
+                                        $post_id = $row['post_id'];
+                                        $post_title = $row['post_title'];
+                                        $post_url = $row['post_url'];
+
+                                        $post_thumbnail = $row['post_thumbnail'];
+                                        $post_content = $row['post_content'];
+
+                                        // Remove HTML tags
+                                        $plain_text = strip_tags($post_content);
+
+                                        // Decode HTML entities to their corresponding characters
+                                        $plain_text = html_entity_decode($plain_text);
+
+                                        // Optionally, remove extra whitespace
+                                        $plain_text = trim(preg_replace('/\s+/', ' ', $plain_text));
+
+                                    ?>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="card blog-card">
+                                                <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                                                    <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
+                                                        alt="Card image cap">
                                                 </a>
-                                                <p class="card-text">This is a short description or intro to the blog post.
-                                                    It gives a preview of the content.</p>
+                                                <div class="card-body">
+                                                    <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
+                                                        class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
+                                                        <?php if (strlen($post_title) > 50) {
+                                                            echo "...";
+                                                        } ?>
+                                                    </a>
+                                                    <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                             <?php } ?>
