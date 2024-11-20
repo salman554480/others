@@ -4,18 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Bootstrap 4 Offline Example</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Offcanvas navbar</a>
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Notifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="#">Switch account</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Settings</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 text-nowrap">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="nav-scroller bg-white box-shadow">
+        <nav class="nav nav-underline">
+            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link" href="#"> Friends <span class="badge badge-pill bg-light align-text-bottom">27</span>
+            </a>
+            <a class="nav-link" href="#">Explore</a>
+            <a class="nav-link" href="#">Suggestions</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+        </nav>
+    </div>
+
+
+    <div class="container my-4">
+        <h2 class="text-center">Meme Generator</h2>
+        <p class="text-center">Meme Generator
+            The Fastest Meme Generator on the Planet. Easily add text to images or memes.</p>
+        <div class="row my-5 bg-white p-4">
+            <div class="col-md-5">
                 <h4>Select Template</h4>
                 <?php
                 $conn = mysqli_connect("localhost", "root", "", "meme");
@@ -27,12 +80,12 @@
                     $template_id = $row_meme['template_id'];
                     $template_name = $row_meme['template_name'];
                 ?>
-                <a href="index.php?template_id=<?php echo $template_id; ?>"><img
+                <a href="index.php?template_id=<?php echo $template_id; ?>" class="mb-3"><img
                         src="meme-images/<?php echo  $template_name; ?>" style="height:80px; object-fit:cover;"
                         alt=""></a>
                 <?php } ?>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
 
                 <?php
                 if (isset($_GET['template_id'])) {
@@ -58,8 +111,13 @@
                 <form id="memeForm" class="my-3">
                     <?php
                     // Dynamically generate text fields based on $text_count
-                    for ($i = 1; $i <= @$text_count; $i++) {
-                        echo "<input type='text' id='text{$i}' placeholder='Text {$i}' required>";
+                    for ($i = 1; $i <= @$text_count; $i++) { ?>
+                    <div class="form-group">
+                        <input type="text" id="text<?php echo $i ?>" class="form-control"
+                            placeholder="Text <?php echo $i; ?>" required>
+
+                    </div>
+                    <?php
                     }
                     ?>
                     <!-- <button type="submit">Generate Meme</button> -->
@@ -186,6 +244,12 @@
         isDragging = null; // Reset the dragging state
     });
     </script>
+    <!-- Link to Bootstrap JS (with Popper.js) -->
+    <script src="assets/bootstrap/jquery-3.7.1.min.js"></script>
+    <script src="assets/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/bootstrap/popper.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
