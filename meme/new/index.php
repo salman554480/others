@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -127,6 +128,8 @@
             </div>
         </div>
 
+
+
     </div>
 
 
@@ -244,6 +247,219 @@
         isDragging = null; // Reset the dragging state
     });
     </script>
+
+    <div class="container bg-white p-4 mb-4">
+        <h3>Popular Memes</h3>
+        <div class="row mt-4 ">
+            <?php
+            $pic = 1;
+            while ($pic < 7) {
+            ?>
+            <div class="col-md-2">
+                <img src="https://picsum.photos/300/300?random=<?php echo $pic; ?>" class="w-100" alt="">
+            </div>
+            <?php $pic++;
+            } ?>
+        </div>
+    </div>
+
+    <div class="container bg-white p-4 mb-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="gen-qa" class="content-area">
+                    <h2 class="gen-q">What is the Meme Generator?</h2>
+                    <p>It's a free online image maker that lets you add custom resizable text, images, and much more to
+                        templates.
+                        People often use the generator to customize established <a
+                            href="https://en.wikipedia.org/wiki/Meme">memes</a>,
+                        such as those found in Imgflip's collection of <a href="/memetemplates">Meme Templates</a>.
+                        However, you can also upload your own templates or start from scratch with empty templates.</p>
+                    <h2 class="gen-q">How to make a meme</h2>
+                    <ol>
+                        <li><b>Choose a template.</b> You can use one of the popular templates, search through more than
+                            1 million
+                            user-uploaded templates using the search input, or hit "Upload new template" to upload your
+                            own template
+                            from your device or from a url. For designing from scratch, try searching "empty" or "blank"
+                            templates.
+                        </li>
+                        <li><b>Add customizations.</b> Add text, images, stickers, drawings, and spacing using the
+                            buttons beside
+                            your meme canvas.</li>
+                        <li><b>Create and share.</b> Hit "Generate Meme" and then choose how to share and save your
+                            meme. You can
+                            share to social apps or through your phone, or share a link, or download to your device. You
+                            can also
+                            share with one of Imgflip's many meme communities.</li>
+                    </ol>
+                    <h2 class="gen-q">How can I customize my meme?</h2>
+                    <ul>
+                        <li>You can move and resize the text boxes by dragging them around. If you're on a mobile
+                            device,
+                            you may have to first check "enable drag/drop" in the More Options section. You can add as
+                            many
+                            additional text boxes as you want with the Add Text button.
+                        </li>
+                        <li>You can customize the font color and outline color next to where you type your text.
+                        </li>
+                        <li>You can further customize the font for each text box using the gear icon next to the text
+                            input.
+                            Imgflip supports all fonts installed on your device including the default Windows, Mac, and
+                            web fonts,
+                            including bold and italic. Over 1,300 free fonts are also supported for all devices. Any
+                            other font
+                            you want can be used if you first install it on your device and then type in the font name
+                            on Imgflip.
+                        </li>
+                        <li>You can insert popular or custom stickers and other images including scumbag hats,
+                            deal-with-it
+                            sunglasses, speech bubbles, and more. Opacity and resizing are supported, and you can
+                            copy/paste images
+                            using CMD/CTRL + C/V for quick creation.
+                        </li>
+                        <li>You can rotate, flip, and crop any templates you upload.
+                        </li>
+                        <li>You can draw, outline, or scribble on your meme using the panel just above the meme preview
+                            image.
+                        </li>
+                        <li>You can create "meme chains" of multiple images stacked vertically by adding new images with
+                            the
+                            "below current image" setting.
+                        </li>
+                        <li>You can add special image effects like posterize, jpeg artifacts, blur, sharpen, and color
+                            filters
+                            like grayscale, sepia, invert, and brightness.</li>
+                        <li>You can remove our subtle imgflip.com watermark (as well as remove ads and supercharge your
+                            image
+                            creation abilities) using <a href="/pro?from=mfaq_watermark">Imgflip Pro</a>
+                            or <button type="button" class="a mm-show-pro-basic">Imgflip Pro Basic</button>.</li>
+                    </ul>
+                    <h2 class="gen-q">Can I use the generator for more than just memes?</h2>
+                    <p>
+                        Yes! The Meme Generator is a flexible tool for many purposes. By uploading custom images and
+                        using
+                        all the customizations, you can design many creative works including
+                        posters, banners, advertisements, and other custom graphics.
+                    </p>
+                    <h2 class="gen-q">Can I make animated or video memes?</h2>
+                    <p>
+                        Yes! Animated meme templates will show up when you search in the Meme Generator above (try
+                        "party parrot").
+                        If you don't find the meme you want, browse all the <a href="/gif-templates">GIF Templates</a>
+                        or upload
+                        and save your own animated template using the <a href="/gif-maker">GIF Maker</a>.
+                    </p>
+                    <h2 class="gen-q">Do you have a wacky AI that can write memes for me?</h2>
+                    <p>
+                        Funny you ask. Why yes, we do. Here you go:
+                        <a href="/ai-meme">imgflip.com/ai-meme</a> (warning, may contain vulgarity)
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container bg-white p-4 mb-4">
+        <h3>Latest Blogs</h3>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card blog-card">
+                    <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                        <img class="card-img-top" src="https://picsum.photos/1280/720" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5 class="card-title">What is
+                            MemeGenerator?
+                            </h5>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat maiores
+                            alias eos sint soluta adipisci, dolorem excepturi fugit explicab.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card blog-card">
+                    <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                        <img class="card-img-top" src="https://picsum.photos/1280/720" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5 class="card-title">How it
+                            Works??
+                            </h5>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat maiores
+                            alias eos sint soluta adipisci, dolorem excepturi fugit explicab.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card blog-card">
+                    <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                        <img class="card-img-top" src="https://picsum.photos/1280/720" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5 class="card-title">How to
+                            Create Meme?
+                            </h5>
+                        </a>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat maiores
+                            alias eos sint soluta adipisci, dolorem excepturi fugit explicab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Links -->
+                <div class="col-md-4 d-flex align-items-center">
+                    <h4 class="text-white">WebsiteName</h4>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-center">Quick Links</h5>
+                    <ul class="nav d-flex justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Terms & Conditions</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="col-md-4">
+                    <h5 class="text-center">Follow Us</h5>
+                    <div class="d-flex justify-content-center">
+                        <div>
+                            <a href="#" class="text-white mr-3"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white mr-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <p class="text-center">&copy; 2024 Your Company. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
     <!-- Link to Bootstrap JS (with Popper.js) -->
     <script src="assets/bootstrap/jquery-3.7.1.min.js"></script>
     <script src="assets/bootstrap/bootstrap.min.js"></script>

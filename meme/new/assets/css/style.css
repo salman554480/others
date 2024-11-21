@@ -89,3 +89,40 @@ canvas {
 .bg-white{
     background-color: white;
 }
+
+.content-area h2{
+  font-size: 28px;
+}
+.content-area h3{
+  font-size: 25px;
+}
+.content-area h4{
+  font-size: 22px;
+}
+.content-area h5{
+  font-size: 20px;
+}
+.content-area h6{
+  font-size: 19px;
+}
+
+
+
+.blog-card .card-body{
+  padding: 5px 10px 10px 10px ;
+}
+.blog-card .card-img-top{
+  object-fit: cover;
+}
+.blog-card .card-title{
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+}
+.blog-card .card-title{
+  font-size: 17px;
+  font-weight: 600;
+}
+.blog-card .card-text{
+  font-size: 14px;
+}
