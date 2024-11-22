@@ -17,12 +17,32 @@
                 <div class="row">
                     <!-- Blog Card 1 -->
                     <?php
-                    $i = 1;
-                    while ($i < 16) {
+                    $select_post = "SELECT * From post WHERE  post_status='publish' order BY post_id DESC limit 30";
+                    $result_post = mysqli_query($conn, $select_post);
+                    while ($row_post = mysqli_fetch_array($result_post)) {
+                        $post_id =  $row_post['post_id'];
+                        $dbcategory_id =  $row_post['category_id'];
+                        $post_title =  $row_post['post_title'];
+                        $post_thumbnail =  $row_post['post_thumbnail'];
+                        $post_views =  $row_post['post_views'];
+                        $post_date =  $row_post['post_date'];
+                        $post_status =  $row_post['post_status'];
+
+                        $post_date = date("F j, Y", strtotime($post_date));
+
+                        $select_meta = "SELECT * FROM meta WHERE meta_source='post' and meta_source_id='$post_id'";
+                        $result_meta = mysqli_query($conn, $select_meta);
+                        $row_meta = mysqli_fetch_array($result_meta);
+                        $meta_description = $row_meta['meta_description'];
+
+                        $select_category = "SELECT * FROM category WHERE category_id='$dbcategory_id'";
+                        $result_category = mysqli_query($conn, $select_category);
+                        $row_category = mysqli_fetch_array($result_category);
+                        $dbcategory_name = $row_category['category_name'];
                     ?>
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="card blog-card ">
-                            <img src="https://picsum.photos/700/420?random=<?php echo $i; ?>" class="card-img-top"
+                            <img src="assets/img/thumbnail/<?php echo $post_thumbnail; ?>" class="card-img-top"
                                 alt="Blog image 1">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -35,24 +55,27 @@
                                             <span>8 Posts</span>
                                         </div>
                                     </div>
-                                    <p><a href="#" class="text-success fw-bold">Category</a></p>
+                                    <p><a href="#" class="text-success fw-bold"><?php echo $dbcategory_name; ?></a></p>
                                 </div>
 
-                                <h5 class="card-title"><a href="post_details.php">Top 10 Technology Blogs for Latest
-                                        Tech Updates,
-                                        News</a></h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec
-                                    elementum libero.</p>
+                                <h5 class="card-title">
+                                    <a href="post_details.php">
+                                        <?php echo $post_title; ?>
+                                        <?php if (strlen($post_title) > 50) {
+                                                echo "...";
+                                            } ?>
+                                    </a>
+                                </h5>
+                                <p class="card-text"><?php echo substr($meta_description, 0, 150) ?></p>
                                 <div class="d-flex justify-content-between text-small">
-                                    <span class="blog-date text-muted">October 20, 2024</span>
-                                    <span class="blog-date text-muted">3.1k Views</span>
+                                    <span class="blog-date text-muted"><?php echo $post_date; ?></span>
+                                    <span class="blog-date text-muted"><?php echo $post_views ?> Views</span>
                                 </div>
                                 <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                             </div>
                         </div>
                     </div>
-                    <?php $i++;
-                    } ?>
+                    <?php } ?>
 
                     <div class="container">
                         <div class="row">
