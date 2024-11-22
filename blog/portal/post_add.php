@@ -128,8 +128,12 @@
                                         <p>Total Characters: <span id="charCount">0</span></p>
                                         <p>Total Words: <span id="wordCount">0</span></p>
                                         <p>Total Sentences: <span id="sentenceCount">0</span></p>
+                                        <p>Total Paragraphs: <span id="paragraphCount">0</span></p>
                                         <p>Average Word Length: <span id="avgWordLength">0</span></p>
                                         <p>Average Sentence Length: <span id="avgSentenceLength">0</span></p>
+                                        <p>Reading Time: <span id="readingTime">0</span> minutes</p>
+                                        <p>Speaking Time: <span id="speakingTime">0</span> minutes</p>
+                                        <p>Reading Difficulty: <span id="readingDifficulty">0</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -249,9 +253,14 @@
 
                                 // Function to count sentences based on punctuation marks (.!?)
                                 function countSentences(str) {
-                                    // Match periods, exclamation marks, and question marks as sentence delimiters
                                     const sentenceEndings = /[.!?]/g;
                                     return (str.match(sentenceEndings) || []).length;
+                                }
+
+                                // Function to count paragraphs (by counting <p> tags or newline characters)
+                                function countParagraphs(str) {
+                                    const paragraphs = str.split(/\n+/);
+                                    return paragraphs.filter(p => p.trim() !== '').length;
                                 }
 
                                 // Function to calculate average word length
@@ -270,7 +279,29 @@
                                     return sentenceCount > 0 ? (wordCount / sentenceCount).toFixed(2) : 0;
                                 }
 
-                                // Function to update the counts
+                                // Function to calculate reading time (in minutes)
+                                function readingTime(wordCount) {
+                                    const readingSpeed = 200; // Average reading speed (words per minute)
+                                    return (wordCount / readingSpeed).toFixed(2);
+                                }
+
+                                // Function to calculate speaking time (in minutes)
+                                function speakingTime(wordCount) {
+                                    const speakingSpeed = 130; // Average speaking speed (words per minute)
+                                    return (wordCount / speakingSpeed).toFixed(2);
+                                }
+
+                                // Function to calculate Flesch Reading Ease Score
+                                function readingDifficulty(str) {
+                                    const wordCount = countWords(str);
+                                    const sentenceCount = countSentences(str);
+                                    const syllables = wordCount * 1.5; // Approximate syllables per word
+                                    const fleschScore = 206.835 - (1.015 * (wordCount / sentenceCount)) - (84.6 * (
+                                        syllables / wordCount));
+                                    return fleschScore.toFixed(2);
+                                }
+
+                                // Function to update all the counts
                                 function updateCounts() {
                                     // Get the editor content
                                     const content = editor.getData();
@@ -282,15 +313,24 @@
                                     const charCount = plainText.length;
                                     const wordCount = countWords(plainText);
                                     const sentenceCount = countSentences(plainText);
+                                    const paragraphCount = countParagraphs(content);
                                     const avgWordLength = averageWordLength(plainText);
                                     const avgSentenceLength = averageSentenceLength(plainText);
+                                    const readingTimeValue = readingTime(wordCount);
+                                    const speakingTimeValue = speakingTime(wordCount);
+                                    const readingDifficultyValue = readingDifficulty(plainText);
 
                                     // Update the display
                                     document.getElementById('charCount').textContent = charCount;
                                     document.getElementById('wordCount').textContent = wordCount;
                                     document.getElementById('sentenceCount').textContent = sentenceCount;
+                                    document.getElementById('paragraphCount').textContent = paragraphCount;
                                     document.getElementById('avgWordLength').textContent = avgWordLength;
                                     document.getElementById('avgSentenceLength').textContent = avgSentenceLength;
+                                    document.getElementById('readingTime').textContent = readingTimeValue;
+                                    document.getElementById('speakingTime').textContent = speakingTimeValue;
+                                    document.getElementById('readingDifficulty').textContent =
+                                        readingDifficultyValue;
                                 }
 
                                 // Update counts whenever the content changes
