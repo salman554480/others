@@ -11,13 +11,13 @@
                     class="app-menu__label">Dashboard</span></a>
         </li>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
-                    class="app-menu__icon bi bi-laptop"></i><span class="app-menu__label">UI Elements</span><i
+                    class="app-menu__icon bi bi-laptop"></i><span class="app-menu__label">Posts</span><i
                     class="treeview-indicator bi bi-chevron-right"></i></a>
             <ul class="treeview-menu">
-                <li><a class="treeview-item" href="video_upload.php"><i class="icon bi bi-circle-fill"></i>
-                        Upload Videos</a></li>
-                <li><a class="treeview-item" href="video_view.php" target="_blank" rel="noopener"><i
-                            class="icon bi bi-circle-fill"></i> My Videos</a></li>
+                <li><a class="treeview-item" href="post_add.php"><i class="icon bi bi-circle-fill"></i>
+                        Create Post</a></li>
+                <li><a class="treeview-item" href="post_view.php" rel="noopener"><i class="icon bi bi-circle-fill"></i>
+                        My posts</a></li>
 
             </ul>
         </li>
