@@ -133,7 +133,7 @@
                             $category_id =  $_POST['category_id'];
                             $subcategory_id =  $_POST['subcategory_id'];
                             $post_status =  $_POST['post_status'];
-                            $post_thumbnail_name =  $post_url . "_" . $_FILES['post_thumbnail']['name'];
+                            $post_thumbnail_name =   $_FILES['post_thumbnail']['name'];
                             $post_thumbnail_tmpname =   $_FILES['post_thumbnail']['tmp_name'];
 
                             $meta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
@@ -143,13 +143,13 @@
 
                             $post_date = date('Y-m-d');
                             $post_time = date('h:i A');
-                            echo        $insert_post = "INSERT INTO post(user_id,post_title,post_url,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$post_url','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
+                            $insert_post = "INSERT INTO post(user_id,post_title,post_url,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$post_url','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
                             $run_post =  mysqli_query($conn, $insert_post);
                             if ($run_post) {
                                 move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail_name);
 
 
-                                echo         $select_latest = "SELECT * FROM post where post_url='$post_url'";
+                                $select_latest = "SELECT * FROM post where post_url='$post_url'";
                                 $run_latest = mysqli_query($conn, $select_latest);
                                 $row_latest_post =  mysqli_fetch_array($run_latest);
                                 $post_id = $row_latest_post['post_id'];

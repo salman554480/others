@@ -1,5 +1,5 @@
 <?php require_once('parts/top.php'); ?>
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
 </head>
 
 <body class="app sidebar-mini">
@@ -8,23 +8,6 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <?php require_once('parts/sidebar.php'); ?>
-    <?php
-    if (isset($_GET['video_id'])) {
-        $video_id =  $_GET['video_id'];
-        $select_video = "SELECT * From video WHERE video_id='$video_id'";
-        $result_video = mysqli_query($conn, $select_video);
-        $row_video = mysqli_fetch_array($result_video);
-        $video_id =  $row_video['video_id'];
-        $video_title =  $row_video['video_title'];
-        $video_guid  =  $row_video['video_guid'];
-        $video_access_key =  $row_video['video_access_key'];
-        $dbcategory_id =  $row_video['category_id'];
-        $video_tags =  $row_video['video_tags'];
-        $video_description =  $row_video['video_description'];
-        $video_thumbnail =  $row_video['video_thumbnail'];
-        $video_status =  $row_video['video_status'];
-    }
-    ?>
     <main class="app-content">
         <div class="app-title">
             <div>
@@ -33,6 +16,44 @@
             </div>
         </div>
 
+        <?php
+        if (isset($_GET['post_id'])) {
+            $post_id = $_GET['post_id'];
+            $select_post = "SELECT * From post WHERE post_id='$post_id'";
+            $result_post = mysqli_query($conn, $select_post);
+            $row_post = mysqli_fetch_array($result_post);
+            $post_id = $row_post['post_id'];
+            $post_title = $row_post['post_title'];
+            $post_url = $row_post['post_url'];
+            $dbcategory_id = $row_post['category_id'];
+            $dbsubcategory_id = $row_post['subcategory_id'];
+            $post_tags = $row_post['post_tags'];
+            $post_content = $row_post['post_content'];
+            $dbpost_thumbnail = $row_post['post_thumbnail'];
+            $post_status = $row_post['post_status'];
+
+            $select_meta = "SELECT * FROM meta WHERE meta_source='post' and meta_source_id='$post_id'";
+            $result_meta = mysqli_query($conn, $select_meta);
+            $row_meta = mysqli_fetch_array($result_meta);
+            $meta_title = $row_meta['meta_title'];
+            $meta_description = $row_meta['meta_description'];
+            $meta_keyword = $row_meta['meta_keyword'];
+
+
+
+            $select_category = "SELECT * FROM category WHERE category_id='$dbcategory_id'";
+            $result_category = mysqli_query($conn, $select_category);
+            $row_category = mysqli_fetch_array($result_category);
+            $dbcategory_name = $row_category['category_name'];
+
+
+
+            $select_subcategory = "SELECT * FROM subcategory WHERE subcategory_id='$dbsubcategory_id'";
+            $result_subcategory = mysqli_query($conn, $select_subcategory);
+            $row_subcategory = mysqli_fetch_array($result_subcategory);
+            $dbsubcategory_name = $row_subcategory['subcategory_name'];
+        }
+        ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -43,103 +64,138 @@
                                 <div class="col-md-9">
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
-                                        <input class="form-control" type="text" name="video_title" id="videoTitle"
-                                            value="<?php echo $video_title; ?>" maxlength="100">
-                                        <small id="charCount" class="form-text ">0 / 60 characters</small>
+                                        <input class="form-control" type="text" value="<?php echo $post_title; ?>"
+                                            name="post_title" id="postTitle" placeholder="Enter Title Here..."
+                                            maxlength="100" oninput="generateURL()">
                                     </div>
+
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">https://example.com/</span>
+                                        </div>
+                                        <input type="text" value="<?php echo $post_url; ?>" name="post_url" id="posturl"
+                                            class="form-control" placeholder="URL/SLUG" readonly>
+                                    </div>
+
 
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea id="hidden-textarea" name="video_description"
-                                            style="display:none;"><?php echo $video_description; ?></textarea>
-
-                                        <!-- Quill Editor Container -->
-                                        <div id="editor-container">
-                                            <!-- The Quill editor will be rendered here -->
-                                        </div>
+                                        <textarea name="post_content"
+                                            id="editor"><?php echo $post_content; ?></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Tags</label>
-                                        <input class="form-control" name="video_tags" type="text"
-                                            value="<?php echo $video_tags ?>">
+                                        <input class="form-control" value="<?php echo $post_tags; ?>" name="post_tags"
+                                            type="text" placeholder="e.g. Web, Entertainment, Games ">
                                     </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Meta Title</label>
+                                            <input type="text" name="meta_title" value="<?php echo $meta_title; ?>"
+                                                class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Meta Keywords</label>
+                                            <input type="text" name="meta_keyword" value="<?php echo $meta_keyword; ?>"
+                                                class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <label class="form-label">Meta Description</label>
+                                        <textarea id="" type="text" name="meta_description"
+                                            class="form-control"><?php echo $meta_description; ?></textarea>
+                                    </div>
+
+
 
 
                                 </div>
+
                                 <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label class="form-label">Access Key</label>
-                                        <input class="form-control" name="video_access_key" type="text"
-                                            value="<?php echo $video_access_key ?>">
-                                        <small class="text-muted">Upload Video <a target="_blank"
-                                                href="https://scripts.vaultifier.space/transfer/">Here</a> to get
-                                            <b>Access Key</b>
-                                        </small>
-                                    </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            <option value="<?php echo $dbcategory_id; ?>">
+                                                <?php echo $dbcategory_name; ?>
+                                            </option>
                                             <?php
-                                            $select_category = "SELECT * From category";
+                                            $select_category = "SELECT * FROM category";
                                             $result_category = mysqli_query($conn, $select_category);
                                             while ($row_category = mysqli_fetch_array($result_category)) {
-                                                $category_id =  $row_category['category_id'];
-                                                $category_name =  $row_category['category_name'];
+                                                $category_id = $row_category['category_id'];
+                                                $category_name = $row_category['category_name'];
                                             ?>
-                                            <option <?php if ($dbcategory_id ==  $category_id) {
-                                                            echo "selected";
-                                                        } ?> value="<?php echo $category_id ?>">
-                                                <?php echo $category_name; ?>
+                                            <option value="<?php echo $category_id ?>"><?php echo $category_name; ?>
                                             </option>
                                             <?php } ?>
                                         </select>
                                     </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><?php echo $dbsubcategory_name; ?></label>
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id">
+                                            <option value="<?php echo $dbsubcategory_id; ?>">Select Subcategory</option>
+                                        </select>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label">Thumbnail</label>
-                                        <input class="form-control" name="video_thumbnail" type="file"
+                                        <input class="form-control" name="post_thumbnail" type="file"
                                             id="videoThumbnail" onchange="validateImage()">
-                                        <small class="text-muted">Size: 1280x720</small><br>
-                                        <div id="error-message" style="color: red; display: none;"></div>
+                                        <small class="text-muted">Size: 1280x720</small>
+                                        <div id="error-message" style="color: red; display: none;"></div><br>
                                         <!-- Error message will be shown here -->
-                                        <small class="text-muted">Selected:
-                                            <?php echo substr($video_thumbnail, 37, 100); ?>
-                                        </small>
-
+                                        <small>Selected: <a
+                                                href="../assets/img/thumbnail/<?php echo $dbpost_thumbnail; ?>"><?php echo $dbpost_thumbnail; ?></a></small>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Status</label>
-                                        <select class="form-control" name="video_status">
-                                            <option <?php if ($video_status == "publish") {
+                                        <select class="form-control" name="post_status">
+                                            <option <?php if ($post_status == "publish") {
                                                         echo "selected";
                                                     } ?> value="publish">Publish
                                             </option>
-                                            <option <?php if ($video_status == "draft") {
+                                            <option <?php if ($post_status == "draft") {
                                                         echo "selected";
                                                     } ?> value="draft">Draft</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="submit" value="Upload" name="upload"
+                                        <input type="submit" value="Save Changes" name="upload"
                                             class="btn btn-success btn-block w-100">
                                     </div>
                                 </div>
+                            </div>
+
                         </form>
                         <?php
                         if (isset($_POST['upload'])) {
-                            $evideo_title =  $_POST['video_title'];
-                            $evideo_description =  $_POST['video_description'];
-                            $evideo_access_key =  $_POST['video_access_key'];
+                            $epost_title =  $_POST['post_title'];
+                            $epost_url =  $_POST['post_url'];
+                            $epost_tags =  $_POST['post_tags'];
+                            $epost_content =  $_POST['post_content'];
                             $ecategory_id =  $_POST['category_id'];
-                            $evideo_tags =  $_POST['video_tags'];
-                            $evideo_status =  $_POST['video_status'];
-                            $video_thumbnail_name =  $video_guid . "_" . $_FILES['video_thumbnail']['name'];
-                            $video_thumbnail_tmpname =   $_FILES['video_thumbnail']['tmp_name'];
+                            $esubcategory_id =  $_POST['subcategory_id'];
+                            $epost_status =  $_POST['post_status'];
+                            $post_thumbnail =   $_FILES['post_thumbnail']['name'];
+                            $post_thumbnail_tmpname =   $_FILES['post_thumbnail']['tmp_name'];
 
-                            if (empty($video_thumbnail_name)) {
-                                $video_thumbnail_name = $video_thumbnail;
+                            $emeta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
+                            $emeta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
+                            $emeta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
+
+
+
+
+                            if (empty($post_thumbnail)) {
+                                echo     $post_thumbnail = $dbpost_thumbnail;
                             } else {
                                 // Define the file path
-                                $file_path = "images/thumbnail/" . $video_thumbnail;
+                                $file_path = "../assets/img/thumbnail/" . $dbpost_thumbnail;
 
                                 // Check if the file exists
                                 if (file_exists($file_path)) {
@@ -150,50 +206,31 @@
                                 }
                             }
 
-                            $video_date = date('Y-m-d');
-                            $video_time = date('h:i A');
-                            $insert_video = "Update video SET video_access_key='$evideo_access_key',video_title='$evideo_title',category_id='$ecategory_id',video_description='$evideo_description',video_thumbnail='$video_thumbnail_name',video_tags='$evideo_tags',video_status='$evideo_status' WHERE video_id='$video_id'";
-                            $run_video =  mysqli_query($conn, $insert_video);
-                            if ($run_video) {
-                                move_uploaded_file($video_thumbnail_tmpname, 'images/thumbnail/' . $video_thumbnail_name);
-                                echo '<script>alert("Video Updated successfully")</script>';
-                                echo '<script>window.location.href="video_view.php"</script>';
+
+
+                            $post_modified = date('Y-m-d');
+                            $update_post = "UPDATE post SET post_title='$epost_title',category_id='$ecategory_id',subcategory_id='$esubcategory_id',post_url='$epost_url',post_content='$epost_content',post_tags='$epost_tags',post_thumbnail='$post_thumbnail',post_status='$epost_status',post_modified='$post_modified' WHERE post_id='$post_id'";
+                            $run_post =  mysqli_query($conn, $update_post);
+                            if ($run_post) {
+                                move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail);
+
+
+                                $update_meta = "UPDATE meta set meta_title='$emeta_title',meta_description='$emeta_description',meta_keyword='$emeta_keyword' WHERE meta_source='post' and meta_source_id='$post_id' ";
+                                $run_meta = mysqli_query($conn, $update_meta);
+
+                                echo '<script>alert("Post Updated successfully")</script>';
+                                echo "<script>window.location.href='post_edit.php?post_id=$post_id'</script>";
                             } else {
-                                echo '<script>alert("Failed to upload video")</script>';
+                                echo '<script>
+                        alert("Failed to upload post")
+                        </script>';
                             }
                         }
                         ?>
 
 
 
-
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                        <!-- Title Validation  -->
-                        <script>
-                        const titleInput = document.getElementById('videoTitle');
-                        const charCountDisplay = document.getElementById('charCount');
-
-                        // Best practice length range
-                        const minLength = 50;
-                        const maxLength = 60;
-
-                        // Update character count and apply color logic
-                        titleInput.addEventListener('input', () => {
-                            const currentLength = titleInput.value.length;
-
-                            // Display the current length and max length
-                            charCountDisplay.textContent = `${currentLength} / 60 characters`;
-
-                            // Change color based on length
-                            if (currentLength >= minLength && currentLength <= maxLength) {
-                                charCountDisplay.classList.remove('char-count-bad');
-                                charCountDisplay.classList.add('char-count-good');
-                            } else {
-                                charCountDisplay.classList.remove('char-count-good');
-                                charCountDisplay.classList.add('char-count-bad');
-                            }
-                        });
-                        </script>
 
                         <!-- Image Validation -->
                         <script>
@@ -226,49 +263,69 @@
                         }
                         </script>
 
-
-                        <!-- Include Quill's JavaScript -->
-                        <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
+                        <!-- Slug Generate -->
                         <script>
-                        // Initialize Quill editor
-                        var quill = new Quill('#editor-container', {
-                            theme: 'snow', // You can change the theme
-                            modules: {
-                                toolbar: [
-                                    [{
-                                        'header': '1'
-                                    }, {
-                                        'header': '2'
-                                    }, {
-                                        'font': []
-                                    }],
-                                    [{
-                                        'list': 'ordered'
-                                    }, {
-                                        'list': 'bullet'
-                                    }],
-                                    ['bold', 'italic', 'underline'],
-                                    [{
-                                        'align': []
-                                    }],
-                                    ['link']
-                                ]
+                        function generateURL() {
+                            // Get the value from the title input
+                            var title = document.getElementById('postTitle').value;
+
+                            // Convert the title to a URL-friendly format (lowercase, spaces replaced with hyphens)
+                            var url = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+
+                            // Set the URL input field value
+                            document.getElementById('posturl').value = url;
+                        }
+                        </script>
+
+
+                        <!-- CKEditor -->
+                        <script>
+                        ClassicEditor
+                            .create(document.querySelector('#editor'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                        </script>
+
+
+                        <!-- Dynamic Subcategory -->
+                        <script>
+                        document.getElementById('category_id').addEventListener('change', function() {
+                            var category_id = this.value;
+
+                            // Check if a category is selected
+                            if (category_id) {
+                                // Make an AJAX request to fetch the subcategories
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', 'get_subcategories.php?category_id=' + category_id, true);
+                                xhr.onload = function() {
+                                    if (xhr.status === 200) {
+                                        var subcategories = JSON.parse(xhr.responseText);
+                                        var subcategory_select = document.getElementById('subcategory_id');
+
+                                        // Clear any previous subcategories
+                                        subcategory_select.innerHTML =
+                                            '<option value="">Select Subcategory</option>';
+
+                                        // Populate subcategories
+                                        subcategories.forEach(function(subcategory) {
+                                            var option = document.createElement('option');
+                                            option.value = subcategory.subcategory_id;
+                                            option.textContent = subcategory.subcategory_name;
+                                            subcategory_select.appendChild(option);
+                                        });
+                                    }
+                                };
+                                xhr.send();
+                            } else {
+                                // Clear subcategory select if no category is selected
+                                document.getElementById('subcategory_id').innerHTML =
+                                    '<option value="">Select Subcategory</option>';
                             }
                         });
-
-                        // Set the content of the Quill editor to the value of the PHP variable
-                        // We use <?php echo json_encode($video_description); ?> to safely echo the value
-                        var videoDescription = <?php echo json_encode($video_description); ?>;
-                        quill.root.innerHTML = videoDescription;
-
-                        // Sync the Quill editor content with the hidden textarea when the form is submitted
-                        document.querySelector('form').addEventListener('submit', function() {
-                            var hiddenTextarea = document.getElementById('hidden-textarea');
-                            hiddenTextarea.value = quill.root
-                                .innerHTML; // Sync the HTML content with the textarea
-                        });
                         </script>
+
+
                     </div>
                 </div>
             </div>
