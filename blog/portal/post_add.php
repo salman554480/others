@@ -26,7 +26,7 @@
                                 <div class="col-md-9">
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
-                                        <input class="form-control" type="text" name="video_title" id="postTitle"
+                                        <input class="form-control" type="text" name="post_title" id="postTitle"
                                             placeholder="Enter Title Here..." maxlength="100" oninput="generateURL()">
                                     </div>
 
@@ -35,7 +35,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">https://example.com/</span>
                                         </div>
-                                        <input type="text" name="tool_url" id="posturl" class="form-control"
+                                        <input type="text" name="post_url" id="posturl" class="form-control"
                                             placeholder="URL/SLUG" readonly>
                                     </div>
 
@@ -46,11 +46,11 @@
                                     </div> -->
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea name="content" id="editor"></textarea>
+                                        <textarea name="post_content" id="editor"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Tags</label>
-                                        <input class="form-control" name="video_tags" type="text"
+                                        <input class="form-control" name="post_tags" type="text"
                                             placeholder="e.g. Web, Entertainment, Games ">
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Thumbnail</label>
-                                        <input class="form-control" name="video_thumbnail" type="file"
+                                        <input class="form-control" name="post_thumbnail" type="file"
                                             id="videoThumbnail" onchange="validateImage()">
                                         <small class="text-muted">Size: 1280x720</small>
                                         <div id="error-message" style="color: red; display: none;"></div>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Status</label>
-                                        <select class="form-control" name="video_status">
+                                        <select class="form-control" name="post_status">
                                             <option value="publish">Publish</option>
                                             <option value="draft">Draft</option>
                                         </select>
@@ -105,25 +105,26 @@
                         </form>
                         <?php
                         if (isset($_POST['upload'])) {
-                            $video_title =  $_POST['video_title'];
-                            $video_description =  $_POST['video_description'];
-                            $video_access_key =  $_POST['video_access_key'];
+                            $post_title =  $_POST['post_title'];
+                            $post_url =  $_POST['post_url'];
+                            $post_content =  $_POST['post_content'];
                             $category_id =  $_POST['category_id'];
-                            $video_status =  $_POST['video_status'];
-                            $video_thumbnail_name =  $video_guid . "_" . $_FILES['video_thumbnail']['name'];
-                            $video_thumbnail_tmpname =   $_FILES['video_thumbnail']['tmp_name'];
+                            $subcategory_id =  $_POST['subcategory_id'];
+                            $post_status =  $_POST['post_status'];
+                            $post_thumbnail_name =  $post_url . "_" . $_FILES['post_thumbnail']['name'];
+                            $post_thumbnail_tmpname =   $_FILES['post_thumbnail']['tmp_name'];
 
 
-                            $video_date = date('Y-m-d');
-                            $video_time = date('h:i A');
-                            $insert_video = "INSERT INTO video(user_id,video_access_key,video_title,category_id,video_guid,video_description,video_thumbnail,video_date,video_time,video_status) VALUES('$user_id','$video_access_key','$video_title','$category_id','$video_guid','$video_description','$video_thumbnail_name','$video_date','$video_time','$video_status')";
-                            $run_video =  mysqli_query($conn, $insert_video);
-                            if ($run_video) {
-                                move_uploaded_file($video_thumbnail_tmpname, 'assets/images/thumbnail/' . $video_thumbnail_name);
-                                echo '<script>alert("Video uploaded successfully")</script>';
-                                echo '<script>window.location.href="video_view.php"</script>';
+                            $post_date = date('Y-m-d');
+                            $post_time = date('h:i A');
+                            $insert_post = "INSERT INTO post(user_id,post_title,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
+                            $run_post =  mysqli_query($conn, $insert_post);
+                            if ($run_post) {
+                                move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail_name);
+                                echo '<script>alert("post uploaded successfully")</script>';
+                                echo '<script>window.location.href="post_view.php"</script>';
                             } else {
-                                echo '<script>alert("Failed to upload video")</script>';
+                                echo '<script>alert("Failed to upload post")</script>';
                             }
                         }
                         ?>
