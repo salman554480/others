@@ -14,6 +14,8 @@ if (isset($_GET['post_url'])) {
     $dbsubcategory_id = $row_post['subcategory_id'];
     $post_tags = $row_post['post_tags'];
     $post_date = $row_post['post_date'];
+    $post_words = $row_post['post_words'];
+    $post_read_time = $row_post['post_read_time'];
     $post_content = $row_post['post_content'];
     $post_thumbnail = $row_post['post_thumbnail'];
     $post_status = $row_post['post_status'];
@@ -41,6 +43,12 @@ if (isset($_GET['post_url'])) {
     $result_user = mysqli_query($conn, $select_user);
     $row_user = mysqli_fetch_array($result_user);
     $user_name = $row_user['user_name'];
+
+
+
+    $updated_post_views =  $post_views + 1;
+    $update_post = "UPDATE post SET post_views='$updated_post_views' WHERE post_id='$post_id'";
+    $result_update_post = mysqli_query($conn, $update_post);
 }
 ?>
 
@@ -67,7 +75,8 @@ if (isset($_GET['post_url'])) {
                             <img src="https://avatar.iran.liara.run/public/4" class="author-img" alt="Author Image">
                             <div class="author-details">
                                 <span><strong><a href="@#"><?php echo $user_name; ?></a></strong></span>
-                                <span><?php echo $post_views; ?> Views . <?php echo $post_date; ?> . 4min Read Time
+                                <span><?php echo $post_views; ?> Views . <?php echo $post_date; ?> .
+                                    <?php echo $post_read_time; ?>min Read Time
                                 </span>
                             </div>
                         </div>

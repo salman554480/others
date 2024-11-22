@@ -189,6 +189,12 @@
                             $emeta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
 
 
+                            $total_words = str_word_count($epost_content);
+                            $reading_speed = 200; // Words per minute
+                            $post_read_time = ceil($total_words / $reading_speed); // Round up to the nearest minute
+
+
+
 
 
                             if (empty($post_thumbnail)) {
@@ -209,7 +215,7 @@
 
 
                             $post_modified = date('Y-m-d');
-                            $update_post = "UPDATE post SET post_title='$epost_title',category_id='$ecategory_id',subcategory_id='$esubcategory_id',post_url='$epost_url',post_content='$epost_content',post_tags='$epost_tags',post_thumbnail='$post_thumbnail',post_status='$epost_status',post_modified='$post_modified' WHERE post_id='$post_id'";
+                            $update_post = "UPDATE post SET post_title='$epost_title',category_id='$ecategory_id',subcategory_id='$esubcategory_id',post_url='$epost_url',post_content='$epost_content',post_tags='$epost_tags',post_thumbnail='$post_thumbnail',post_status='$epost_status',post_modified='$post_modified',post_words='$total_words',post_read_time='$post_read_time' WHERE post_id='$post_id'";
                             $run_post =  mysqli_query($conn, $update_post);
                             if ($run_post) {
                                 move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail);
