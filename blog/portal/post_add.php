@@ -53,6 +53,28 @@
                                         <input class="form-control" name="post_tags" type="text"
                                             placeholder="e.g. Web, Entertainment, Games ">
                                     </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Meta Title</label>
+                                            <input type="text" name="meta_title" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Meta Keywords</label>
+                                            <input type="text" name="meta_keyword" class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <label class="form-label">Meta Description</label>
+                                        <textarea id="" type="text" name="meta_description"
+                                            class="form-control"></textarea>
+                                    </div>
+
+
+
+
                                 </div>
 
                                 <div class="col-md-3">
@@ -114,13 +136,27 @@
                             $post_thumbnail_name =  $post_url . "_" . $_FILES['post_thumbnail']['name'];
                             $post_thumbnail_tmpname =   $_FILES['post_thumbnail']['tmp_name'];
 
+                            $meta_title = htmlspecialchars($_POST['meta_title'], ENT_QUOTES, 'UTF-8');
+                            $meta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
+                            $meta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
+
 
                             $post_date = date('Y-m-d');
                             $post_time = date('h:i A');
-                            $insert_post = "INSERT INTO post(user_id,post_title,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
+                            echo        $insert_post = "INSERT INTO post(user_id,post_title,post_url,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$post_url','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
                             $run_post =  mysqli_query($conn, $insert_post);
                             if ($run_post) {
                                 move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail_name);
+
+
+                                echo         $select_latest = "SELECT * FROM post where post_url='$post_url'";
+                                $run_latest = mysqli_query($conn, $select_latest);
+                                $row_latest_post =  mysqli_fetch_array($run_latest);
+                                $post_id = $row_latest_post['post_id'];
+
+                                $insert_meta = "INSERT INTO meta(meta_title,meta_description,meta_keyword,meta_source,meta_source_id) VALUES('$meta_title','$meta_description','$meta_keyword','post','$post_id')";
+                                $run_meta = mysqli_query($conn, $insert_meta);
+
                                 echo '<script>alert("post uploaded successfully")</script>';
                                 echo '<script>window.location.href="post_view.php"</script>';
                             } else {
