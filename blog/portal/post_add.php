@@ -1,5 +1,5 @@
 <?php require_once('parts/top.php'); ?>
-<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
 </head>
 
 <body class="app sidebar-mini">
@@ -30,14 +30,23 @@
                                             placeholder="Enter Title Here..." maxlength="100" oninput="generateURL()">
                                     </div>
 
-                                    <div class="col-md-12 mb-3">
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">https://example.com/</span>
+                                        </div>
+                                        <input type="text" name="tool_url" id="posturl" class="form-control"
+                                            placeholder="URL/SLUG" readonly>
+                                    </div>
+
+                                    <!-- <div class="col-md-12 mb-3">
                                         <label class="form-label">URL</label>
                                         <input type="text" name="tool_url" id="posturl" class="form-control" readonly
                                             required />
-                                    </div>
+                                    </div> -->
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea name="content" id=""><?php echo $post_content; ?></textarea>
+                                        <textarea name="content" id="editor"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Tags</label>
@@ -47,28 +56,28 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label class="form-label">Access Key</label>
-                                        <input class="form-control" name="video_access_key" type="text"
-                                            placeholder="Enter Access Key">
-                                        <small class="text-muted">Upload Video <a target="_blank"
-                                                href="https://scripts.vaultifier.space/transfer/">Here</a> to get
-                                            <b>Access Key</b>
-                                        </small>
-                                    </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Category</label>
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            <option value="">Select Category</option>
                                             <?php
-                                            $select_category = "SELECT * From category";
+                                            $select_category = "SELECT * FROM category";
                                             $result_category = mysqli_query($conn, $select_category);
                                             while ($row_category = mysqli_fetch_array($result_category)) {
-                                                $category_id =  $row_category['category_id'];
-                                                $category_name =  $row_category['category_name'];
+                                                $category_id = $row_category['category_id'];
+                                                $category_name = $row_category['category_name'];
                                             ?>
                                             <option value="<?php echo $category_id ?>"><?php echo $category_name; ?>
                                             </option>
                                             <?php } ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Subcategory</label>
+                                        <select class="form-control" name="subcategory_id" id="subcategory_id">
+                                            <option value="">Select Subcategory</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -164,8 +173,56 @@
                             var url = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
                             // Set the URL input field value
-                            document.getElementById('posturl').value = 'https://example.com/' + url;
+                            document.getElementById('posturl').value = url;
                         }
+                        </script>
+
+
+                        <!-- CKEditor -->
+                        <script>
+                        ClassicEditor
+                            .create(document.querySelector('#editor'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                        </script>
+
+
+                        <!-- Dynamic Subcategory -->
+                        <script>
+                        document.getElementById('category_id').addEventListener('change', function() {
+                            var category_id = this.value;
+
+                            // Check if a category is selected
+                            if (category_id) {
+                                // Make an AJAX request to fetch the subcategories
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('GET', 'get_subcategories.php?category_id=' + category_id, true);
+                                xhr.onload = function() {
+                                    if (xhr.status === 200) {
+                                        var subcategories = JSON.parse(xhr.responseText);
+                                        var subcategory_select = document.getElementById('subcategory_id');
+
+                                        // Clear any previous subcategories
+                                        subcategory_select.innerHTML =
+                                            '<option value="">Select Subcategory</option>';
+
+                                        // Populate subcategories
+                                        subcategories.forEach(function(subcategory) {
+                                            var option = document.createElement('option');
+                                            option.value = subcategory.subcategory_id;
+                                            option.textContent = subcategory.subcategory_name;
+                                            subcategory_select.appendChild(option);
+                                        });
+                                    }
+                                };
+                                xhr.send();
+                            } else {
+                                // Clear subcategory select if no category is selected
+                                document.getElementById('subcategory_id').innerHTML =
+                                    '<option value="">Select Subcategory</option>';
+                            }
+                        });
                         </script>
 
 
