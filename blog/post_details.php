@@ -27,8 +27,6 @@ if (isset($_GET['post_url'])) {
     $meta_description = $row_meta['meta_description'];
     $meta_keyword = $row_meta['meta_keyword'];
 
-
-
     $select_category = "SELECT * FROM category WHERE category_id='$dbcategory_id'";
     $result_category = mysqli_query($conn, $select_category);
     $row_category = mysqli_fetch_array($result_category);
@@ -38,7 +36,6 @@ if (isset($_GET['post_url'])) {
     $result_subcategory = mysqli_query($conn, $select_subcategory);
     $row_subcategory = mysqli_fetch_array($result_subcategory);
     $dbsubcategory_name = $row_subcategory['subcategory_name'];
-
 
     $select_user = "SELECT * FROM user WHERE user_id='$user_id'";
     $result_user = mysqli_query($conn, $select_user);

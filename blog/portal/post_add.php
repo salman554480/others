@@ -140,10 +140,15 @@
                             $meta_description = htmlspecialchars($_POST['meta_description'], ENT_QUOTES, 'UTF-8');
                             $meta_keyword = htmlspecialchars($_POST['meta_keyword'], ENT_QUOTES, 'UTF-8');
 
+                            $total_words = str_word_count($post_content);
+                            $reading_speed = 200; // Words per minute
+                            $post_read_time = ceil($total_words / $reading_speed); // Round up to the nearest minute
+
+
 
                             $post_date = date('Y-m-d');
                             $post_time = date('h:i A');
-                            $insert_post = "INSERT INTO post(user_id,post_title,post_url,category_id,subcategory_id,post_content,post_thumbnail,post_date,post_time,post_status) VALUES('$user_id','$post_title','$post_url','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$post_date','$post_time','$post_status')";
+                            $insert_post = "INSERT INTO post(user_id,post_title,post_url,category_id,subcategory_id,post_content,post_thumbnail,post_words,post_read_time,post_date,post_time,post_status) VALUES('$user_id','$post_title','$post_url','$category_id','$subcategory_id','$post_content','$post_thumbnail_name','$total_words','$post_read_time','$post_date','$post_time','$post_status')";
                             $run_post =  mysqli_query($conn, $insert_post);
                             if ($run_post) {
                                 move_uploaded_file($post_thumbnail_tmpname, '../assets/img/thumbnail/' . $post_thumbnail_name);
