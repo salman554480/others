@@ -1,5 +1,5 @@
 <?php require_once('parts/top.php'); ?>
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 
 <body class="app sidebar-mini">
@@ -26,34 +26,26 @@
                                 <div class="col-md-9">
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
-                                        <input class="form-control" type="text" name="video_title" id="videoTitle"
-                                            placeholder="Enter Title Here..." maxlength="100">
-                                        <small id="charCount" class="form-text ">0 / 60 characters</small>
+                                        <input class="form-control" type="text" name="video_title" id="postTitle"
+                                            placeholder="Enter Title Here..." maxlength="100" oninput="generateURL()">
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label class="form-label">URL*</label>
-                                        <input type="text" name="tool_url" id="posturl" class="form-control" autofocus
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label">URL</label>
+                                        <input type="text" name="tool_url" id="posturl" class="form-control" readonly
                                             required />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea id="hidden-textarea" name="video_description"
-                                            style="display:none;"></textarea>
-
-                                        <!-- Quill Editor Container -->
-                                        <div id="editor-container">
-                                            <!-- The Quill editor will be rendered here -->
-                                        </div>
+                                        <textarea name="content" id=""><?php echo $post_content; ?></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Tags</label>
                                         <input class="form-control" name="video_tags" type="text"
                                             placeholder="e.g. Web, Entertainment, Games ">
                                     </div>
-
-
                                 </div>
+
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label class="form-label">Access Key</label>
@@ -99,6 +91,8 @@
                                             class="btn btn-success btn-block w-100">
                                     </div>
                                 </div>
+                            </div>
+
                         </form>
                         <?php
                         if (isset($_POST['upload'])) {
@@ -127,49 +121,7 @@
 
 
 
-
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                        <!-- Title Validation  -->
-                        <script>
-                        const titleInput = document.getElementById('videoTitle');
-                        const charCountDisplay = document.getElementById('charCount');
-
-                        // Best practice length range
-                        const minLength = 50;
-                        const maxLength = 60;
-
-                        // Update character count and apply color logic
-                        titleInput.addEventListener('input', () => {
-
-                            const titleValue = titleInput.value;
-                            const slug = generateSlug(titleValue);
-                            urlInput.value = slug;
-
-                            const currentLength = titleInput.value.length;
-
-                            // Display the current length and max length
-                            charCountDisplay.textContent = `${currentLength} / 60 characters`;
-
-                            // Change color based on length
-                            if (currentLength >= minLength && currentLength <= maxLength) {
-                                charCountDisplay.classList.remove('char-count-bad');
-                                charCountDisplay.classList.add('char-count-good');
-                            } else {
-                                charCountDisplay.classList.remove('char-count-good');
-                                charCountDisplay.classList.add('char-count-bad');
-                            }
-                        });
-
-
-                        // Function to generate a slug from a string
-                        function generateSlug(title) {
-                            return title
-                                .toLowerCase() // Convert to lowercase
-                                .replace(/\s+/g, '-') // Replace spaces with dashes
-                                .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters and dashes
-                                .replace(/--+/g, '-'); // Replace multiple dashes with a single dash
-                        }
-                        </script>
 
                         <!-- Image Validation -->
                         <script>
@@ -202,42 +154,21 @@
                         }
                         </script>
 
+                        <!-- Slug Generate -->
+                        <script>
+                        function generateURL() {
+                            // Get the value from the title input
+                            var title = document.getElementById('postTitle').value;
 
-                        < !--Include Quill 's JavaScript --> 
-                            <script src = "https://cdn.quilljs.com/1.3.6/quill.min.js" > < /scriipt>
+                            // Convert the title to a URL-friendly format (lowercase, spaces replaced with hyphens)
+                            var url = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-                                <script >
-                                // Initialize Quill editor on the container
-                                var quill = new Quill(' #editor-container', { theme: 'snow' , // Theme: snow is the
-                            default modules: { toolbar: [ [{ 'header' : '1' }, { 'header' : '2' }, { 'font' : [] }],
-                            [{ 'list' : 'ordered' }, { 'list' : 'bullet' }], ['bold', 'italic' , 'underline' ],
-                            [{ 'align' : [] }], ['link', 'image' ], ['blockquote', 'code-block' ] ] } }); // Sync Quill
-                            content with the hidden textarea quill.on('text-change', function(delta, oldDelta, source) {
-                            // Update the hidden textarea with the content of the Quill editor
-                            document.getElementById('hidden-textarea').value=quill.root.innerHTML; }); </script>
-
-
-                            <script>
-                            // Function to generate a slug from a string
-                            function generateSlug(title) {
-                                return title
-                                    .toLowerCase() // Convert to lowercase
-                                    .replace(/\s+/g, '-') // Replace spaces with dashes
-                                    .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters and dashes
-                                    .replace(/--+/g, '-'); // Replace multiple dashes with a single dash
-                            }
+                            // Set the URL input field value
+                            document.getElementById('posturl').value = 'https://example.com/' + url;
+                        }
+                        </script>
 
 
-                            const titleInput = document.getElementById('videoTitle');
-                            const urlInput = document.getElementById('posturl');
-
-
-                            titleInput.addEventListener('input', function() {
-                                const titleValue = titleInput.value;
-                                const slug = generateSlug(titleValue);
-                                urlInput.value = slug;
-                            });
-                            </script>
                     </div>
                 </div>
             </div>

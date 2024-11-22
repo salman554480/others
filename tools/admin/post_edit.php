@@ -140,15 +140,7 @@
 
             </form>
 
-            <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
-            <script>
-              ClassicEditor
-                .create(document.querySelector('#editor'))
-                .catch(error => {
-                  console.error(error);
-                });
-            </script>
+            
 
             <script>
               // Function to generate a slug from a string
