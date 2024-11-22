@@ -23,6 +23,7 @@
                         $post_id =  $row_post['post_id'];
                         $dbcategory_id =  $row_post['category_id'];
                         $post_title =  $row_post['post_title'];
+                        $post_url =  $row_post['post_url'];
                         $post_thumbnail =  $row_post['post_thumbnail'];
                         $post_views =  $row_post['post_views'];
                         $post_date =  $row_post['post_date'];
@@ -42,8 +43,8 @@
                     ?>
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="card blog-card ">
-                            <img src="assets/img/thumbnail/<?php echo $post_thumbnail; ?>" class="card-img-top"
-                                alt="Blog image 1">
+                            <img src="<?php echo $base_url; ?>/assets/img/thumbnail/<?php echo $post_thumbnail; ?>"
+                                class="card-img-top" alt="Blog image 1">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <!-- Author Info -->
@@ -57,15 +58,17 @@
                                     </div>
                                     <p><a href="#" class="text-success fw-bold"><?php echo $dbcategory_name; ?></a></p>
                                 </div>
-
+                                <!-- Title -->
                                 <h5 class="card-title">
-                                    <a href="post_details.php">
+                                    <a
+                                        href="<?php echo $base_url;?>/post_details.php?post_url=<?php echo $post_url; ?>">
                                         <?php echo $post_title; ?>
                                         <?php if (strlen($post_title) > 50) {
                                                 echo "...";
                                             } ?>
                                     </a>
                                 </h5>
+                                <!-- Content -->
                                 <p class="card-text"><?php echo substr($meta_description, 0, 150) ?></p>
                                 <div class="d-flex justify-content-between text-small">
                                     <span class="blog-date text-muted"><?php echo $post_date; ?></span>

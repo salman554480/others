@@ -1,4 +1,6 @@
-<?php require_once('db.php'); ?>
+<?php require_once('db.php');
+$base_url = "http://localhost/extras/others/blog";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
