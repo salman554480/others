@@ -1,5 +1,6 @@
 <?php require_once('parts/top.php'); ?>
 <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+
 </head>
 
 <body class="app sidebar-mini">
@@ -121,8 +122,19 @@
                                         <input type="submit" value="Upload" name="upload"
                                             class="btn btn-success btn-block w-100">
                                     </div>
+
+                                    <div id="countDisplay">
+                                        <b>Overview</b>
+                                        <p>Total Characters: <span id="charCount">0</span></p>
+                                        <p>Total Words: <span id="wordCount">0</span></p>
+                                        <p>Total Sentences: <span id="sentenceCount">0</span></p>
+                                        <p>Average Word Length: <span id="avgWordLength">0</span></p>
+                                        <p>Average Sentence Length: <span id="avgSentenceLength">0</span></p>
+                                    </div>
                                 </div>
                             </div>
+
+
 
                         </form>
                         <?php
@@ -174,6 +186,9 @@
 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+
+
+
                         <!-- Image Validation -->
                         <script>
                         function validateImage() {
@@ -224,6 +239,68 @@
                         <script>
                         ClassicEditor
                             .create(document.querySelector('#editor'))
+                            .then(editor => {
+                                // Function to count words in a string
+                                function countWords(str) {
+                                    return str.trim().split(/\s+/).filter(function(word) {
+                                        return word.length > 0;
+                                    }).length;
+                                }
+
+                                // Function to count sentences based on punctuation marks (.!?)
+                                function countSentences(str) {
+                                    // Match periods, exclamation marks, and question marks as sentence delimiters
+                                    const sentenceEndings = /[.!?]/g;
+                                    return (str.match(sentenceEndings) || []).length;
+                                }
+
+                                // Function to calculate average word length
+                                function averageWordLength(str) {
+                                    const words = str.trim().split(/\s+/).filter(function(word) {
+                                        return word.length > 0;
+                                    });
+                                    const totalLength = words.reduce((acc, word) => acc + word.length, 0);
+                                    return words.length > 0 ? (totalLength / words.length).toFixed(2) : 0;
+                                }
+
+                                // Function to calculate average sentence length (words per sentence)
+                                function averageSentenceLength(str) {
+                                    const wordCount = countWords(str);
+                                    const sentenceCount = countSentences(str);
+                                    return sentenceCount > 0 ? (wordCount / sentenceCount).toFixed(2) : 0;
+                                }
+
+                                // Function to update the counts
+                                function updateCounts() {
+                                    // Get the editor content
+                                    const content = editor.getData();
+
+                                    // Remove HTML tags and get plain text
+                                    const plainText = content.replace(/<[^>]*>/g, '');
+
+                                    // Calculate counts
+                                    const charCount = plainText.length;
+                                    const wordCount = countWords(plainText);
+                                    const sentenceCount = countSentences(plainText);
+                                    const avgWordLength = averageWordLength(plainText);
+                                    const avgSentenceLength = averageSentenceLength(plainText);
+
+                                    // Update the display
+                                    document.getElementById('charCount').textContent = charCount;
+                                    document.getElementById('wordCount').textContent = wordCount;
+                                    document.getElementById('sentenceCount').textContent = sentenceCount;
+                                    document.getElementById('avgWordLength').textContent = avgWordLength;
+                                    document.getElementById('avgSentenceLength').textContent = avgSentenceLength;
+                                }
+
+                                // Update counts whenever the content changes
+                                editor.model.document.on('change:data', function() {
+                                    updateCounts();
+                                });
+
+                                // Initial count update
+                                updateCounts();
+                            })
                             .catch(error => {
                                 console.error(error);
                             });
