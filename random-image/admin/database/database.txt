@@ -1,0 +1,4 @@
+<?php               
+		$conn = mysqli_connect ('localhost','wigivdpb_calculatoruser','calculatorpassword','wigivdpb_calculator');	
+	
+			?>
