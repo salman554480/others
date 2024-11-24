@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "e2db71aa-e547-4386-a671-a30dadec4741",
+		"name": "Youtube Thumbnail",
+		"description": "This Postman collection provides a set of APIs to fetch YouTube video thumbnails easily. By simply providing the YouTube video URL or video ID, users can retrieve the thumbnail images in various resolutions. The collection includes the following endpoints:\n\n1. **Get Thumbnail by Video URL**: Extracts the thumbnail image for a YouTube video using the video URL.\n    \n2. **Get Thumbnail by Video ID**: Allows you to fetch the thumbnail using the unique video ID.\n    \n3. **Get Available Resolutions**: Retrieves the available thumbnail resolutions for a given video.\n    \n\nEach endpoint includes sample requests, responses, and necessary parameters for seamless integration with your applications.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "get_thumbnail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/youtubethumbnail/get_thumbnail.php?url=https://www.youtube.com/watch?v=aDF_ESN80r8",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"youtubethumbnail",
+						"get_thumbnail.php"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://www.youtube.com/watch?v=aDF_ESN80r8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
