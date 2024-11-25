@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "c521fc74-c29c-440f-80a6-eefc8888eab9",
+		"name": "Quotes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "category_quote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/quote/category_quote.php?category=Life",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"quote",
+						"category_quote.php"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Life"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quote_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/quote/quote_pagination.php?page_no=1",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"quote",
+						"quote_pagination.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_quote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/quote/get_all_quote.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"quote",
+						"get_all_quote.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/quote/get_categories.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"quote",
+						"get_categories.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "random_quote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/quote/random_quote.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"quote",
+						"random_quote.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

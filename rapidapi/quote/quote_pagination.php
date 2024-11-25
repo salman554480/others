@@ -4,7 +4,7 @@ require_once('../db.php');
 
 // Get the page number from the GET parameters
 $page_no = isset($_GET['page_no']) ? (int)$_GET['page_no'] : 1; // Default to page 1 if not set
-$records_per_page = 20; // Number of records per page
+$records_per_page = 10; // Number of records per page
 
 // Calculate the starting record for the query based on the page number
 $offset = ($page_no - 1) * $records_per_page;
