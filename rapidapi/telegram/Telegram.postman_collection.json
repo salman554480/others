@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "6d630bba-0c23-413c-9ba1-b2aa45882011",
+		"name": "Telegram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "botToken",
+							"value": "7147572018:AAF_uX7c5FbA_V5DoglL1AuQbtHTWnix1Yg\n",
+							"type": "text"
+						},
+						{
+							"key": "chatId",
+							"value": "-1002230179133\n",
+							"type": "text"
+						},
+						{
+							"key": "document",
+							"description": "Choose the file you want to upload (e.g., document.pdf) from your local system.",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/telegram/upload.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"telegram",
+						"upload.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/telegram/download.php?fileId=AAMCBAADIQYABITt1T0AAgvhZ0WHuqsd8NE5eWf7dzozI0Dtj4gAAn8TAAJh7zFS5mmRvPjEfAcBAAdtAAM2BA",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"telegram",
+						"download.php"
+					],
+					"query": [
+						{
+							"key": "fileId",
+							"value": "AAMCBAADIQYABITt1T0AAgvhZ0WHuqsd8NE5eWf7dzozI0Dtj4gAAn8TAAJh7zFS5mmRvPjEfAcBAAdtAAM2BA"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
