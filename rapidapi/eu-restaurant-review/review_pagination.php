@@ -23,12 +23,12 @@ $sql = "SELECT * FROM europe_hotel_review LIMIT $offset, $records_per_page";
 $result = $conn->query($sql);
 // Check if there are rows returned
 if ($result->num_rows > 0) {
-    // Initialize an array to hold the quotes
-    $quotes = array();
+    // Initialize an array to hold the reviews
+    $reviews = array();
 
     // Fetch the data row by row and add it to the array
     while ($row = $result->fetch_assoc()) {
-        $quotes[] = $row;
+        $reviews[] = $row;
     }
 
     // Check if there are more records available (next page)
@@ -37,10 +37,10 @@ if ($result->num_rows > 0) {
     // Prepare the response
     $response = array(
         'total_records' => $total_records,
-        'records_on_page' => count($quotes),
+        'records_on_page' => count($reviews),
         'next_records_available' => $next_records_available,
         'page_no' => $page_no,
-        'quotes' => $quotes
+        'reviews' => $reviews
     );
 
     // Return the response as a JSON object
@@ -52,9 +52,8 @@ if ($result->num_rows > 0) {
         'records_on_page' => 0,
         'next_records_available' => 'no',
         'page_no' => $page_no,
-        'quotes' => []
+        'reviews' => []
     ]);
 }
-
 // Close the database connection
 $conn->close();
