@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['original_image']) && 
     $watermark_size = intval($_POST['watermark_size']); // Watermark size (in px)
 
     // Define the output image path
-    $output_image_path = mt_rand() . '_watermarked_image.png'; // This can be dynamic if needed
+    $output_image_path = 'download/' . mt_rand() . '_watermarked_image.png'; // This can be dynamic if needed
 
     // Function to add watermark
     function add_watermark($original_image_path, $watermark_image_path, $output_image_path, $watermark_position, $watermark_size)

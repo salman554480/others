@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "f70488cd-c028-48ef-9964-0fe1ea7b7f30",
+		"name": "Watermark Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "create_watermark",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "original_image",
+							"type": "file",
+							"src": "postman-cloud:///1efabc04-1b33-49b0-a640-aad77cc8e003"
+						},
+						{
+							"key": "watermark_image",
+							"type": "file",
+							"src": "postman-cloud:///1efabd10-26ed-4ff0-a0c0-3cd602005658"
+						},
+						{
+							"key": "watermark_position",
+							"value": "top-right",
+							"description": "top-right, top-left, bottom-right, bottom-left",
+							"type": "text"
+						},
+						{
+							"key": "watermark_size",
+							"value": "50px",
+							"description": "50px",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/watermark/create_watermark.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"watermark",
+						"create_watermark.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
