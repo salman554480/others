@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "a07f672c-08b2-4b26-b2cc-68b8cdd7813f",
+		"name": "European Restaurants Reviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "review_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/eu-restaurant-review/review_pagination.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"eu-restaurant-review",
+						"review_pagination.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/eu-restaurant-review/get_restaurants.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"eu-restaurant-review",
+						"get_restaurants.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_sentiment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/eu-restaurant-review/get_sentiment.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"eu-restaurant-review",
+						"get_sentiment.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant_review",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/eu-restaurant-review/restaurant_review.php?restaurant=Mosaic",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"eu-restaurant-review",
+						"restaurant_review.php"
+					],
+					"query": [
+						{
+							"key": "restaurant",
+							"value": "Mosaic"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
