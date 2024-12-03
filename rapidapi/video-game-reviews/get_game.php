@@ -1,6 +1,4 @@
 <?php
-// Set Content-Type to JSON
-header('Content-Type: application/json');
 // Database connection parameters
 require_once('../db.php');
 
@@ -12,7 +10,7 @@ $publisher = isset($_GET['publisher']) ? $_GET['publisher'] : null;
 $release_year = isset($_GET['release_year']) ? $_GET['release_year'] : null;
 $genre = isset($_GET['genre']) ? $_GET['genre'] : null;
 $multiplayer = isset($_GET['multiplayer']) ? $_GET['multiplayer'] : null;
-$gamemode = isset($_GET['gamemode']) ? $_GET['gamemode'] : null;
+$game_mode = isset($_GET['game_mode']) ? $_GET['game_mode'] : null;
 $page_no = isset($_GET['page_no']) ? (int)$_GET['page_no'] : 1;  // Default to page 1 if not provided
 
 // Set the number of records per page
@@ -46,8 +44,8 @@ if ($genre) {
 if ($multiplayer) {
     $query .= " AND multiplayer = '$multiplayer'";
 }
-if ($gamemode) {
-    $query .= " AND gamemode = '$gamemode'";
+if ($game_mode) {
+    $query .= " AND game_mode = '$game_mode'";
 }
 
 // Add LIMIT and OFFSET to the query for pagination
@@ -81,70 +79,68 @@ if ($result) {
         $games[] = $row;
     }
 
-    // Send the response in JSON format
-    echo json_encode($games);
+    // Get the total number of records (for pagination info)
+    $total_query = "SELECT COUNT(*) AS total FROM video_game_reviews WHERE 1";
+
+    if ($age_group) {
+        $total_query .= " AND age_group = '$age_group'";
+    }
+    if ($platform) {
+        $total_query .= " AND platform = '$platform'";
+    }
+    if ($developer) {
+        $total_query .= " AND developer = '$developer'";
+    }
+    if ($developer) {
+        $total_query .= " AND publisher = '$publisher'";
+    }
+    if ($release_year) {
+        $total_query .= " AND release_year = '$release_year'";
+    }
+    if ($genre) {
+        $total_query .= " AND genre = '$genre'";
+    }
+    if ($multiplayer) {
+        $total_query .= " AND multiplayer = '$multiplayer'";
+    }
+    if ($game_mode) {
+        $total_query .= " AND game_mode = '$game_mode'";
+    }
+
+    // Execute the total records query
+    $total_result = mysqli_query($conn, $total_query);
+
+    // Check if the query was successful
+    if ($total_result) {
+        $total_row = mysqli_fetch_assoc($total_result);
+        $total_records = $total_row['total'];
+
+        // Calculate total number of pages
+        $total_pages = ceil($total_records / $records_per_page);
+
+        // Send the response with pagination info
+        $pagination_info = [
+            "total_records" => $total_records,
+            "total_pages" => $total_pages,
+            "current_page" => $page_no
+        ];
+
+        // Combine the game data and pagination info in the response
+        $response = [
+            "pagination" => $pagination_info,
+            "games" => $games
+        ];
+
+        // Send the response as JSON
+        header('Content-Type: application/json');
+        echo json_encode($response, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    } else {
+        // If there was an error with the total query
+        echo json_encode(["error" => "Unable to fetch total records from the database."]);
+    }
 } else {
     // If there was an error in the query, send an error response
     echo json_encode(["error" => "Unable to fetch data from the database."]);
-}
-
-// Get the total number of records (for pagination info)
-$total_query = "SELECT COUNT(*) AS total FROM video_game_reviews WHERE 1";
-
-if ($age_group) {
-    $total_query .= " AND age_group = '$age_group'";
-}
-if ($platform) {
-    $total_query .= " AND platform = '$platform'";
-}
-if ($developer) {
-    $total_query .= " AND developer = '$developer'";
-}
-if ($publisher) {
-    $total_query .= " AND publisher = '$publisher'";
-}
-if ($release_year) {
-    $total_query .= " AND release_year = '$release_year'";
-}
-if ($genre) {
-    $total_query .= " AND genre = '$genre'";
-}
-if ($multiplayer) {
-    $total_query .= " AND multiplayer = '$multiplayer'";
-}
-if ($gamemode) {
-    $total_query .= " AND gamemode = '$gamemode'";
-}
-
-// Execute the total records query
-$total_result = mysqli_query($conn, $total_query);
-
-// Check if the query was successful
-if ($total_result) {
-    $total_row = mysqli_fetch_assoc($total_result);
-    $total_records = $total_row['total'];
-
-    // Calculate total number of pages
-    $total_pages = ceil($total_records / $records_per_page);
-
-    // Send the response with pagination info
-    $pagination_info = [
-        "total_records" => $total_records,
-        "total_pages" => $total_pages,
-        "current_page" => $page_no
-    ];
-
-    // Combine the game data and pagination info in the response
-    $response = [
-        "games" => $games,
-        "pagination" => $pagination_info
-    ];
-
-    // Send the response as JSON
-    echo json_encode($response);
-} else {
-    // If there was an error with the total query
-    echo json_encode(["error" => "Unable to fetch total records from the database."]);
 }
 
 // Close the database connection
