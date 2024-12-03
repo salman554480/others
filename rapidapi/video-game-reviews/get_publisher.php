@@ -1,4 +1,6 @@
 <?php
+// Set Content-Type to JSON
+header('Content-Type: application/json');
 // Database connection parameters
 require_once('../db.php');
 
