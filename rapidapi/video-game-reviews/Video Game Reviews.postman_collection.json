@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "3672539c-e084-42ff-b8bf-820391a471ea",
+		"name": "Video Game Reviews",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "get_platform",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_platform.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_platform.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_developer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_developer.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_developer.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_age_group",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_age_group.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_age_group.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_publisher",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_publisher.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_publisher.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_genre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_genre.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_genre.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_release_year",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_release_year.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_release_year.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_game",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/video_game_reviews/get_game.php?page_no=1&game_mode=Offline",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"video_game_reviews",
+						"get_game.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "1"
+						},
+						{
+							"key": "genre",
+							"value": "Adventure",
+							"description": "fetch genre values from get_genre api ",
+							"disabled": true
+						},
+						{
+							"key": "age_group",
+							"value": "Teens",
+							"description": "fetch age_group values from get_age_group api ",
+							"disabled": true
+						},
+						{
+							"key": "platform",
+							"value": "PC",
+							"description": "fetch platform values from get_platform  api ",
+							"disabled": true
+						},
+						{
+							"key": "publisher",
+							"value": "Epic Games",
+							"description": "fetch publisher values from get_publisher api ",
+							"disabled": true
+						},
+						{
+							"key": "developer",
+							"value": "Game Freak",
+							"description": "fetch developer values from get_developer api ",
+							"disabled": true
+						},
+						{
+							"key": "release_year",
+							"value": "2015",
+							"description": "fetch release_year values from get_release_year api ",
+							"disabled": true
+						},
+						{
+							"key": "multiplayer",
+							"value": "Yes",
+							"description": "Yes,No",
+							"disabled": true
+						},
+						{
+							"key": "game_mode",
+							"value": "Offline",
+							"description": "Online,Offline"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
