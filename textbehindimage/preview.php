@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
     .preview-area {
@@ -54,7 +53,9 @@
         border-radius: 5px;
     }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <!-- Updated html2canvas v1.4.1 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -69,17 +70,29 @@
     function downloadPreview() {
         const previewArea = document.getElementById('preview-area');
 
-        // Use html2canvas to capture the div as an image
-        html2canvas(previewArea).then(function(canvas) {
-            // Create an anchor element
-            const link = document.createElement('a');
-            // Convert canvas to data URL
-            link.href = canvas.toDataURL('image/png');
-            // Set the download filename
-            link.download = 'preview.png';
-            // Trigger a click event on the anchor to download the image
-            link.click();
-        });
+        // Ensure the background image is fully loaded before capturing
+        const backgroundImage = new Image();
+        backgroundImage.src = 'uploads/6CC12EBB_background.png';
+        backgroundImage.onload = function() {
+            // Use html2canvas to capture the div as an image with the promise-based .then() API
+            html2canvas(previewArea, {
+                backgroundColor: null, // Keeps the transparent background
+                logging: true, // Optional: Logs messages for debugging
+                useCORS: true, // Allows cross-origin images
+                allowTaint: true, // Allows tainting of images from cross-origin sources
+                x: 0, // Starting X coordinate for the screenshot
+                y: 0, // Starting Y coordinate for the screenshot
+                width: previewArea.offsetWidth, // Width of the div
+                height: previewArea.offsetHeight, // Height of the div
+            }).then(function(canvas) {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'preview.png';
+                link.click();
+            }).catch(function(error) {
+                console.error("Error capturing the preview:", error);
+            });
+        };
     }
     </script>
 </body>
