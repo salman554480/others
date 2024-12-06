@@ -26,40 +26,42 @@ if (isset($_GET['code'])) {
 ?>
 
 <style>
-    .preview-area {
-        height: <?php echo $file_height ?>px;
-        width: <?php echo $file_width ?>px;
-        background-image: url('uploads/<?php echo $code; ?>_background.png');
-        background-position: center;
-        background-size: cover;
-        position: relative;
-    }
+.preview-area {
+    /* height: <?php echo $file_height ?>px; */
+    /* width: <?php echo $file_width ?>px; */
+    height: 500px;
+    width: 500px;
+    background-image: url('uploads/<?php echo $code; ?>_background.png');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
 
-    .preview-area .text {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        color: black;
-        font-size: 100px;
-        text-align: center;
-        transition: all 0.3s ease;
-        /* Smooth transition for dynamic changes */
-    }
+.preview-area .text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    color: black;
+    font-size: 100px;
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Smooth transition for dynamic changes */
+}
 
 
-    .preview-area img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Ensures the image covers the entire div without distortion */
-        z-index: 1;
-        /* Places the image behind the text */
-    }
+.preview-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire div without distortion */
+    z-index: 1;
+    /* Places the image behind the text */
+}
 </style>
 
 <!-- Updated html2canvas v1.4.1 CDN -->
@@ -81,33 +83,33 @@ if (isset($_GET['code'])) {
                 <button class="btn btn-success mt-4" onclick="downloadPreview()">Download Preview</button>
 
                 <script>
-                    function downloadPreview() {
-                        const previewArea = document.getElementById('preview-area');
+                function downloadPreview() {
+                    const previewArea = document.getElementById('preview-area');
 
-                        // Ensure the background image is fully loaded before capturing
-                        const backgroundImage = new Image();
-                        backgroundImage.src = 'uploads/0CFCFBF1_background.png';
-                        backgroundImage.onload = function() {
-                            // Use html2canvas to capture the div as an image with the promise-based .then() API
-                            html2canvas(previewArea, {
-                                backgroundColor: null, // Keeps the transparent background
-                                logging: true, // Optional: Logs messages for debugging
-                                useCORS: true, // Allows cross-origin images
-                                allowTaint: true, // Allows tainting of images from cross-origin sources
-                                x: 0, // Starting X coordinate for the screenshot
-                                y: 0, // Starting Y coordinate for the screenshot
-                                width: previewArea.offsetWidth, // Width of the div
-                                height: previewArea.offsetHeight, // Height of the div
-                            }).then(function(canvas) {
-                                const link = document.createElement('a');
-                                link.href = canvas.toDataURL('image/png');
-                                link.download = 'preview.png';
-                                link.click();
-                            }).catch(function(error) {
-                                console.error("Error capturing the preview:", error);
-                            });
-                        };
-                    }
+                    // Ensure the background image is fully loaded before capturing
+                    const backgroundImage = new Image();
+                    backgroundImage.src = 'uploads/0CFCFBF1_background.png';
+                    backgroundImage.onload = function() {
+                        // Use html2canvas to capture the div as an image with the promise-based .then() API
+                        html2canvas(previewArea, {
+                            backgroundColor: null, // Keeps the transparent background
+                            logging: true, // Optional: Logs messages for debugging
+                            useCORS: true, // Allows cross-origin images
+                            allowTaint: true, // Allows tainting of images from cross-origin sources
+                            x: 0, // Starting X coordinate for the screenshot
+                            y: 0, // Starting Y coordinate for the screenshot
+                            width: previewArea.offsetWidth, // Width of the div
+                            height: previewArea.offsetHeight, // Height of the div
+                        }).then(function(canvas) {
+                            const link = document.createElement('a');
+                            link.href = canvas.toDataURL('image/png');
+                            link.download = 'preview.png';
+                            link.click();
+                        }).catch(function(error) {
+                            console.error("Error capturing the preview:", error);
+                        });
+                    };
+                }
                 </script>
             </div>
             <div class="col-md-6">
@@ -174,55 +176,55 @@ if (isset($_GET['code'])) {
             </div>
         </div>
         <script>
-            // Get the elements
-            const textElement = document.getElementById('dynamic-text');
-            const textContentInput = document.getElementById('text-content');
-            const fontFamilyInput = document.getElementById('font-family');
-            const textColorInput = document.getElementById('text-color');
-            const textXPositionInput = document.getElementById('text-x-position');
-            const textYPositionInput = document.getElementById('text-y-position');
-            const fontSizeInput = document.getElementById('font-size');
-            const fontWeightInput = document.getElementById('font-weight');
-            const fontOpacityInput = document.getElementById('font-opacity');
-            const textRotateInput = document.getElementById('text-rotate');
+        // Get the elements
+        const textElement = document.getElementById('dynamic-text');
+        const textContentInput = document.getElementById('text-content');
+        const fontFamilyInput = document.getElementById('font-family');
+        const textColorInput = document.getElementById('text-color');
+        const textXPositionInput = document.getElementById('text-x-position');
+        const textYPositionInput = document.getElementById('text-y-position');
+        const fontSizeInput = document.getElementById('font-size');
+        const fontWeightInput = document.getElementById('font-weight');
+        const fontOpacityInput = document.getElementById('font-opacity');
+        const textRotateInput = document.getElementById('text-rotate');
 
-            // Function to update the text properties
-            function updateTextProperties() {
-                const content = textContentInput.value;
-                const fontFamily = fontFamilyInput.value;
-                const textColor = textColorInput.value;
-                const xPosition = textXPositionInput.value;
-                const yPosition = textYPositionInput.value;
-                const fontSize = fontSizeInput.value;
-                const fontWeight = fontWeightInput.value;
-                const fontOpacity = fontOpacityInput.value;
-                const textRotate = textRotateInput.value;
+        // Function to update the text properties
+        function updateTextProperties() {
+            const content = textContentInput.value;
+            const fontFamily = fontFamilyInput.value;
+            const textColor = textColorInput.value;
+            const xPosition = textXPositionInput.value;
+            const yPosition = textYPositionInput.value;
+            const fontSize = fontSizeInput.value;
+            const fontWeight = fontWeightInput.value;
+            const fontOpacity = fontOpacityInput.value;
+            const textRotate = textRotateInput.value;
 
-                // Apply changes to the text element
-                textElement.textContent = content;
-                textElement.style.fontFamily = fontFamily;
-                textElement.style.color = textColor;
-                textElement.style.left = `${xPosition}%`;
-                textElement.style.top = `${yPosition}%`;
-                textElement.style.fontSize = `${fontSize}px`;
-                textElement.style.fontWeight = fontWeight;
-                textElement.style.opacity = fontOpacity;
-                textElement.style.transform = `translate(-50%, -50%) rotate(${textRotate}deg)`; // Keep centering + rotate
-            }
+            // Apply changes to the text element
+            textElement.textContent = content;
+            textElement.style.fontFamily = fontFamily;
+            textElement.style.color = textColor;
+            textElement.style.left = `${xPosition}%`;
+            textElement.style.top = `${yPosition}%`;
+            textElement.style.fontSize = `${fontSize}px`;
+            textElement.style.fontWeight = fontWeight;
+            textElement.style.opacity = fontOpacity;
+            textElement.style.transform = `translate(-50%, -50%) rotate(${textRotate}deg)`; // Keep centering + rotate
+        }
 
-            // Add event listeners to inputs to update text properties
-            textContentInput.addEventListener('input', updateTextProperties);
-            fontFamilyInput.addEventListener('change', updateTextProperties);
-            textColorInput.addEventListener('input', updateTextProperties);
-            textXPositionInput.addEventListener('input', updateTextProperties);
-            textYPositionInput.addEventListener('input', updateTextProperties);
-            fontSizeInput.addEventListener('input', updateTextProperties);
-            fontWeightInput.addEventListener('change', updateTextProperties);
-            fontOpacityInput.addEventListener('input', updateTextProperties);
-            textRotateInput.addEventListener('input', updateTextProperties);
+        // Add event listeners to inputs to update text properties
+        textContentInput.addEventListener('input', updateTextProperties);
+        fontFamilyInput.addEventListener('change', updateTextProperties);
+        textColorInput.addEventListener('input', updateTextProperties);
+        textXPositionInput.addEventListener('input', updateTextProperties);
+        textYPositionInput.addEventListener('input', updateTextProperties);
+        fontSizeInput.addEventListener('input', updateTextProperties);
+        fontWeightInput.addEventListener('change', updateTextProperties);
+        fontOpacityInput.addEventListener('input', updateTextProperties);
+        textRotateInput.addEventListener('input', updateTextProperties);
 
-            // Initial update to apply the default values
-            updateTextProperties();
+        // Initial update to apply the default values
+        updateTextProperties();
         </script>
 
 
