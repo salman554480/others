@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", serif;
+}
+
+
+
+bg-white {
+    background-color: #ffffff;
+}
+
+.custom-shadow {
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(1, 41, 112, .1);
+}
+
+.hero-section{
+    padding-top:7% ;
+    padding-bottom:7% ;
+    background-color: white;
+}
+
+.hero-heading{
+    font-size: 62px;
+    font-weight: bold;
+}
+
+
+.before-after-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+  
+  .before, .after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: width 0.3s ease;
+  }
+  
+  .after {
+    width: 25%; /* Initially showing 50% of the 'after' image */
+  }
+  
+  .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 25%;
+    width: 2px;
+    background-color: #fff;
+    cursor: ew-resize;
+    z-index: 1;
+  }
+  
+
+  
+.gallery img {
+    width: 100%; 
+    margin-bottom: 10px;
+  }
+  
+  .masonry-list { 
+    column-count: 3;
+    columns: 300px;
+  }
+  #faqAccordion{
+    color: #121212;
+  }
+  #faqAccordion .card .btn-link{
+    color: #121212 !important;
+  }
+.starter-heading{
+    font-size: 24px;
+}
+.shadow {
+    box-shadow: 0 0 3px rgb(53 64 78 / 20%) !important;
+}
+
+.rounded {
+    border-radius: 5px !important;
+}
+
+.bg-light {
+    background-color: #f7f8fa !important;
+}
+
+.bg-primary,
+.btn-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.badge-primary,
+.pagination .active a,
+.custom-control-input:checked~.custom-control-label:before,
+#preloader #status .spinner>div,
+.social-icon li a:hover,
+.back-to-top:hover,
+.back-to-home a,
+::selection,
+#topnav .navbar-toggle.open span:hover,
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots.clickable .owl-dot:hover span,
+.watch-video a .play-icon-circle,
+.sidebar .widget .tagcloud>a:hover,
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.tns-nav button.tns-nav-active,
+.form-check-input.form-check-input:checked {
+    background-color: #6dc77a !important;
+}
+
+.badge {
+    padding: 5px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.btn-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+    box-shadow: 0 3px 7px rgb(109 199 122 / 50%) !important;
+}
+
+.btn-primary,
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.bg-soft-primary .border,
+.alert-primary,
+.alert-outline-primary,
+.badge-outline-primary,
+
+.pagination .active a,
+.form-group .form-control:focus,
+.form-group .form-control.active,
+.custom-control-input:checked~.custom-control-label:before,
+.custom-control-input:focus~.custom-control-label::before,
+.form-control:focus,
+.social-icon li a:hover,
+#topnav .has-submenu.active.active .menu-arrow,
+#topnav.scroll .navigation-menu>li:hover>.menu-arrow,
+#topnav.scroll .navigation-menu>li.active>.menu-arrow,
+#topnav .navigation-menu>li:hover>.menu-arrow,
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.form-check-input:focus,
+.form-check-input.form-check-input:checked,
+.container-filter li.active,
+.container-filter li:hover {
+    border-color: #6dc77a !important;
+}
+
+.bg-primary,
+.btn-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.badge-primary,
+
+.pagination .active a,
+.custom-control-input:checked~.custom-control-label:before,
+#preloader #status .spinner>div,
+.social-icon li a:hover,
+.back-to-top:hover,
+.back-to-home a,
+::selection,
+#topnav .navbar-toggle.open span:hover,
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots.clickable .owl-dot:hover span,
+.watch-video a .play-icon-circle,
+.sidebar .widget .tagcloud>a:hover,
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.tns-nav button.tns-nav-active,
+.form-check-input.form-check-input:checked {
+    background-color: #6dc77a !important;
+}
+
+.btn {
+    padding: 8px 20px;
+    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #6dc77a !important;
+    border: 1px solid #6dc77a !important;
+    color: #fff !important;
+    box-shadow: 0 3px 7px rgb(109 199 122 / 50%);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+/* New Cards  */
+
+
+.box-part span {
+    font-size: 13px;
+}
+
+.box-part h4 {
+    font-size: 1.3rem;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #0062cc;
+    border-bottom: 2px solid #0062cc;
+}
+
+.box {
+    padding: 60px 0px;
+}
+
+.box-part {
+    background: #FFF;
+    border-radius: 0;
+    padding: 60px 10px;
+    margin: 30px 0px;
+}
+
+.box-part:hover {
+    box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+
+.text {
+    margin: 20px 0px;
+}
+
+.fa {
+    color: #4183D7;
+}
+
+.blog-card .card-body{
+    padding: 5px 10px 10px 10px ;
+}
+.blog-card .card-img-top{
+    object-fit: cover;
+}
+
+.blog-card .card-title{
+    font-size: 15px;
+    font-weight: 600;
+}
+.blog-card .card-text{
+    font-size: 11px;
+}
+.post-title{
+    font-size: 28px;
+}
+.post-content h2{
+    font-size: 24px;
+}
+.post-content h3{
+    font-size: 21px;
+}
+.post-content h4{
+    font-size: 19px;
+}
+.post-content h5{
+    font-size: 17px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-icons {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.footer-icons a {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.footer-about {
+    flex: 1;
+    max-width: 60%;
+}
