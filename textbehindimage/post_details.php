@@ -35,6 +35,13 @@ if (isset($_GET['post_url'])) {
     <?php require_once('parts/navbar.php'); ?>
 
     <div class="container">
+        <div class="ad-area my-4">
+            <?php if ($ad_code_one == "") {
+				echo "<img class='w-100' src='https://dummyimage.com/1400x150/a7a7a7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+			} {
+				echo $ad_code_one;
+			} ?>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <?php echo $ad_code_one; ?>

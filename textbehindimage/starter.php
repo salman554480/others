@@ -74,7 +74,15 @@ if (isset($_GET['code'])) {
 
 
     <?php require_once('parts/navbar.php'); ?>
+
     <div class="container">
+        <div class="ad-area my-4">
+            <?php if ($ad_code_one == "") {
+                echo "<img class='w-100' src='https://dummyimage.com/1400x150/a7a7a7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+            } {
+                echo $ad_code_one;
+            } ?>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="preview-area" id="preview-area">
@@ -112,6 +120,14 @@ if (isset($_GET['code'])) {
                     };
                 }
                 </script>
+
+                <div class="ad-area my-4">
+                    <?php if ($ad_code_two == "") {
+                        echo "<img class='w-100' src='https://dummyimage.com/700x200/a7a7a7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+                    } {
+                        echo $ad_code_one;
+                    } ?>
+                </div>
             </div>
             <div class="col-md-6">
                 <!-- Interface for text customization -->

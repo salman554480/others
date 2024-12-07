@@ -113,9 +113,11 @@ $meta_keywords =  $row_page['meta_keywords'];
                 <div class="col-md-1"></div>
                 <div class="col-md-6">
                     <div class="before-after-container">
-                        <div class="before" style="background-image: url('assets/img/img2.jpg');"></div>
-                        <div class="after" style="background-image: url('assets/img/img1.jpg');"></div>
-                        <div class="slider" id="slider"></div>
+                        <div class="before" style="background-image: url('assets/img/before.png');"></div>
+                        <div class="after" style="background-image: url('assets/img/after.png');"></div>
+                        <div class="slider" id="slider">
+                            <div class="slider-button" id="sliderButton"></div> <!-- Slider button -->
+                        </div>
                     </div>
                 </div>
 
@@ -167,6 +169,13 @@ $meta_keywords =  $row_page['meta_keywords'];
     </div>
 
     <div class="container py-5">
+        <div class="ad-area my-4">
+            <?php if ($ad_code_one == "") {
+                echo "<img class='w-100' src='https://dummyimage.com/1400x150/a7a7a7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+            } {
+                echo $ad_code_one;
+            } ?>
+        </div>
         <h2 class="text-center">Frequently Asked Questions</h2>
         <div id="faqAccordion" class="my-4">
             <!-- FAQ Item 1 -->
