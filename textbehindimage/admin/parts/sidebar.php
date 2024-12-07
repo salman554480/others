@@ -21,14 +21,10 @@
                          </li>
                          <!--End Admin-->
 
-                         <li class="nav-item dropdown">
-                             <a class="nav-link dropdown " id="navbarDropdown" href="#" role="button"
-                                 data-bs-toggle="dropdown" aria-expanded="false">Tool<div
-                                     class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
-                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                 <li><a class="dropdown-item" href="tool_view.php">View Record*</a></li>
-                             </ul>
-                         </li>
+                         <a class="nav-link" href="file_view.php">
+                             <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                             Generated Images
+                         </a>
 
                          <li class="nav-item dropdown">
                              <a class="nav-link dropdown " id="navbarDropdown" href="#" role="button"

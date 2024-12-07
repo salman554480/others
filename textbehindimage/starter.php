@@ -27,10 +27,11 @@ if (isset($_GET['code'])) {
 
 <style>
 .preview-area {
-    /* height: <?php echo $file_height ?>px; */
-    /* width: <?php echo $file_width ?>px; */
-    height: 500px;
-    width: 500px;
+    height: <?php echo $file_height ?>px;
+
+    width: <?php echo $file_width ?>px;
+    /* height: 500px;
+    width: 500px; */
     background-image: url('uploads/<?php echo $code; ?>_background.png');
     background-position: center;
     background-size: cover;

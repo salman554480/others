@@ -2,155 +2,165 @@
 </head>
 
 <body class="sb-nav-fixed">
-   <?php require_once('parts/navbar.php'); ?>
-   <div id="layoutSidenav">
-      <?php require_once('parts/sidebar.php'); ?>
-      <div id="layoutSidenav_content">
-         <main>
-            <div class="container-fluid px-4">
-               <br>
-               <h2 class="mt-1">Dashboard</h2>
-               <hr>
-               <div class="row">
-                  <?php
+    <?php require_once('parts/navbar.php'); ?>
+    <div id="layoutSidenav">
+        <?php require_once('parts/sidebar.php'); ?>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <br>
+                    <h2 class="mt-1">Dashboard</h2>
+                    <hr>
+                    <div class="row">
+                        <?php
                   require_once('parts/db.php');
 
-                  $select_tool = "SELECT * FROM tool ";
-                  $run_tool = mysqli_query($conn, $select_tool);
-                  $total_tool = mysqli_num_rows($run_tool);
+                  $select_file = "SELECT * FROM file ";
+                  $run_file = mysqli_query($conn, $select_file);
+                  $total_file = mysqli_num_rows($run_file);
 
                   $select_category = "SELECT * FROM category ";
                   $run_category = mysqli_query($conn, $select_category);
                   $total_category = mysqli_num_rows($run_category);
 
-                  $select_views = "SELECT SUM(tool_views) AS tool_views FROM tool ";
-                  $run_views = mysqli_query($conn, $select_views);
-                  $row_views =  mysqli_fetch_array($run_views);
-                  $total_views =  $row_views['tool_views'];
+
+                  $select_post = "SELECT * FROM post ";
+                  $run_post = mysqli_query($conn, $select_post);
+                  $total_post = mysqli_num_rows($run_post);
+
+
 
 
 
                   ?>
-                  <div class="col-xl-4 col-md-6">
-                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                           <h4>Total tools</h4>
-                           <h3><?php echo $total_tool; ?></h3>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h4>Images Generated</h4>
+                                    <h3><?php echo $total_file; ?></h3>
+                                </div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a href="file_view.php"><small class="small text-white stretched-link">View
+                                            Details</small></a>
+                                    <div class="small text-white">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a href="tool_view.php"><small class="small text-white stretched-link">View tool Details</small></a>
-                           <div class="small text-white">
-                              <i class="fas fa-angle-right"></i>
-                           </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h4>Total Categories</h4>
+                                    <h3><?php echo $total_category; ?></h3>
+                                </div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a href="category_view.php"><small class="small text-white stretched-link">View
+                                            Category Details</small></a>
+                                    <div class="small text-white">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6">
-                     <div class="card bg-success text-white mb-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                           <h4>Total Categories</h4>
-                           <h3><?php echo $total_category; ?></h3>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a href="category_view.php"><small class="small text-white stretched-link">View Category Details</small></a>
-                           <div class="small text-white">
-                              <i class="fas fa-angle-right"></i>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-4 col-md-6">
-                     <div class="card bg-danger text-white mb-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                           <h4>Total Views</h4>
-                           <h3><?php echo $total_views; ?></h3>
-                        </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between">
-                           <a href="tool_view.php"><small class="small text-white stretched-link">View tool Details</small></a>
-                           <div class="small text-white">
-                              <i class="fas fa-angle-right"></i>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
 
-               </div>
-               <div class="row">
-                  <div class="col-xl-8">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           <i class="fas fa-tool me-1"></i>
-                           Latest Added tools
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-danger text-white mb-4">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h4>Total Posts</h4>
+                                    <h3><?php echo $total_post; ?></h3>
+                                </div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a href="post_view.php"><small class="small text-white stretched-link">View
+                                            Post Details</small></a>
+                                    <div class="small text-white">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                           <table class="table table-hover table-bordered">
-                              <thead>
-                                 <tr>
-                                    <th>Title</th>
-                                    <th>URL</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <?php
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-file me-1"></i>
+                                    Latest Added files
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>CODE</th>
+                                                <th>WIDTH</th>
+                                                <th>HEIGHT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
                                  require_once('parts/db.php');
-                                 $select = "SELECT * FROM tool ORDER BY tool_id DESC LIMIT 10";
+                                 $select = "SELECT * FROM file ORDER BY file_id DESC LIMIT 10";
                                  $run = mysqli_query($conn, $select);
                                  while ($row = mysqli_fetch_array($run)) {
 
-                                    $category_id = $row['category_id'];
-                                    $tool_name = $row['tool_name'];
-                                    $tool_url = $row['tool_url'];
+                                    $file_id = $row['file_id'];
+                                    $file_code = $row['file_code'];
+                                    $file_width = $row['file_width'];
+                                    $file_height = $row['file_height'];
 
                                  ?>
-                                    <tr>
-                                       <td><?php echo $tool_name; ?></td>
-                                       <td><?php echo $tool_url; ?></td>
-                                    </tr>
-                                 <?php    } ?>
-                              </tbody>
-                           </table>
+                                            <tr>
+                                                <td><?php echo $file_id; ?></td>
+                                                <td><?php echo $file_code; ?></td>
+                                                <td><?php echo $file_width; ?>px</td>
+                                                <td><?php echo $file_height; ?>px</td>
+                                            </tr>
+                                            <?php    } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-4">
-                     <div class="card mb-4">
-                        <div class="card-header">
-                           <i class="fas fa-tool me-1"></i>
-                           Most Popular tools
-                        </div>
-                        <div class="card-body">
-                           <table class="table table-hover table-bordered">
-                              <thead>
-                                 <tr>
-                                    <th>Title</th>
-                                    <th>View</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <?php
+                        <div class="col-xl-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-post me-1"></i>
+                                    Most Popular Posts
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
                                  require_once('parts/db.php');
-                                 $select = "SELECT * FROM tool ORDER BY tool_views DESC LIMIT 10";
+                                 $select = "SELECT * FROM post ORDER BY post_views DESC LIMIT 10";
                                  $run = mysqli_query($conn, $select);
                                  while ($row = mysqli_fetch_array($run)) {
 
-                                    $category_id = $row['category_id'];
-                                    $tool_name = $row['tool_name'];
-                                    $tool_url = $row['tool_url'];
-                                    $tool_views = $row['tool_views'];
+                                    $post_title = $row['post_title'];
+                                    $post_views = $row['post_views'];
 
                                  ?>
-                                    <tr>
-                                       <td><?php echo $tool_name; ?></td>
-                                       <td><?php echo $tool_views; ?></td>
-                                    </tr>
-                                 <?php    } ?>
-                              </tbody>
-                           </table>
+                                            <tr>
+                                                <td><?php echo $post_title; ?></td>
+                                                <td><?php echo $post_views; ?></td>
+                                            </tr>
+                                            <?php    } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <!----start chart
+                    </div>
+                    <!----start chart
                   <div class="row">
                       <div class="col-xl-6">
                           <div class="card mb-4">
@@ -172,13 +182,13 @@
                       </div>
                   </div>
                   end chart--->
-            </div>
-         </main>
-         <?php require_once('parts/footer.php'); ?>
-      </div>
-   </div>
-   <!--Footercdn--->
-   <?php require_once('parts/footercdn.php'); ?>
+                </div>
+            </main>
+            <?php require_once('parts/footer.php'); ?>
+        </div>
+    </div>
+    <!--Footercdn--->
+    <?php require_once('parts/footercdn.php'); ?>
 </body>
 
 </html>
