@@ -26,7 +26,17 @@ if (isset($_GET['code'])) {
 ?>
 
 <style>
-.preview-area {
+<?php $select_font="SELECT * FROM font ";
+$run_font=mysqli_query($conn, $select_font);
+
+while ($row_font=mysqli_fetch_array($run_font)) {
+    $font_path=$row_font['font_path'];
+
+    echo $font_path;
+}
+
+
+?>.preview-area {
     height: <?php echo $file_height ?>px;
 
     width: <?php echo $file_width ?>px;
@@ -141,10 +151,15 @@ if (isset($_GET['code'])) {
                     <div class="form-group">
                         <label for="font-family">Font Family:</label>
                         <select id="font-family" class="form-control">
-                            <option value="Arial">Arial</option>
-                            <option value="Verdana">Verdana</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Times New Roman">Times New Roman</option>
+                            <?php $select_font = "SELECT * FROM font ORDER BY font_id DESC";
+                            $run_font = mysqli_query($conn, $select_font);
+
+                            while ($row_font = mysqli_fetch_array($run_font)) {
+                                $font_path = $row_font['font_path'];
+                                $font_name = $row_font['font_name'];
+                            ?>
+                            <option value="<?php echo $font_name; ?>"><?php echo $font_name; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
