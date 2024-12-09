@@ -20,8 +20,8 @@ if (isset($_GET['code'])) {
     $row_file =  mysqli_fetch_array($run_file);
     $file_background =  $row_file['file_background'];
     $file_foreground =  $row_file['file_foreground'];
-    $file_height =  $row_file['file_height'];
-    $file_width =  $row_file['file_width'];
+    echo $file_height =  $row_file['file_height'];
+    echo $file_width =  $row_file['file_width'];
 }
 ?>
 

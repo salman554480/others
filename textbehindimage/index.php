@@ -42,6 +42,42 @@ $meta_keywords =  $row_page['meta_keywords'];
 
                         list($width, $height) = getimagesize($image['tmp_name']);
 
+                        // Set the maximum size limit (800px)
+                        $maxSize = 550;
+
+                        // Check if the width or height is larger than the maximum size
+                        if ($width > $maxSize || $height > $maxSize) {
+                            // Calculate the scaling factor
+                            if ($width > $height) {
+                                // Scale the width to max size, calculate height accordingly
+                                $newWidth = $maxSize;
+                                $newHeight = floor($height * ($maxSize / $width));
+                            } else {
+                                // Scale the height to max size, calculate width accordingly
+                                $newHeight = $maxSize;
+                                $newWidth = floor($width * ($maxSize / $height));
+                            }
+
+                            // Resize the image using the new dimensions
+                            // Create a new image resource
+                            $srcImage = imagecreatefromjpeg($image['tmp_name']);  // You can change this to match your image type (e.g., imagecreatefrompng for PNG images)
+
+                            // Create a new true color image with the resized dimensions
+                            $dstImage = imagecreatetruecolor($newWidth, $newHeight);
+
+                            // Resize the image
+                            imagecopyresampled($dstImage, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+                            // Save the resized image to a file or send it to the next step (e.g., remove.bg API)
+                            // For example, you can save it locally
+                            $resizedImagePath = 'path/to/save/resized_image.jpg';
+                            imagejpeg($dstImage, $resizedImagePath);
+
+                            // Clean up
+                            imagedestroy($srcImage);
+                            imagedestroy($dstImage);
+                        }
+
                         // Check if file is an image
                         if (getimagesize($image['tmp_name']) === false) {
                             echo "The uploaded file is not a valid image.";
@@ -101,7 +137,7 @@ $meta_keywords =  $row_page['meta_keywords'];
 
                         // Save the background image (original) to the uploads folder
                         if (move_uploaded_file($image['tmp_name'], $backgroundImagePath)) {
-                            echo    $insert_file = "INSERT INTO file(file_code,file_height,file_width) VALUES('$randomCode','$height','$width')";
+                            echo    $insert_file = "INSERT INTO file(file_code,file_height,file_width) VALUES('$randomCode','$newHeight','$newWidth')";
                             $run_insert_file =  mysqli_query($conn, $insert_file);
                             if ($run_insert_file) {
                                 echo "<script>window.open('starter.php?code=$randomCode','_self');</script>";
