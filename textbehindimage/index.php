@@ -161,32 +161,32 @@ $meta_keywords =  $row_page['meta_keywords'];
         </div>
     </div>
     <script>
-    // Add the event listener to the slider for mouse interaction
-    const slider = document.getElementById('slider');
-    const beforeImage = document.querySelector('.before');
-    const afterImage = document.querySelector('.after');
+        // Add the event listener to the slider for mouse interaction
+        const slider = document.getElementById('slider');
+        const beforeImage = document.querySelector('.before');
+        const afterImage = document.querySelector('.after');
 
-    let isDragging = false;
+        let isDragging = false;
 
-    slider.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        document.body.style.userSelect = 'none'; // Disable text selection while dragging
-    });
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            document.body.style.userSelect = 'none'; // Disable text selection while dragging
+        });
 
-    document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-            let containerRect = slider.parentElement.getBoundingClientRect();
-            let offsetX = e.clientX - containerRect.left;
-            let width = Math.min(Math.max(0, offsetX), containerRect.width);
-            afterImage.style.width = width + 'px';
-            slider.style.left = width + 'px';
-        }
-    });
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                let containerRect = slider.parentElement.getBoundingClientRect();
+                let offsetX = e.clientX - containerRect.left;
+                let width = Math.min(Math.max(0, offsetX), containerRect.width);
+                afterImage.style.width = width + 'px';
+                slider.style.left = width + 'px';
+            }
+        });
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        document.body.style.userSelect = 'auto'; // Re-enable text selection
-    });
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = 'auto'; // Re-enable text selection
+        });
     </script>
     <div class="container gallery py-5">
         <div class="masonry-list">
@@ -322,23 +322,23 @@ $meta_keywords =  $row_page['meta_keywords'];
                     $plain_text = trim(preg_replace('/\s+/', ' ', $plain_text));
 
                 ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card blog-card">
-                        <a href="post_details.php?post_url=<?php echo $post_url; ?>">
-                            <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
-                                alt="Card image cap">
-                        </a>
-                        <div class="card-body">
-                            <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
-                                class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
-                                <?php if (strlen($post_title) > 50) {
+                    <div class="col-md-4 mb-4">
+                        <div class="card blog-card">
+                            <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                                <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
+                                    alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
+                                    class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
+                                    <?php if (strlen($post_title) > 50) {
                                         echo "...";
                                     } ?>
-                            </a>
-                            <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
+                                </a>
+                                <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
             <div class="d-flex justify-content-center">

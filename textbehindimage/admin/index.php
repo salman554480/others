@@ -13,27 +13,33 @@
                     <hr>
                     <div class="row">
                         <?php
-                  require_once('parts/db.php');
+                        require_once('parts/db.php');
 
-                  $select_file = "SELECT * FROM file ";
-                  $run_file = mysqli_query($conn, $select_file);
-                  $total_file = mysqli_num_rows($run_file);
+                        $select_file = "SELECT * FROM file ";
+                        $run_file = mysqli_query($conn, $select_file);
+                        $total_file = mysqli_num_rows($run_file);
 
-                  $select_category = "SELECT * FROM category ";
-                  $run_category = mysqli_query($conn, $select_category);
-                  $total_category = mysqli_num_rows($run_category);
-
-
-                  $select_post = "SELECT * FROM post ";
-                  $run_post = mysqli_query($conn, $select_post);
-                  $total_post = mysqli_num_rows($run_post);
+                        $select_category = "SELECT * FROM category ";
+                        $run_category = mysqli_query($conn, $select_category);
+                        $total_category = mysqli_num_rows($run_category);
 
 
+                        $select_post = "SELECT * FROM post ";
+                        $run_post = mysqli_query($conn, $select_post);
+                        $total_post = mysqli_num_rows($run_post);
 
 
 
-                  ?>
-                        <div class="col-xl-4 col-md-6">
+                        $select_font = "SELECT * FROM font ";
+                        $run_font = mysqli_query($conn, $select_font);
+                        $total_font = mysqli_num_rows($run_font);
+
+
+
+
+
+                        ?>
+                        <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body d-flex justify-content-between align-items-center">
                                     <h4>Images Generated</h4>
@@ -48,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body d-flex justify-content-between align-items-center">
                                     <h4>Total Categories</h4>
@@ -64,7 +70,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-3 col-md-6">
                             <div class="card bg-danger text-white mb-4">
                                 <div class="card-body d-flex justify-content-between align-items-center">
                                     <h4>Total Posts</h4>
@@ -73,6 +79,22 @@
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a href="post_view.php"><small class="small text-white stretched-link">View
                                             Post Details</small></a>
+                                    <div class="small text-white">
+                                        <i class="fas fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <h4>Total Fonts</h4>
+                                    <h3><?php echo $total_font; ?></h3>
+                                </div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a href="font_view.php"><small class="small text-white stretched-link">View
+                                            Font Details</small></a>
                                     <div class="small text-white">
                                         <i class="fas fa-angle-right"></i>
                                     </div>
@@ -101,23 +123,23 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                 require_once('parts/db.php');
-                                 $select = "SELECT * FROM file ORDER BY file_id DESC LIMIT 10";
-                                 $run = mysqli_query($conn, $select);
-                                 while ($row = mysqli_fetch_array($run)) {
+                                            require_once('parts/db.php');
+                                            $select = "SELECT * FROM file ORDER BY file_id DESC LIMIT 10";
+                                            $run = mysqli_query($conn, $select);
+                                            while ($row = mysqli_fetch_array($run)) {
 
-                                    $file_id = $row['file_id'];
-                                    $file_code = $row['file_code'];
-                                    $file_width = $row['file_width'];
-                                    $file_height = $row['file_height'];
+                                                $file_id = $row['file_id'];
+                                                $file_code = $row['file_code'];
+                                                $file_width = $row['file_width'];
+                                                $file_height = $row['file_height'];
 
-                                 ?>
-                                            <tr>
-                                                <td><?php echo $file_id; ?></td>
-                                                <td><?php echo $file_code; ?></td>
-                                                <td><?php echo $file_width; ?>px</td>
-                                                <td><?php echo $file_height; ?>px</td>
-                                            </tr>
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $file_id; ?></td>
+                                                    <td><?php echo $file_code; ?></td>
+                                                    <td><?php echo $file_width; ?>px</td>
+                                                    <td><?php echo $file_height; ?>px</td>
+                                                </tr>
                                             <?php    } ?>
                                         </tbody>
                                     </table>
@@ -140,19 +162,19 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                 require_once('parts/db.php');
-                                 $select = "SELECT * FROM post ORDER BY post_views DESC LIMIT 10";
-                                 $run = mysqli_query($conn, $select);
-                                 while ($row = mysqli_fetch_array($run)) {
+                                            require_once('parts/db.php');
+                                            $select = "SELECT * FROM post ORDER BY post_views DESC LIMIT 10";
+                                            $run = mysqli_query($conn, $select);
+                                            while ($row = mysqli_fetch_array($run)) {
 
-                                    $post_title = $row['post_title'];
-                                    $post_views = $row['post_views'];
+                                                $post_title = $row['post_title'];
+                                                $post_views = $row['post_views'];
 
-                                 ?>
-                                            <tr>
-                                                <td><?php echo $post_title; ?></td>
-                                                <td><?php echo $post_views; ?></td>
-                                            </tr>
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $post_title; ?></td>
+                                                    <td><?php echo $post_views; ?></td>
+                                                </tr>
                                             <?php    } ?>
                                         </tbody>
                                     </table>

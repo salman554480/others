@@ -20,8 +20,8 @@ if (isset($_GET['code'])) {
     $row_file =  mysqli_fetch_array($run_file);
     $file_background =  $row_file['file_background'];
     $file_foreground =  $row_file['file_foreground'];
-    echo $file_height =  $row_file['file_height'];
-    echo $file_width =  $row_file['file_width'];
+    $file_height =  $row_file['file_height'];
+    $file_width =  $row_file['file_width'];
 }
 ?>
 
@@ -158,7 +158,8 @@ while ($row_font=mysqli_fetch_array($run_font)) {
                                 $font_path = $row_font['font_path'];
                                 $font_name = $row_font['font_name'];
                             ?>
-                            <option value="<?php echo $font_name; ?>"><?php echo $font_name; ?></option>
+                            <option style="font-family:<?php echo $font_name; ?>" value="<?php echo $font_name; ?>">
+                                <?php echo $font_name; ?></option>
                             <?php } ?>
                         </select>
                     </div>
