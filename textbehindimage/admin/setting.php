@@ -3,179 +3,188 @@
 
 <body class="sb-nav-fixed">
 
-	<?php require_once('parts/navbar.php'); ?>
+    <?php require_once('parts/navbar.php'); ?>
 
-	<div id="layoutSidenav">
+    <div id="layoutSidenav">
 
-		<?php require_once('parts/sidebar.php'); ?>
+        <?php require_once('parts/sidebar.php'); ?>
 
-		<div id="layoutSidenav_content">
-			<main>
-				<div class="main-content-container container-fluid px-4">
-					<!-- Page Header -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="main-content-container container-fluid px-4">
+                    <!-- Page Header -->
 
-					<div class="page-header ">
-						<div class="col-12 mt-4  mb-4 ">
-							<h4 class="mb-3">Edit Setting</h4>
+                    <div class="page-header ">
+                        <div class="col-12 mt-4  mb-4 ">
+                            <h4 class="mb-3">Edit Setting</h4>
 
-						</div>
-					</div>
-					<!-- End Page Header -->
+                        </div>
+                    </div>
+                    <!-- End Page Header -->
 
-					<!-- form start -->
-					<div class="card mb-1">
+                    <!-- form start -->
+                    <div class="card mb-1">
 
-						<div class="card-header">
-							Edit setting Record
-						</div>
-
-
-
-						<div class="card-body">
-
-							<h4>Upload Sitemap</h4>
-
-							<!-- Alert for Success/Warning -->
-							<div id="uploadMessage" class="alert alert-warning" style="display: none;"></div>
-
-							<form action="" method="post" enctype="multipart/form-data">
-								<div class="form-group">
-									<label for="sitemapFile">Select Sitemap File (should be sitemap.xml)</label>
-									<input type="file" class="form-control-file" id="sitemapFile" name="sitemapFile"
-										accept=".xml" required>
-								</div>
-								<small class="text-muted">This will replace the old file.</small><br>
-
-								<button type="submit" name="upload-sitemap" class="btn btn-primary">Upload</button>
-							</form>
+                        <div class="card-header">
+                            Edit setting Record
+                        </div>
 
 
-							<hr>
-							<h4>Upload robots.txt</h4>
 
-							<!-- Alert for Success/Warning -->
-							<div id="uploadMessage" class="alert alert-warning" style="display: none;"></div>
+                        <div class="card-body">
 
-							<form action="" method="post" enctype="multipart/form-data">
-								<div class="form-group">
-									<label for="robotsFile">Select robots.txt File</label>
-									<input type="file" class="form-control-file" id="robotsFile" name="robotsFile"
-										accept=".txt" required>
-								</div>
-								<small class="text-muted">This will replace the old file.</small><br>
+                            <h4>Upload Sitemap</h4>
 
-								<button type="submit" name="upload-robots" class="btn btn-primary">Upload</button>
-							</form>
-							<hr>
+                            <!-- Alert for Success/Warning -->
+                            <div id="uploadMessage" class="alert alert-warning" style="display: none;"></div>
 
-							<form class="row g-3" action="" method="post" enctype="multipart/form-data">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="sitemapFile">Select Sitemap File (should be sitemap.xml)</label>
+                                    <input type="file" class="form-control-file" id="sitemapFile" name="sitemapFile"
+                                        accept=".xml" required>
+                                </div>
+                                <small class="text-muted">This will replace the old file.</small><br>
 
-								<div class="col-md-6">
-									<label class="form-label">Website Title</label>
-									<input type="text" name="website_title" value="<?php echo $website_title; ?>"
-										class="form-control" autofocus required />
-								</div>
-
-								<div class="col-md-6">
-									<label class="form-label">Website URL*</label>
-									<input type="url" name="website_url" value="<?php echo $website_url; ?>"
-										class="form-control" required />
-									<small>Please Use / at the End of the URL</small>
-								</div>
-
-								<div class="col-md-6">
-									<label class="form-label">Website Logo*</label>
-									<input type="file" name="website_logo" class="form-control">
-									<img src="upload/<?php echo $website_logo; ?>" height="50px">
-								</div>
-
-								<div class="col-md-6">
-									<label class="form-label">Website Favicon*</label>
-									<input type="file" name="website_favicon" class="form-control">
-									<img src="upload/<?php echo $website_favicon; ?>" height="50px">
-								</div>
-
-								<div class="col-md-12">
-									<label class="form-label">Place Your Head Tag Code Here</label>
-									<textarea id="" rows="5" name="website_head_code"
-										class="form-control"><?php echo $website_head_code; ?></textarea>
-								</div>
-
-								<br>
-								<div class="col-md-4">
-									<label class="form-label">Ad Code 1</label>
-									<textarea id="" rows="5" name="ad_code_one"
-										class="form-control"><?php echo $ad_code_one; ?></textarea>
-								</div>
-
-								<div class="col-md-4">
-									<label class="form-label">Ad Code 2</label>
-									<textarea id="" rows="5" name="ad_code_two"
-										class="form-control"><?php echo $ad_code_two; ?></textarea>
-								</div>
-
-								<div class="col-md-4">
-									<label class="form-label">Ad Code 3</label>
-									<textarea id="" rows="5" name="ad_code_three"
-										class="form-control"><?php echo $ad_code_three; ?></textarea>
-								</div>
-								<hr>
-
-								<h4>Footer Section</h4>
-
-								<div class="col-md-12">
-									<label class="form-label">Footer Text</label>
-									<input type="text" name="footer_text" value="<?php echo $footer_text; ?>"
-										class="form-control" required />
-								</div>
-
-								<label for="basic-url">Social Media Profiles</label>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon3">facebook.com/</span>
-									</div>
-									<input type="text" class="form-control" value="<?php echo $facebook; ?>"
-										name="facebook" id="basic-url" aria-describedby="basic-addon3">
-								</div>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon3">twitter.com/</span>
-									</div>
-									<input type="text" class="form-control" value="<?php echo $twitter; ?>"
-										name="twitter" id="basic-url" aria-describedby="basic-addon3">
-								</div>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon3">instagram.com/</span>
-									</div>
-									<input type="text" class="form-control" value="<?php echo $instagram; ?>"
-										name="instagram" id="basic-url" aria-describedby="basic-addon3">
-								</div>
-								<div class="input-group mb-2">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon3">pinterest.com/</span>
-									</div>
-									<input type="text" class="form-control" value="<?php echo $pinterest; ?>"
-										name="pinterest" id="basic-url" aria-describedby="basic-addon3">
-								</div>
-
-								<br>
-								<div class="col-md-12">
-
-									<input type="submit" name="insert_btn" class="btn btn-sm btn-success"
-										value="Update Record" />
-								</div>
-
-							</form>
-
-							<hr>
+                                <button type="submit" name="upload-sitemap" class="btn btn-primary">Upload</button>
+                            </form>
 
 
-						</div>
-					</div>
-					<!-- form end -->
+                            <hr>
+                            <h4>Upload robots.txt</h4>
 
-					<?php
+                            <!-- Alert for Success/Warning -->
+                            <div id="uploadMessage" class="alert alert-warning" style="display: none;"></div>
+
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="robotsFile">Select robots.txt File</label>
+                                    <input type="file" class="form-control-file" id="robotsFile" name="robotsFile"
+                                        accept=".txt" required>
+                                </div>
+                                <small class="text-muted">This will replace the old file.</small><br>
+
+                                <button type="submit" name="upload-robots" class="btn btn-primary">Upload</button>
+                            </form>
+                            <hr>
+
+                            <form class="row g-3" action="" method="post" enctype="multipart/form-data">
+
+                                <div class="col-md-12">
+                                    <label class="form-label">API</label>
+                                    <input type="text" name="api" value="<?php echo $db_api; ?>" class="form-control"
+                                        required />
+                                    <small><a href="https://www.remove.bg/api#remove-background">Click here</a> to get
+                                        BG Remover API
+                                    </small>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Website Title</label>
+                                    <input type="text" name="website_title" value="<?php echo $website_title; ?>"
+                                        class="form-control" autofocus required />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Website URL*</label>
+                                    <input type="url" name="website_url" value="<?php echo $website_url; ?>"
+                                        class="form-control" required />
+                                    <small>Please Use / at the End of the URL</small>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Website Logo*</label>
+                                    <input type="file" name="website_logo" class="form-control">
+                                    <img src="upload/<?php echo $website_logo; ?>" height="50px">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Website Favicon*</label>
+                                    <input type="file" name="website_favicon" class="form-control">
+                                    <img src="upload/<?php echo $website_favicon; ?>" height="50px">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label class="form-label">Place Your Head Tag Code Here</label>
+                                    <textarea id="" rows="5" name="website_head_code"
+                                        class="form-control"><?php echo $website_head_code; ?></textarea>
+                                </div>
+
+                                <br>
+                                <div class="col-md-4">
+                                    <label class="form-label">Ad Code 1</label>
+                                    <textarea id="" rows="5" name="ad_code_one"
+                                        class="form-control"><?php echo $ad_code_one; ?></textarea>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Ad Code 2</label>
+                                    <textarea id="" rows="5" name="ad_code_two"
+                                        class="form-control"><?php echo $ad_code_two; ?></textarea>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Ad Code 3</label>
+                                    <textarea id="" rows="5" name="ad_code_three"
+                                        class="form-control"><?php echo $ad_code_three; ?></textarea>
+                                </div>
+                                <hr>
+
+                                <h4>Footer Section</h4>
+
+                                <div class="col-md-12">
+                                    <label class="form-label">Footer Text</label>
+                                    <input type="text" name="footer_text" value="<?php echo $footer_text; ?>"
+                                        class="form-control" required />
+                                </div>
+
+                                <label for="basic-url">Social Media Profiles</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">facebook.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<?php echo $facebook; ?>"
+                                        name="facebook" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">twitter.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<?php echo $twitter; ?>"
+                                        name="twitter" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">instagram.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<?php echo $instagram; ?>"
+                                        name="instagram" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">pinterest.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" value="<?php echo $pinterest; ?>"
+                                        name="pinterest" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+
+                                <br>
+                                <div class="col-md-12">
+
+                                    <input type="submit" name="insert_btn" class="btn btn-sm btn-success"
+                                        value="Update Record" />
+                                </div>
+
+                            </form>
+
+                            <hr>
+
+
+                        </div>
+                    </div>
+                    <!-- form end -->
+
+                    <?php
 					require_once('parts/db.php');
 					if (isset($_POST['insert_btn'])) {
 
@@ -191,6 +200,8 @@
 						$etwitter = $_POST['twitter'];
 						$einstagram = $_POST['instagram'];
 						$epinterest = $_POST['pinterest'];
+
+						$api = $_POST['api'];
 
 						$ewebsite_head_code = mysqli_real_escape_string($conn, $_POST['website_head_code']);
 
@@ -220,6 +231,7 @@
 											twitter='$etwitter',
 											instagram='$einstagram',
 											pinterest='$epinterest',
+											api='$api',
 											ad_code_one='$ead_code_one',
 											ad_code_two='$ead_code_two',
 											ad_code_three='$ead_code_three'";
@@ -242,7 +254,7 @@
 
 
 
-					<?php
+                    <?php
 					// Define the upload directory
 					$uploadDir = '../'; // You can change the directory to your desired path
 
@@ -289,7 +301,7 @@
 
 
 
-					<?php
+                    <?php
 					// Define the upload directory
 					$uploadDir = '../'; // You can change the directory to your desired path
 
@@ -335,13 +347,13 @@
 
 
 
-				</div>
+                </div>
 
-		</div>
-	</div>
-	<?php require_once('parts/footer.php'); ?>
-	<!--Footercdn--->
-	<?php require_once('parts/footercdn.php'); ?>
+        </div>
+    </div>
+    <?php require_once('parts/footer.php'); ?>
+    <!--Footercdn--->
+    <?php require_once('parts/footercdn.php'); ?>
 
 </body>
 

@@ -35,7 +35,7 @@ $meta_keywords =  $row_page['meta_keywords'];
                     <?php
                     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
                         // Replace with your remove.bg API key
-                        $apiKey = 'gKzRiCoDmu1Pj8xy3MEDohny';
+                        $apiKey = $api;
 
                         // Handle the uploaded image
                         $image = $_FILES['image'];
@@ -137,7 +137,7 @@ $meta_keywords =  $row_page['meta_keywords'];
 
                         // Save the background image (original) to the uploads folder
                         if (move_uploaded_file($image['tmp_name'], $backgroundImagePath)) {
-                            echo    $insert_file = "INSERT INTO file(file_code,file_height,file_width) VALUES('$randomCode','$newHeight','$newWidth')";
+                            $insert_file = "INSERT INTO file(file_code,file_height,file_width) VALUES('$randomCode','$newHeight','$newWidth')";
                             $run_insert_file =  mysqli_query($conn, $insert_file);
                             if ($run_insert_file) {
                                 echo "<script>window.open('starter.php?code=$randomCode','_self');</script>";
@@ -161,32 +161,32 @@ $meta_keywords =  $row_page['meta_keywords'];
         </div>
     </div>
     <script>
-        // Add the event listener to the slider for mouse interaction
-        const slider = document.getElementById('slider');
-        const beforeImage = document.querySelector('.before');
-        const afterImage = document.querySelector('.after');
+    // Add the event listener to the slider for mouse interaction
+    const slider = document.getElementById('slider');
+    const beforeImage = document.querySelector('.before');
+    const afterImage = document.querySelector('.after');
 
-        let isDragging = false;
+    let isDragging = false;
 
-        slider.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            document.body.style.userSelect = 'none'; // Disable text selection while dragging
-        });
+    slider.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        document.body.style.userSelect = 'none'; // Disable text selection while dragging
+    });
 
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                let containerRect = slider.parentElement.getBoundingClientRect();
-                let offsetX = e.clientX - containerRect.left;
-                let width = Math.min(Math.max(0, offsetX), containerRect.width);
-                afterImage.style.width = width + 'px';
-                slider.style.left = width + 'px';
-            }
-        });
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            let containerRect = slider.parentElement.getBoundingClientRect();
+            let offsetX = e.clientX - containerRect.left;
+            let width = Math.min(Math.max(0, offsetX), containerRect.width);
+            afterImage.style.width = width + 'px';
+            slider.style.left = width + 'px';
+        }
+    });
 
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            document.body.style.userSelect = 'auto'; // Re-enable text selection
-        });
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        document.body.style.userSelect = 'auto'; // Re-enable text selection
+    });
     </script>
     <div class="container gallery py-5">
         <div class="masonry-list">
@@ -223,24 +223,24 @@ $meta_keywords =  $row_page['meta_keywords'];
                 $faq_question =  $row_faq['faq_question'];
                 $faq_answer =  $row_faq['faq_answer'];
             ?>
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse"
-                                data-target="#collapse<?php echo $faq_id; ?>" aria-expanded="true"
-                                aria-controls="collapse<?php echo $faq_id; ?>">
-                                <?php echo $faq_question; ?>
-                            </button>
-                        </h5>
-                    </div>
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse"
+                            data-target="#collapse<?php echo $faq_id; ?>" aria-expanded="true"
+                            aria-controls="collapse<?php echo $faq_id; ?>">
+                            <?php echo $faq_question; ?>
+                        </button>
+                    </h5>
+                </div>
 
-                    <div id="collapse<?php echo $faq_id; ?>" class="collapse " aria-labelledby="headingOne"
-                        data-parent="#faqAccordion">
-                        <div class="card-body">
-                            <?php echo $faq_answer; ?>
-                        </div>
+                <div id="collapse<?php echo $faq_id; ?>" class="collapse " aria-labelledby="headingOne"
+                    data-parent="#faqAccordion">
+                    <div class="card-body">
+                        <?php echo $faq_answer; ?>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -274,23 +274,23 @@ $meta_keywords =  $row_page['meta_keywords'];
                     $plain_text = trim(preg_replace('/\s+/', ' ', $plain_text));
 
                 ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="card blog-card">
-                            <a href="post_details.php?post_url=<?php echo $post_url; ?>">
-                                <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
-                                    alt="Card image cap">
-                            </a>
-                            <div class="card-body">
-                                <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
-                                    class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
-                                    <?php if (strlen($post_title) > 50) {
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card">
+                        <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                            <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
+                                alt="Card image cap">
+                        </a>
+                        <div class="card-body">
+                            <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
+                                class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
+                                <?php if (strlen($post_title) > 50) {
                                         echo "...";
                                     } ?>
-                                </a>
-                                <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
-                            </div>
+                            </a>
+                            <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
                         </div>
                     </div>
+                </div>
                 <?php } ?>
             </div>
             <div class="d-flex justify-content-center">
