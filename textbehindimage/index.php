@@ -215,81 +215,33 @@ $meta_keywords =  $row_page['meta_keywords'];
         <h2 class="text-center">Frequently Asked Questions</h2>
         <div id="faqAccordion" class="my-4">
             <!-- FAQ Item 1 -->
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                            aria-expanded="true" aria-controls="collapseOne">
-                            What is Bootstrap 4?
-                        </button>
-                    </h5>
-                </div>
+            <?php
+            $select_faq = "SELECT * FROM faq";
+            $run_faq =  mysqli_query($conn, $select_faq);
+            while ($row_faq =  mysqli_fetch_array($run_faq)) {
+                $faq_id =  $row_faq['faq_id'];
+                $faq_question =  $row_faq['faq_question'];
+                $faq_answer =  $row_faq['faq_answer'];
+            ?>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse"
+                                data-target="#collapse<?php echo $faq_id; ?>" aria-expanded="true"
+                                aria-controls="collapse<?php echo $faq_id; ?>">
+                                <?php echo $faq_question; ?>
+                            </button>
+                        </h5>
+                    </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Bootstrap 4 is a front-end framework that helps you design responsive and mobile-first websites
-                        easily. It includes pre-styled components like navigation bars, forms, modals, and more.
+                    <div id="collapse<?php echo $faq_id; ?>" class="collapse " aria-labelledby="headingOne"
+                        data-parent="#faqAccordion">
+                        <div class="card-body">
+                            <?php echo $faq_answer; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
-                            How do I use Bootstrap Grid System?
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Bootstrap's grid system allows you to create responsive layouts by using a 12-column layout
-                        structure. You can customize the grid by using classes such as `col-lg-4`, `col-md-6`, etc.,
-                        depending on the screen size.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                            aria-expanded="false" aria-controls="collapseThree">
-                            Is Bootstrap free to use?
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Yes, Bootstrap is open-source and free to use. You can download it from the official website and
-                        integrate it into your projects without any cost.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 4 -->
-            <div class="card">
-                <div class="card-header" id="headingFour">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
-                            aria-expanded="false" aria-controls="collapseFour">
-                            What are Bootstrap's key features?
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Bootstrap offers responsive grid layout, pre-styled components like buttons, forms, and navbars,
-                        as well as built-in JavaScript plugins for features such as modals, tooltips, and carousels.
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 

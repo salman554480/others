@@ -95,21 +95,21 @@
                                 </thead>
                                 <tbody>
                                     <?php while ($row = $result->fetch_assoc()) { ?>
-                                    <tr>
-                                        <td><?php echo $row['faq_id']; ?></td>
-                                        <td><?php echo $row['faq_question']; ?></td>
-                                        <td><?php echo $row['faq_answer']; ?></td>
-                                        <td>
-                                            <!-- Edit Button -->
-                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal"
-                                                onclick="editFAQ(<?php echo $row['faq_id']; ?>, '<?php echo $row['faq_question']; ?>', '<?php echo $row['faq_answer']; ?>')">Edit</button>
-                                            <!-- Delete Button -->
-                                            <a href="?delete=<?php echo $row['faq_id']; ?>"
-                                                class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this FAQ?')">Delete</a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td><?php echo $row['faq_id']; ?></td>
+                                            <td><?php echo $row['faq_question']; ?></td>
+                                            <td><?php echo $row['faq_answer']; ?></td>
+                                            <td>
+                                                <!-- Edit Button -->
+                                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal"
+                                                    onclick="editFAQ(<?php echo $row['faq_id']; ?>, '<?php echo $row['faq_question']; ?>', '<?php echo $row['faq_answer']; ?>')">Edit</button>
+                                                <!-- Delete Button -->
+                                                <a href="?delete=<?php echo $row['faq_id']; ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this FAQ?')">Delete</a>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -147,12 +147,12 @@
                     </div>
 
                     <script>
-                    // Function to fill the modal with current FAQ data
-                    function editFAQ(id, question, answer) {
-                        document.getElementById('edit_faq_id').value = id;
-                        document.getElementById('edit_faq_question').value = question;
-                        document.getElementById('edit_faq_answer').value = answer;
-                    }
+                        // Function to fill the modal with current FAQ data
+                        function editFAQ(id, question, answer) {
+                            document.getElementById('edit_faq_id').value = id;
+                            document.getElementById('edit_faq_question').value = question;
+                            document.getElementById('edit_faq_answer').value = answer;
+                        }
                     </script>
 
             </main>
