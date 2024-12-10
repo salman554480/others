@@ -74,6 +74,10 @@
 
 
                      </ul>
+                     <a class="nav-link" href="faq.php">
+                         <div class="sb-nav-link-icon"><i class="fas fa-info"></i></div>
+                         FAQs
+                     </a>
                      <a class="nav-link" href="contactform_view.php">
                          <div class="sb-nav-link-icon"><i class="fas fa-phone"></i></div>
                          Form Entries

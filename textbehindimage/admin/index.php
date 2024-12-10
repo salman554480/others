@@ -134,12 +134,12 @@
                                                 $file_height = $row['file_height'];
 
                                             ?>
-                                                <tr>
-                                                    <td><?php echo $file_id; ?></td>
-                                                    <td><?php echo $file_code; ?></td>
-                                                    <td><?php echo $file_width; ?>px</td>
-                                                    <td><?php echo $file_height; ?>px</td>
-                                                </tr>
+                                            <tr>
+                                                <td><?php echo $file_id; ?></td>
+                                                <td><?php echo $file_code; ?></td>
+                                                <td><?php echo $file_width; ?>px</td>
+                                                <td><?php echo $file_height; ?>px</td>
+                                            </tr>
                                             <?php    } ?>
                                         </tbody>
                                     </table>
@@ -171,10 +171,10 @@
                                                 $post_views = $row['post_views'];
 
                                             ?>
-                                                <tr>
-                                                    <td><?php echo $post_title; ?></td>
-                                                    <td><?php echo $post_views; ?></td>
-                                                </tr>
+                                            <tr>
+                                                <td><?php echo $post_title; ?></td>
+                                                <td><?php echo $post_views; ?></td>
+                                            </tr>
                                             <?php    } ?>
                                         </tbody>
                                     </table>
