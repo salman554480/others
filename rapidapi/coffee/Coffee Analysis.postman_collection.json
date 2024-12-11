@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "b312cace-d040-45dc-b393-b18f90926c29",
+		"name": "Coffee Analysis",
+		"description": "StartFragment\n\nIntroducing the **PHP API Collection for 2000+ Coffee Data**—a comprehensive and robust solution for developers, businesses, and coffee enthusiasts looking to access an extensive range of coffee-related information through a powerful and flexible API. This collection offers detailed data on over 2000 types of coffee, including varieties, brewing methods, regions, flavors, and much more.\n\n### Key Features:\n\n1. **Extensive Data**: Access data on 2000+ coffee types, including coffee beans, brewing techniques, flavor profiles, and more.\n    \n2. **Searchable API**: Retrieve coffee information based on various parameters such as roast level, flavor notes, region, and brewing method.\n    \n3. **Detailed Coffee Profiles**: Each coffee entry includes rich details such as origin, tasting notes, ideal brewing methods, and specific characteristics of each coffee.\n    \n4. **Up-to-Date Information**: The API collection is regularly updated to ensure you have access to the latest coffee varieties and trends.\n    \n5. **Flexible Integration**: Easy to integrate into websites, applications, or systems with customizable queries and responses.\n    \n6. **Comprehensive Coverage**: Data includes global coffee origins, beans (Arabica, Robusta, Liberica), roast types, brewing techniques (e.g., Espresso, French Press, Pour-Over), and flavor profiles (e.g., fruity, nutty, floral).\n    \n\n### Use Cases:\n\n- **Coffee E-commerce**: Integrate coffee details directly into your product listings for a seamless shopping experience.\n    \n- **Coffee Enthusiast Websites**: Provide detailed information for coffee lovers to explore new flavors, varieties, and brewing methods.\n    \n- **Mobile Apps**: Develop apps that allow users to discover new coffee varieties based on their taste preferences or brewing habits.\n    \n- **Educational Platforms**: Create interactive learning tools for users to understand the complexities of different coffee beans and brewing techniques.\n    \n\n### Why Choose This API Collection:\n\n- **Speed & Efficiency**: Quick response times and optimized for performance.\n    \n- **Scalability**: Can handle large amounts of traffic, making it suitable for high-traffic websites or applications.\n    \n- **No Maintenance Required**: Our team handles all the updates and maintenance, so you can focus on building your product or service.\n    \n- **Affordable Access**: Available at a competitive price, making it an excellent investment for coffee-related businesses or personal projects.\n    \n\nPerfect for developers, coffee shops, roasters, e-commerce businesses, and more—this PHP API collection provides a vast database of coffee information to enhance your projects or online presence.\n\nGet started today and elevate your coffee experience with the ultimate collection of coffee data!\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "coffee_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/coffee/coffee_pagination.php?page_no=2",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"coffee",
+						"coffee_pagination.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
