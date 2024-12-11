@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "d921fae7-ccf6-4d01-9d38-5926d5eddc90",
+		"name": "Unlimited Anime Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "anime_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/anime/anime_pagination.php?page_no=1",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"anime",
+						"anime_pagination.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
