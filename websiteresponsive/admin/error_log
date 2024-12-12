@@ -1,0 +1,34 @@
+[20-Sep-2023 05:31:33 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[20-Sep-2023 05:39:55 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[20-Sep-2023 07:26:56 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[21-Sep-2023 04:18:26 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[21-Sep-2023 07:04:42 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[22-Sep-2023 05:40:32 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[25-Sep-2023 13:36:19 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[05-Oct-2023 04:22:34 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[08-Oct-2023 03:39:42 America/New_York] PHP Warning:  Undefined array key "tool_code" in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 154
+[08-Oct-2023 03:39:42 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 157
+[08-Oct-2023 03:39:53 America/New_York] PHP Warning:  Undefined array key "tool_code" in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 154
+[08-Oct-2023 03:39:53 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 157
+[08-Oct-2023 03:46:36 America/New_York] PHP Warning:  Undefined array key "tool_code" in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 154
+[08-Oct-2023 03:46:36 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 157
+[08-Oct-2023 03:48:02 America/New_York] PHP Warning:  Undefined array key "tool_code" in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 154
+[08-Oct-2023 03:48:02 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 157
+[08-Oct-2023 03:49:25 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 156
+[08-Oct-2023 03:56:04 America/New_York] PHP Parse error:  Unmatched '}' in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 177
+[08-Oct-2023 03:56:35 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 156
+[08-Oct-2023 03:57:23 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 156
+[08-Oct-2023 03:57:49 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/wigivdpb/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 156
+[24-Nov-2023 07:57:41 America/New_York] PHP Warning:  Undefined variable $etool_content in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/tool_edit.php on line 156
+[07-Dec-2023 00:18:03 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[07-Dec-2023 00:18:13 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[10-Dec-2023 18:20:33 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[11-Dec-2023 08:52:47 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[22-Dec-2023 08:04:09 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[22-Dec-2023 08:04:56 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[15-Jan-2024 07:46:51 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[31-Jan-2024 15:42:33 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[31-Jan-2024 15:42:57 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[31-Jan-2024 15:43:33 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[23-Feb-2024 15:42:10 America/New_York] PHP Warning:  Undefined variable $admin_name in /home/timeuvfv/wedownload.site/demos/webster/tools/admin/parts/sidebar.php on line 72
+[15-Oct-2024 08:57:52 UTC] PHP Warning:  Undefined variable $admin_name in /home/vauldkga/scripts.vaultifier.space/tools/admin/parts/sidebar.php on line 72
