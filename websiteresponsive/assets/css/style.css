@@ -177,6 +177,13 @@ bg-white {
     display: block;
   }
 
+  #faqAccordion{
+    color: #121212;
+  }
+  #faqAccordion .card .btn-link{
+    color: #121212 !important;
+  }
+
 .btn {
     padding: 8px 20px;
     outline: none;

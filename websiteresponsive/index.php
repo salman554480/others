@@ -20,7 +20,13 @@ $meta_keywords =  $row_page['meta_keywords'];
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <?php echo $ad_code_one; ?>
+                <div class="ad-area my-4">
+                    <?php if ($ad_code_one == "") {
+						echo "<img class='w-100' src='https://dummyimage.com/1400x150/f7f7f7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+					} {
+						echo $ad_code_one;
+					} ?>
+                </div>
                 <div class="row bg-white p-3 custom-shadow mb-3 searhbox">
                     <div class="col-md-12 mb-3">
                         <form id="urlForm">
@@ -94,7 +100,106 @@ $meta_keywords =  $row_page['meta_keywords'];
 
             </div>
         </div>
+
+
     </div>
+    <div class="container">
+
+        <div class="ad-area my-4">
+            <?php if ($ad_code_one == "") {
+				echo "<img class='w-100' src='https://dummyimage.com/1400x150/a7a7a7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+			} {
+				echo $ad_code_one;
+			} ?>
+        </div>
+    </div>
+    <div class="container bg-white py-5">
+        <h2 class="text-center">Frequently Asked Questions</h2>
+        <div id="faqAccordion" class="my-4">
+            <!-- FAQ Item 1 -->
+            <?php
+			$select_faq = "SELECT * FROM faq";
+			$run_faq =  mysqli_query($conn, $select_faq);
+			while ($row_faq =  mysqli_fetch_array($run_faq)) {
+				$faq_id =  $row_faq['faq_id'];
+				$faq_question =  $row_faq['faq_question'];
+				$faq_answer =  $row_faq['faq_answer'];
+			?>
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse"
+                            data-target="#collapse<?php echo $faq_id; ?>" aria-expanded="true"
+                            aria-controls="collapse<?php echo $faq_id; ?>">
+                            <?php echo $faq_question; ?>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse<?php echo $faq_id; ?>" class="collapse " aria-labelledby="headingOne"
+                    data-parent="#faqAccordion">
+                    <div class="card-body">
+                        <?php echo $faq_answer; ?>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center">Latest Blog</h2>
+            <div class="row my-4">
+                <!-- Blog Post 1 -->
+                <?php
+
+				require_once('admin/parts/db.php');
+				$select = "SELECT * FROM post WHERE post_status='publish' ORDER BY post_id DESC LIMIT 3";
+				$run = mysqli_query($conn, $select);
+				while ($row = mysqli_fetch_array($run)) {
+
+					$post_id = $row['post_id'];
+					$post_title = $row['post_title'];
+					$post_url = $row['post_url'];
+
+					$post_thumbnail = $row['post_thumbnail'];
+					$post_content = $row['post_content'];
+
+					// Remove HTML tags
+					$plain_text = strip_tags($post_content);
+
+					// Decode HTML entities to their corresponding characters
+					$plain_text = html_entity_decode($plain_text);
+
+					// Optionally, remove extra whitespace
+					$plain_text = trim(preg_replace('/\s+/', ' ', $plain_text));
+
+				?>
+                <div class="col-md-4 mb-4">
+                    <div class="card blog-card">
+                        <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                            <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
+                                alt="Card image cap">
+                        </a>
+                        <div class="card-body">
+                            <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
+                                class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
+                                <?php if (strlen($post_title) > 50) {
+										echo "...";
+									} ?>
+                            </a>
+                            <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="page.php?page_url=blog" class="btn btn-primary">View More</a>
+            </div>
+        </div>
+    </section>
 
 
     <?php require_once('parts/footer.php'); ?>
