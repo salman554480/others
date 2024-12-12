@@ -33,35 +33,34 @@ if (isset($_GET['tool_url'])) {
 
 <body>
 
-	<?php require_once('parts/navbar.php'); ?>
+    <?php require_once('parts/navbar.php'); ?>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-			<?php echo $ad_code_one; ?>
-				<div class="row bg-white p-5 custom-shadow">
-					<div class="col-md-12">
-						<h1><?php echo $tool_name; ?></h1>
-						<div id="tool-area" class="mt-4">
-							<?php echo $tool_html; ?>
-						</div>
-						<?php echo $tool_js; ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $ad_code_one; ?>
+                <div class="row bg-white p-5 custom-shadow">
+                    <div class="col-md-12">
+                        <h1><?php echo $tool_name; ?></h1>
+                        <div id="tool-area" class="mt-4">
+                            <?php echo $tool_html; ?>
+                        </div>
+                        <?php echo $tool_js; ?>
 
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<div class="row bg-white p-3 custom-shadow mt-5">
-					<div class="col-md-12 ">
-						<?php echo $tool_content; ?>
-					</div>
-				</div>
+                <div class="row bg-white p-3 custom-shadow mt-5">
+                    <div class="col-md-12 ">
+                        <?php echo $tool_content; ?>
+                    </div>
+                </div>
 
-			</div>
-			<?php require_once('parts/sidebar.php'); ?>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
-	<?php require_once('parts/footer.php'); ?>
+    <?php require_once('parts/footer.php'); ?>
 </body>
 
 </html>

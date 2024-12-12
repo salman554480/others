@@ -62,18 +62,22 @@ $meta_keywords =  $row_page['meta_keywords'];
 
 									$screen_id = $row_screen['screen_id'];
 									$screen_name = $row_screen['screen_name'];
-									$screen_size = $row_screen['screen_size'];
+									$screen_width = $row_screen['screen_width'];
+									$screen_height = $row_screen['screen_height'];
 									$screen_image = $row_screen['screen_image'];
 
 								?>
-                            <div title="<?php echo $screen_size; ?>" data-toggle="tooltip"
-                                onclick="testResponsive(<?php echo $screen_size; ?>)"
-                                class="col-lg-2 col-md-2 col-6 mt-4 screen-card">
+                            <div title="<?php echo $screen_width; ?> x <?php echo $screen_height; ?>"
+                                data-toggle="tooltip"
+                                onclick="testResponsive(<?php echo $screen_width; ?>, <?php echo $screen_height; ?>)"
+                                class="col-lg-2 col-md-2 col-6 mt-4 screen-card p-2">
 
                                 <div class="card border-0 bg-light rounded shadow">
-                                    <img src="admin/upload/<?php echo $screen_image; ?>" class="device-img" alt="">
-                                    <small
-                                        class="text-muted d-block text-center screen-name"><?php echo $screen_name; ?></small>
+                                    <!-- <img src="admin/upload/<?php echo $screen_image; ?>" class="device-img" alt=""> -->
+                                    <span class=" d-block text-center screen-name"><?php echo $screen_name; ?></span>
+                                    <span
+                                        class="text-muted d-block text-center screen-size"><?php echo $screen_width; ?>
+                                        x <?php echo $screen_height; ?></span>
 
                                 </div>
                             </div>
@@ -209,8 +213,6 @@ $meta_keywords =  $row_page['meta_keywords'];
     document.getElementById('urlForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const url = document.getElementById('websiteUrl').value;
-        document.getElementById('websiteName').style.display = "block";
-        document.getElementById('websiteName').innerHTML = url;
 
         // Validate URL
         if (!url || !isValidURL(url)) {
@@ -222,14 +224,15 @@ $meta_keywords =  $row_page['meta_keywords'];
         window.urlToTest = url;
     });
 
-    function testResponsive(screenWidth) {
+    function testResponsive(width, height) {
         const url = window.urlToTest;
         if (!url) {
             alert("Please enter a URL first.");
             return;
         }
 
-        const newWindow = window.open(url, '_blank', `width=${screenWidth}, height=800`);
+        // Open a new window with the specified width and height
+        const newWindow = window.open(url, '_blank', `width=${width}, height=${height}`);
         if (newWindow) {
             newWindow.focus();
         } else {

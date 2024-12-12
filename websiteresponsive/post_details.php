@@ -32,31 +32,36 @@ if (isset($_GET['post_url'])) {
 
 <body>
 
-	<?php require_once('parts/navbar.php'); ?>
+    <?php require_once('parts/navbar.php'); ?>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<?php echo $ad_code_one; ?>
-				<div class="row bg-white p-3 custom-shadow">
-					<div class="col-md-12">
-						<h1 class="post-title"><?php echo $post_title; ?> </h1>
-						<p><i><?php echo $post_views; ?> Views. Published on: <?php echo $post_date; ?></i></p>
-						<div class="post-content">
-							<?php echo $post_content; ?>
-						</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ad-area my-4">
+                    <?php if ($ad_code_one == "") {
+						echo "<img class='w-100' src='https://dummyimage.com/1400x150/f7f7f7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+					} {
+						echo $ad_code_one;
+					} ?>
+                </div>
+                <div class="row bg-white p-3 custom-shadow">
+                    <div class="col-md-12">
+                        <h1 class="post-title"><?php echo $post_title; ?> </h1>
+                        <p><i><?php echo $post_views; ?> Views. Published on: <?php echo $post_date; ?></i></p>
+                        <div class="post-content">
+                            <?php echo $post_content; ?>
+                        </div>
 
-					</div>
-				</div>
+                    </div>
+                </div>
 
 
 
-			</div>
-			<?php require_once('parts/sidebar.php'); ?>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
-	<?php require_once('parts/footer.php'); ?>
+    <?php require_once('parts/footer.php'); ?>
 </body>
 
 </html>

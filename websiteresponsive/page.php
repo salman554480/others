@@ -24,16 +24,22 @@ if (isset($_GET['page_url'])) {
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <?php echo $ad_code_one; ?>
+            <div class="col-md-12">
+                <div class="ad-area my-4">
+                    <?php if ($ad_code_one == "") {
+                        echo "<img class='w-100' src='https://dummyimage.com/1400x150/f7f7f7/000000&text=++++++++++++++++Advertisement+++++++++++++'>";
+                    } {
+                        echo $ad_code_one;
+                    } ?>
+                </div>
                 <div class="row bg-white p-3 custom-shadow">
                     <div class="col-md-12">
                         <h1><?php echo $get_page_title ?></h1>
                         <div class="content-area">
                             <?php if ($page_url == "blog") { ?>
-                                <div class="row">
-                                    <!-- Blog Post 1 -->
-                                    <?php
+                            <div class="row">
+                                <!-- Blog Post 1 -->
+                                <?php
 
                                     require_once('admin/parts/db.php');
                                     $select = "SELECT * FROM post WHERE post_status='publish' ORDER BY post_id DESC";
@@ -57,49 +63,49 @@ if (isset($_GET['page_url'])) {
                                         $plain_text = trim(preg_replace('/\s+/', ' ', $plain_text));
 
                                     ?>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="card blog-card">
-                                                <a href="post_details.php?post_url=<?php echo $post_url; ?>">
-                                                    <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
-                                                        alt="Card image cap">
-                                                </a>
-                                                <div class="card-body">
-                                                    <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
-                                                        class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
-                                                        <?php if (strlen($post_title) > 50) {
+                                <div class="col-md-4 mb-4">
+                                    <div class="card blog-card">
+                                        <a href="post_details.php?post_url=<?php echo $post_url; ?>">
+                                            <img class="card-img-top" src="admin/upload/<?php echo $post_thumbnail; ?>"
+                                                alt="Card image cap">
+                                        </a>
+                                        <div class="card-body">
+                                            <a href="post_details.php?post_url=<?php echo $post_url; ?>" <h5
+                                                class="card-title"><?php echo substr($post_title, 0, 60); ?></h5>
+                                                <?php if (strlen($post_title) > 50) {
                                                             echo "...";
                                                         } ?>
-                                                    </a>
-                                                    <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
-                                                </div>
-                                            </div>
+                                            </a>
+                                            <p class="card-text"><?php echo substr($post_content, 8, 50) ?></p>
                                         </div>
-                                    <?php } ?>
+                                    </div>
                                 </div>
+                                <?php } ?>
+                            </div>
 
                             <?php } ?>
                             <?php if ($page_url == "contact-us") { ?>
-                                <form action="" method="POST">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" name="user_name" required>
-                                    </div>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="user_name" required>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" name="user_email" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="user_email" required>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea class="form-control" id="message" name="user_message" rows="4"
-                                            required></textarea>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message" name="user_message" rows="4"
+                                        required></textarea>
+                                </div>
 
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                </form>
+                                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                            </form>
 
-                                <?php
+                            <?php
 
                                 // Check if form is submitted
                                 if (isset($_POST['submit'])) {
@@ -123,13 +129,12 @@ if (isset($_GET['page_url'])) {
                                 ?>
 
                             <?php } else { ?>
-                                <?php echo $get_page_content; ?>
+                            <?php echo $get_page_content; ?>
                             <?php } ?>
                         </div>
                     </div>
                 </div>
             </div>
-            <?php require_once('parts/sidebar.php'); ?>
         </div>
     </div>
 
