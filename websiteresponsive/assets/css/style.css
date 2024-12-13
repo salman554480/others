@@ -188,6 +188,10 @@ bg-white {
     color: #121212 !important;
   }
 
+  .main-title{
+    text-align: center;
+    font-size: 30px;
+  }
 .btn {
     padding: 8px 20px;
     outline: none;
