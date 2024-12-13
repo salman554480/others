@@ -1,4 +1,6 @@
 <?php
+// Set Content-Type to JSON
+header('Content-Type: application/json');
 // Define the celebrity's name (e.g., "Tom Hanks")
 if (isset($_GET['person'])) {
     $personName = $_GET['person'];
