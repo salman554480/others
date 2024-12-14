@@ -1,76 +1,56 @@
 {
 	"info": {
-		"_postman_id": "6d630bba-0c23-413c-9ba1-b2aa45882011",
-		"name": "Telegram",
+		"_postman_id": "1e06036d-020e-40e2-831b-a63955ccd656",
+		"name": "API Name",
+		"description": "This is a example to import APIs from Postman. The description must be at least 50 characters.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "39960176"
+		"_exporter_id": "31818531"
 	},
 	"item": [
 		{
-			"name": "upload",
+			"name": "Name of your Endpoint",
+			"description": "This is a example to import APIs from Postman",
 			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+				"auth": {
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "botToken",
-							"value": "7147572018:AAF_uX7c5FbA_V5DoglL1AuQbtHTWnix1Yg\n",
-							"type": "text"
-						},
-						{
-							"key": "chatId",
-							"value": "-1002230179133\n",
-							"type": "text"
-						},
-						{
-							"key": "document",
-							"description": "Choose the file you want to upload (e.g., document.pdf) from your local system.",
-							"type": "file",
-							"src": []
+							"key": "token",
+							"value": "your_secret_key",
+							"type": "string"
 						}
 					]
 				},
-				"url": {
-					"raw": "https://scripts.vaultifier.space/rapidapi/telegram/upload.php",
-					"protocol": "https",
-					"host": [
-						"scripts",
-						"vaultifier",
-						"space"
-					],
-					"path": [
-						"rapidapi",
-						"telegram",
-						"upload.php"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "download",
-			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "default_value",
+						"type": "text",
+						"description": "You can define a default value.",
+						"disabled": true
+					}
+				],
 				"url": {
-					"raw": "https://scripts.vaultifier.space/rapidapi/telegram/download.php?fileId=AAMCBAADIQYABITt1T0AAgvhZ0WHuqsd8NE5eWf7dzozI0Dtj4gAAn8TAAJh7zFS5mmRvPjEfAcBAAdtAAM2BA",
+					"raw": "https://domain.com/?parameter1=default_value&parameter2=",
 					"protocol": "https",
 					"host": [
-						"scripts",
-						"vaultifier",
-						"space"
+						"domain",
+						"com"
 					],
 					"path": [
-						"rapidapi",
-						"telegram",
-						"download.php"
+						""
 					],
 					"query": [
 						{
-							"key": "fileId",
-							"value": "AAMCBAADIQYABITt1T0AAgvhZ0WHuqsd8NE5eWf7dzozI0Dtj4gAAn8TAAJh7zFS5mmRvPjEfAcBAAdtAAM2BA"
+							"key": "parameter1",
+							"value": "default_value",
+							"description": "You can define a default value. If you provide a default value, the user will not have to enter it."
+						},
+						{
+							"key": "parameter2",
+							"value": "",
+							"description": "This parameter does not have a default value, so the user will need to enter it."
 						}
 					]
 				}

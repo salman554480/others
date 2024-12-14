@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "c8e5818f-4261-4e80-895c-c67e1cc5bad0",
+		"name": "BookRead 100k Books Record",
+		"description": "StartFragment\n\nUnlock the world of literature with our premium **Goodreads Books Collection** API, featuring an extensive dataset of **100,000 book records** with comprehensive details! Whether you're a developer, researcher, or entrepreneur looking to integrate rich book data into your application, website, or service, this collection offers an invaluable resource.\n\nThis meticulously curated API provides access to a vast range of books, encompassing all genres from fiction and non-fiction to educational texts, biographies, and more.\n\nThis data is sourced directly from Goodreads, a trusted platform, ensuring the accuracy and relevance of each book entry. Whether you want to build a book recommendation system, a literary search engine, or analyze global book trends, our API offers the perfect solution.\n\n---\n\n### Key Features:\n\n- **Massive Data Set**: Access **100,000 books**, giving you an extensive range of literary content.\n    \n- **Comprehensive Details**: Get rich metadata like ratings, authorship, reviews, genres, and publication details.\n    \n- **Easy Integration**: A flexible API designed to integrate seamlessly with your platform or website.\n    \n- **Always Up-to-Date**: Our collection is continuously updated to reflect changes, new releases, and emerging trends.\n    \n- **High Accuracy**: Direct data from Goodreads, one of the largest and most reliable book platforms.\n    \n\n---\n\n### Ideal For:\n\n- **Developers**: Build innovative book-related apps, platforms, or APIs.\n    \n- **Book Enthusiasts**: Create personalized book discovery tools or recommendation engines.\n    \n- **Educational Platforms**: Curate literary content for e-learning platforms, digital libraries, and research projects.\n    \n- **Businesses**: Use our data to create customized book sales tools or marketing campaigns.\n    \n- **Data Analysts**: Dive deep into book trends, genres, and ratings for research or reports.\n    \n\n---\n\n### Why Choose Us?\n\n- **Quality Data**: We provide well-structured and curated data that can be instantly used in your applications, with no additional cleanup needed.\n    \n- **Scalability**: Whether you're a small startup or a large enterprise, our API is built to scale with your needs.\n    \n- **Comprehensive Support**: We offer documentation, guides, and prompt customer service to assist you in using the API effectively.\n    \n- **Affordability**: A cost-effective solution to access a wide array of book data without the need for time-consuming data collection or manual entry.\n    \n\n---\n\n### Get Started Today:\n\n- **Instant Access**: Once you purchase, you'll receive immediate access to the API and data, so you can begin integrating it right away.\n    \n- **Flexible API Documentation**: Our easy-to-use documentation ensures you can start building without a steep learning curve.\n    \n\nDon't miss out on the opportunity to leverage this incredible data to enhance your platform, build new features, and create innovative solutions in the world of books and literature.\n\n---\n\n**Contact Us**:  \nIf you have any questions or need more details, feel free to contact our support team. We are here to help you with all your API integration and usage needs.\n\n**Join the Future of Book Discovery – Get Your GoodReads Books Collection API Today!**\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "bookread_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/goodread/goodread_pagination.php?page_no=30",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"goodread",
+						"goodread_pagination.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/goodread/book_details.php?goodread_id=2",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"goodread",
+						"book_details.php"
+					],
+					"query": [
+						{
+							"key": "goodread_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

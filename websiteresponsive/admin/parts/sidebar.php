@@ -23,10 +23,10 @@
 
                          <li class="nav-item dropdown">
                              <a class="nav-link dropdown " id="navbarDropdown" href="#" role="button"
-                                 data-bs-toggle="dropdown" aria-expanded="false">Tool<div
+                                 data-bs-toggle="dropdown" aria-expanded="false">Devices<div
                                      class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                 <li><a class="dropdown-item" href="tool_view.php">View Record*</a></li>
+                                 <li><a class="dropdown-item" href="device.php">View Record*</a></li>
                              </ul>
                          </li>
 
