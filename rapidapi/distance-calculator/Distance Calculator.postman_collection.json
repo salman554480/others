@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "61c6bd4b-fc08-4e8f-a78a-95b4af9b367b",
+		"name": "Distance Calculator",
+		"description": "StartFragment\n\n#### Overview:\n\nThis API collection offers a powerful suite of tools designed to calculate the distance between two geographic locations and estimate travel times based on various modes of transportation. It provides real-time calculations for distances in kilometers, and estimates the travel time for different transport modes, including plane, train, car, bike, and walking. This API is perfect for applications requiring geographic analysis, travel planning, logistics, or location-based services.\n\n#### Key Features:\n\n- **Distance Calculation**: Calculate the distance between two locations based on their latitude and longitude using the **Haversine Formula**.\n    \n- **Travel Time Estimation**: Estimate travel time based on the following modes of transportation:\n    \n    - **By Plane**: Using an average plane speed of 800 km/h (commercial airplane cruising speed).\n        \n    - **By Train**: Using an average train speed of 100 km/h.\n        \n    - **By Car**: Using an average car speed of 100 km/h (highway conditions).\n        \n    - **By Bike**: Using an average cyclist speed of 20 km/h.\n        \n    - **By Walking**: Using an average walking speed of 5 km/h.\n        \n- **Geocoding**: Convert latitude and longitude coordinates into human-readable location names using **Nominatim** or any other geocoding service.\n    \n- **Real-Time Calculation**: The API performs real-time calculations, providing instant feedback for distances and estimated travel times based on user input.\n    \n- **Flexible Input**: Accepts coordinates (latitude and longitude) for start and end locations, which makes it suitable for any location-based service.\n    \n\n#### Benefits:\n\n- **Comprehensive**: Provides multiple travel modes, making it suitable for various use cases, from logistics and route planning to personal travel apps.\n    \n- **Accurate**: Offers high accuracy in distance and time calculations by leveraging well-established formulas and speed estimates.\n    \n- **Scalable**: Designed to handle high numbers of requests, ideal for high-traffic applications or businesses that require real-time location-based data.\n    \n- **Easy Integration**: The API is designed to be simple to integrate into any web or mobile application, with responses provided in easily consumable JSON format.\n    \n- **Global Coverage**: Can be used for locations around the world, as long as valid latitude and longitude coordinates are provided.\n    \n\n#### API Endpoints:\n\n1. **Distance and Time Calculation**:\n    \n    - **GET** `/calculateDistance`\n        \n    - **Description**: Calculates the distance and estimated travel times between two geographical locations.\n        \n    - **Parameters**:\n        \n        - `startLatitude` (float): Latitude of the starting location.\n            \n        - `startLongitude` (float): Longitude of the starting location.\n            \n        - `endLatitude` (float): Latitude of the destination location.\n            \n        - `endLongitude` (float): Longitude of the destination location.\n            \n    - **Response**: A JSON object containing the distance between the two points in kilometers and estimated travel times for plane, train, car, bike, and walking.\n        \n2. **Random Location Generator**:\n    \n    - **GET** `/getRandomLocations`\n        \n    - **Description**: Generates two random geographical locations with their latitude, longitude, and human-readable address.\n        \n    - **Response**: A JSON object containing the latitude, longitude, and address of two randomly generated locations.\n        \n\n#### Example Request:\n\n```\nhttpCopy codeGET /calculateDistance?startLatitude=52.2296756&startLongitude=21.0122287&endLatitude=41.89193&endLongitude=12.51133\n\n ```\n\n#### Example Response:\n\n```\njsonCopy code{\n    \"status\": \"success\",\n    \"startLatitude\": 52.2296756,\n    \"startLongitude\": 21.0122287,\n    \"endLatitude\": 41.89193,\n    \"endLongitude\": 12.51133,\n    \"distance\": 1314.17,\n    \"times\": {\n        \"plane\": 1.64,\n        \"train\": 13.14,\n        \"car\": 13.14,\n        \"bike\": 65.71,\n        \"walk\": 262.85\n    },\n    \"message\": \"Distance and travel times calculation successful.\"\n}\n\n ```\n\n#### Example Request for Random Locations:\n\n```\nhttpCopy codeGET /getRandomLocations\n\n ```\n\n#### Example Response for Random Locations:\n\n```\njsonCopy code{\n    \"status\": \"success\",\n    \"location1\": {\n        \"latitude\": 52.211265,\n        \"longitude\": 13.312963,\n        \"location_name\": \"Heinrich-Böll-Platz\"\n    },\n    \"location2\": {\n        \"latitude\": 37.442045,\n        \"longitude\": -122.173331,\n        \"location_name\": \"Charleston Rd\"\n    },\n    \"message\": \"Random locations generated successfully.\"\n}\n\n ```\n\n#### Use Cases:\n\n- **Travel & Navigation Apps**: For apps that help users plan trips, calculate travel distances, or estimate arrival times.\n    \n- **Logistics & Delivery Services**: For businesses that need to calculate travel time or delivery duration based on different transportation modes.\n    \n- **Real Estate & Location-Based Services**: For platforms that provide location-based recommendations or need to calculate the distance between properties.\n    \n- **Fitness & Cycling Apps**: For apps tracking distances covered by bike or on foot.\n    \n- **Tourism & Trip Planning**: To assist tourists in estimating travel time between destinations.\n    \n\n#### Pricing:\n\n- **Free Tier**: Up to 1000 requests per month.\n    \n- **Pro Tier**: Starting at $X per month for 10,000 requests, with higher tiers for more requests.\n    \n- **Enterprise Tier**: Custom pricing with additional features, premium support, and higher request limits.\n    \n\n#### Why Choose This API Collection?\n\n- **Fast & Efficient**: Calculate distances and travel times in real-time with minimal processing delay.\n    \n- **Flexible**: Supports multiple transportation modes and can be integrated into a wide range of applications.\n    \n- **Scalable**: Suitable for startups, small businesses, and enterprise-level solutions.\n    \n- **Easy to Use**: Designed for developers with a simple RESTful interface and clear JSON responses.\n    \n\n#### Get Started:\n\n1. **Sign Up**: Register on our platform and get your API key.\n    \n2. **Integrate**: Easily integrate the API into your application.\n    \n3. **Start Using**: Make requests and receive responses within seconds.\n    \n\n---\n\nThis API collection offers a robust solution for applications that require geographic calculations and travel estimations. Whether you're building a travel app, logistics solution, or fitness tracker, this API can power your location-based services with speed and accuracy.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "calculate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/distance-calculator/calculate.php?startLatitude=51.5074&startLongitude=-0.1278&endLatitude=48.8566&endLongitude=2.3522",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"distance-calculator",
+						"calculate.php"
+					],
+					"query": [
+						{
+							"key": "startLatitude",
+							"value": "51.5074"
+						},
+						{
+							"key": "startLongitude",
+							"value": "-0.1278"
+						},
+						{
+							"key": "endLatitude",
+							"value": "48.8566"
+						},
+						{
+							"key": "endLongitude",
+							"value": "2.3522"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "random_location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/distance-calculator/random_location.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"distance-calculator",
+						"random_location.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
