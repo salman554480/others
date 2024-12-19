@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
         'records_on_page' => count($reviews),
         'next_records_available' => $next_records_available,
         'page_no' => $page_no,
-        'books' => $reviews
+        'wines' => $reviews
     );
 
     // Return the response as a JSON object
