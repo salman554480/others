@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "bf9493bb-9fec-4418-9c21-adb6edf2a707",
+		"name": "Premium Wine API Collection",
+		"description": "StartFragment\n\n### Premium Wine API Collection\n\n**Discover the world of fine wines at your fingertips with our Premium Wine API Collection.** Whether you're a wine enthusiast, retailer, or business looking to enhance your offerings, this comprehensive API collection is designed to provide detailed, real-time access to a wide range of wines from across the globe.\n\n**Key Features:**\n\n- **Vast Wine Database:** Access over a diverse selection of wines, from reds and whites to rosés and sparkling varieties, sourced from renowned vineyards worldwide.\n    \n- **Detailed Wine Information:** Retrieve extensive details on each wine, including varietals, tasting notes, alcohol content, region, price, and more.\n    \n- **Wine Pairing Suggestions:** Enhance the dining experience by receiving expert wine pairing recommendations based on cuisine types.\n    \n- **Real-Time Wine Availability:** Stay updated with real-time availability and pricing, ideal for retailers or e-commerce platforms.\n    \n- **Wine Reviews & Ratings:** Browse customer reviews and expert ratings to make informed purchasing decisions.\n    \n- **Search & Filter Capabilities:** Easily search wines based on specific criteria such as type, region, price range, and vintage year.\n    \n\n**Why Choose Our Wine API Collection?**\n\n- **Seamless Integration:** Perfect for developers and businesses looking to integrate wine data into websites, apps, or e-commerce platforms.\n    \n- **Global Reach:** Access wines from top regions like Bordeaux, Napa Valley, Tuscany, and many more.\n    \n- **Reliable & Up-to-Date Data:** Our API ensures you always have the latest information at your fingertips.\n    \n- **User-Friendly Documentation:** The API is easy to use, with clear documentation to help you get started quickly.\n    \n\nWhether you’re building a wine recommendation system, launching an online store, or simply looking to explore and share wine knowledge, our Wine API Collection is your one-stop solution for all things wine.\n\n**Get Started Today!**  \nUnlock the power of our Wine API Collection and elevate your wine-related projects. Purchase access today and start exploring the endless possibilities with wine data!\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39960176"
+	},
+	"item": [
+		{
+			"name": "wine_pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/wine/wine_pagination.php?page_no=1",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"wine",
+						"wine_pagination.php"
+					],
+					"query": [
+						{
+							"key": "page_no",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wine_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/wine/wine_details.php?wine_id=1",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"wine",
+						"wine_details.php"
+					],
+					"query": [
+						{
+							"key": "wine_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://scripts.vaultifier.space/rapidapi/wine/get_country.php",
+					"protocol": "https",
+					"host": [
+						"scripts",
+						"vaultifier",
+						"space"
+					],
+					"path": [
+						"rapidapi",
+						"wine",
+						"get_country.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
