@@ -1,0 +1,52 @@
+body{
+    color: white;
+   /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=309375&c2=fbe06b&gt=l&gd=dtl
+*/
+background: linear-gradient(315deg, #0bfea1, #23b876, #23774e, #1a3c29, #000000);
+
+
+}
+.container{
+    height: 2950px;
+}
+.episode-box {
+    /* border: 1px solid #ddd; */
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.episode-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.episode-rating {
+    font-size: 21px;
+    font-weight: bold;
+  
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.season-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.season-container {
+    margin-top: 20px;
+}
+
+.poster {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
