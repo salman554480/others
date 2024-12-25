@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                 <?php endif; ?>
                 <h4 class="season-title">Season Details</h4>
                 <p><strong>Show Name:</strong> <?= $showName ?></p>
-                <p><strong>Total Seasons:</strong> <?= count($seasons) ?></p>
+                <p><strong>Total Seasons:</strong> <?= count($seasons) -1 ?></p>
                 <p><strong>Language:</strong> <?= ucfirst($original_language); ?></p>
                 <p><strong>Overview:</strong> <?= $overview; ?></p>
             </div>
