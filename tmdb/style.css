@@ -11,6 +11,9 @@ background: linear-gradient(315deg, #0bfea1, #23b876, #23774e, #1a3c29, #000000)
 .container{
     height: 2950px;
 }
+.name{
+    font-size: 60px;
+}
 .episode-box {
     /* border: 1px solid #ddd; */
     text-align: center;

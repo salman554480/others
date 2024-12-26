@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 <body>
 
     <div class="container pt-5">
-        <h1 class="mt-5 text-center name"><?php echo $showName; ?></h1>
+        <h1 class="my-5 text-center"><?php echo $showName; ?></h1>
 
 
 
@@ -58,13 +58,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
         <?php if (isset($seasons)): ?>
         <div class="row">
             <!-- Season Details (Column 3) -->
-
+            <div class="col-md-3">
+                <?php if ($posterPath): ?>
+                <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster" class="poster">
+                <?php else: ?>
+                <p>No poster available</p>
+                <?php endif; ?>
+                <h4 class="season-title">Season Details</h4>
+                <p><strong>Show Name:</strong> <?= $showName ?></p>
+                <p><strong>Total Seasons:</strong> <?= count($seasons) ?></p>
+                <p><strong>Language:</strong> <?= ucfirst($original_language); ?></p>
+                <p><strong>Overview:</strong> <?= $overview; ?></p>
+            </div>
 
             <!-- Seasons and Episodes (Column 9) -->
-            <div class="col-md-12 season-container">
-            <h3 class="text-center"><strong>Language:</strong> <?= ucfirst($original_language); ?> | <strong>Total Seasons:</strong> <?= count($seasons) ?></h3>
-            <h4><strong>Overview:</strong> <?= $overview; ?></h4>
-                <h3 class="season-title mt-4">Seasons and Episodes</h3>
+            <div class="col-md-9 season-container">
+                <h3 class="season-title">Seasons and Episodes</h3>
                 <?php foreach ($seasons as $season): ?>
                 <?php
                         // Skip Season 0: Specials
@@ -86,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                         <?php foreach ($seasonEpisodes['episodes'] as $episode) {
                                     $rating = $episode['vote_average'];
                                 ?>
-                        <div class="col-md-1 col-sm-6 mb-2 ">
+                        <div class="col-md-2 col-sm-6 mb-2 ">
                             <div class="episode-box ">
                                 <div class="episode-rating py-2" style="background-color: 
                                         <?php
@@ -116,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
             <div class="col-md-12">
 
-                <?php if (count($seasons) <= 8) { ?>
+                <?php if (count($seasons) <= 6) { ?>
                 <div class="d-flex justify-content-center">
                     <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster"
                         class="w-100 d-block mx-auto">
