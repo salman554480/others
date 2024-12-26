@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
 <body>
 
-    <div class="container py-5">
+    <div class="container pt-5">
         <h1 class="my-5 text-center"><?php echo $showName; ?></h1>
 
 
@@ -120,15 +120,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                 </div>
                 <?php endforeach; ?>
 
-                <?php if (count($seasons) <= 7) { ?>
-                <div class="d-flex justify-content-center">
-                    <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster" class="w-100">
 
+            </div>
+
+            <div class="col-md-12">
+
+                <?php if (count($seasons) <= 6) { ?>
+                <div class="d-flex justify-content-center">
+                    <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster"
+                        class="w-100 d-block mx-auto">
                 </div>
                 <?php } ?>
 
                 <hr>
-                <h2 class="text-center">Download or Watch Online <?php echo $showName; ?> on <u>FoldiousMovies</u></h2>
+                <h2 class="text-center text-light">Download or Watch Online <?php echo $showName; ?> on
+                    <u>FoldiousMovies</u>
+                </h2>
             </div>
         </div>
         <?php endif; ?>
