@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Video to 9:16 Aspect Ratio</title>
+</head>
+<body>
+    <h1>Crop Video to 9:16 Aspect Ratio</h1>
+    <input type="file" id="videoFile" accept="video/*">
+    <video id="video" controls width="640" height="360" style="margin-top: 10px;"></video>
+    <button id="downloadBtn" style="display: none;">Download Cropped Video</button>
+
+    <!-- Load FFmpeg.js from the CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.12.10/umd/ffmpeg.min.js" integrity="sha512-j2FJMGBh+AdPWKCKDqIzH67vu4ps8OsNZqqetz8YSlbwy2ZwFTL+p6Hp1j17nL0B7IDl9E4zhPUXZKwz7MzjQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const videoFileInput = document.getElementById('videoFile');
+        const videoElement = document.getElementById('video');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        videoFileInput.addEventListener('change', handleVideoUpload);
+
+        async function handleVideoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const videoURL = URL.createObjectURL(file);
+            videoElement.src = videoURL;
+            videoElement.style.display = 'block';
+
+            // Ensure FFmpeg.js is loaded
+            if (typeof ffmpeg === "undefined") {
+                console.error("FFmpeg.js is not loaded properly!");
+                return;
+            }
+
+            // Initialize FFmpeg.js
+            const { createFFmpeg, fetchFile } = ffmpeg;
+            const ffmpegInstance = createFFmpeg({ log: true });
+            await ffmpegInstance.load(); // Load FFmpeg.js
+
+            // Load video file into FFmpeg virtual filesystem
+            await ffmpegInstance.FS('writeFile', 'input.mp4', await fetchFile(file));
+
+            // Get video dimensions to calculate crop area
+            const videoWidth = videoElement.videoWidth;
+            const videoHeight = videoElement.videoHeight;
+            const cropWidth = (9 / 16) * videoHeight;
+            const cropX = (videoWidth - cropWidth) / 2; // Center cropping
+
+            // Set output file name
+            const outputFileName = 'cropped-video.mp4';
+
+            // Use FFmpeg to crop the video
+            await ffmpegInstance.run(
+                '-i', 'input.mp4',
+                '-vf', `crop=${cropWidth}:${videoHeight}:${cropX}:0`, // Cropping filter
+                '-c:a', 'copy', // Copy audio codec without re-encoding
+                outputFileName // Output file name
+            );
+
+            // Retrieve the cropped video from FFmpeg's virtual filesystem
+            const outputFile = ffmpegInstance.FS('readFile', outputFileName);
+
+            // Create a Blob URL from the resulting file
+            const videoBlob = new Blob([outputFile.buffer], { type: 'video/mp4' });
+            const videoUrl = URL.createObjectURL(videoBlob);
+
+            // Enable the download button and set up the download link
+            downloadBtn.style.display = 'inline-block';
+            downloadBtn.onclick = function () {
+                const a = document.createElement('a');
+                a.href = videoUrl;
+                a.download = outputFileName;
+                a.click();
+            };
+        }
+    </script>
+</body>
+</html>
