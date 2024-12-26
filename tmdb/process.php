@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
 <body>
 
-    <div class="container">
+    <div class="container py-5">
         <h1 class="my-5 text-center"><?php echo $showName; ?></h1>
 
 
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
             <!-- Season Details (Column 3) -->
             <div class="col-md-3">
                 <?php if ($posterPath): ?>
-                <img src="https://image.tmdb.org/t/p/w500/<?= $posterPath ?>" alt="Poster" class="poster">
+                <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster" class="poster">
                 <?php else: ?>
                 <p>No poster available</p>
                 <?php endif; ?>
@@ -82,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                         }
                         ?>
                 <div class="season-block mb-4">
-                    <h5>Season <?= $season['season_number'] ?>: <?= $season['name'] ?></h5>
+                    <!-- <h5>Season <?= $season['season_number'] ?>: <?= $season['name'] ?></h5> -->
+                    <h4> <?= $season['name'] ?></h4>
 
                     <?php
                             // Fetch episodes for this season
@@ -118,6 +119,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                     </div>
                 </div>
                 <?php endforeach; ?>
+
+                <?php if (count($seasons) <= 7) { ?>
+                <div class="d-flex justify-content-center">
+                    <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster" class="w-100">
+
+                </div>
+                <?php } ?>
+
+                <hr>
+                <h2 class="text-center">Download or Watch Online <?php echo $showName; ?> on <u>FoldiousMovies</u></h2>
             </div>
         </div>
         <?php endif; ?>
