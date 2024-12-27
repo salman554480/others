@@ -62,8 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
             <!-- Seasons and Episodes (Column 9) -->
             <div class="col-md-12 season-container">
-            <h3 class="text-center"><strong>Language:</strong> <?= ucfirst($original_language); ?> | <strong>Total Seasons:</strong> <?= count($seasons) ?></h3>
-            <h4><strong>Overview:</strong> <?= $overview; ?></h4>
+                <h3 class="text-center"><strong>Language:</strong> <?= ucfirst($original_language); ?> | <strong>Total
+                        Seasons:</strong> <?= count($seasons) ?></h3>
+                <h4><strong>Overview:</strong> <?= $overview; ?></h4>
                 <h3 class="season-title mt-4">Seasons and Episodes</h3>
                 <?php foreach ($seasons as $season): ?>
                 <?php
@@ -116,10 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
             <div class="col-md-12">
 
-                <?php if (count($seasons) <= 8) { ?>
+                <?php if (count($seasons) <= 13) { ?>
                 <div class="d-flex justify-content-center">
                     <img src="https://image.tmdb.org/t/p/original/<?= $posterPath ?>" alt="Poster"
-                        class="w-100 d-block mx-auto">
+                        class="w-75 d-block mx-auto">
                 </div>
                 <?php } ?>
 
