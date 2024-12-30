@@ -62,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
 
             <!-- Seasons and Episodes (Column 9) -->
             <div class="col-md-12 season-container">
-                <h3 class="text-center"><strong>Language:</strong> <?= ucfirst($original_language); ?> | <strong>Total
-                        Seasons:</strong> <?= count($seasons) ?></h3>
-                <h4><strong>Overview:</strong> <?= $overview; ?></h4>
-                <h3 class="season-title mt-4">Seasons and Episodes</h3>
+                <h2 class="text-center"><strong>Language:</strong> <?= ucfirst($original_language); ?> | <strong>Total
+                        Seasons:</strong> <?= count($seasons) ?></h2>
+                <h2><strong>Overview:</strong> <?= $overview; ?></h2>
+                <h2 class="season-title mt-4">Seasons and Episodes</h2>
                 <?php foreach ($seasons as $season): ?>
                 <?php
                         // Skip Season 0: Specials
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['showName'])) {
                         ?>
                 <div class="season-block mb-4">
                     <!-- <h5>Season <?= $season['season_number'] ?>: <?= $season['name'] ?></h5> -->
-                    <h4> <?= $season['name'] ?></h4>
+                    <h3> <?= $season['name'] ?></h3>
 
                     <?php
                             // Fetch episodes for this season
