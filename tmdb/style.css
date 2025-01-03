@@ -4,7 +4,7 @@ body{
 * Created with https://www.css-gradient.com
 * Gradient link: https://www.css-gradient.com/?c1=309375&c2=fbe06b&gt=l&gd=dtl
 */
-background: linear-gradient(315deg, #3C3934, #EAD9B9, #A7916D, #1F1E1C, #000000);
+background: linear-gradient(315deg, #0bfea1, #23b876, #23774e, #1a3c29, #000000);
 
 
 }
@@ -29,7 +29,7 @@ background: linear-gradient(315deg, #3C3934, #EAD9B9, #A7916D, #1F1E1C, #000000)
 }
 
 .episode-rating {
-    font-size: 21px;
+    font-size: 29px;
     font-weight: bold;
   
     color: #000;
