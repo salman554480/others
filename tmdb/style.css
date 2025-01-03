@@ -1,18 +1,15 @@
 body{
     color: white;
-   /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=309375&c2=fbe06b&gt=l&gd=dtl
-*/
-background: linear-gradient(315deg, #0bfea1, #23b876, #23774e, #1a3c29, #000000);
+
+background: linear-gradient(315deg, #050505, #7C9899, #805336, #62140B, #000000);
 
 
 }
 .container{
-    height: 2950px;
+    height: 2600px;
 }
 .name{
-    font-size: 60px;
+    font-size: 70px;
 }
 .episode-box {
     /* border: 1px solid #ddd; */
@@ -29,7 +26,7 @@ background: linear-gradient(315deg, #0bfea1, #23b876, #23774e, #1a3c29, #000000)
 }
 
 .episode-rating {
-    font-size: 29px;
+    font-size: 30px;
     font-weight: bold;
   
     color: #000;

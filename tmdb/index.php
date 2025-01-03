@@ -36,7 +36,7 @@
     <!-- User Input Form -->
     <div class="container">
         <div class="search-box-container">
-            <form method="POST" action="process.php" class="search-box">
+            <form method="POST" action="process2.php" class="search-box">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <input type="text" name="showName" class="form-control" placeholder="Enter TV Show Name"
