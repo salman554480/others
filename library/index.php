@@ -107,7 +107,42 @@
                         <div class="date-item">29</div>
                         <div class="date-item">30</div>
                     </div>
-                    <h5>January 17, 2025</h5>
+                    <div class="d-flex justify-content-between">
+                        <h5>January 17, 2025</h5>
+                        <button id="openPopupBtn" class="btn btn-primary"><i class="fa fa-pencil"></i> Write
+                            Diary</button>
+                        <!-- Full-Screen Popup Box -->
+                        <div id="popup" class="popup-overlay">
+                            <div class="popup-content">
+                                <span id="closePopupBtn" class="close-btn">&times;</span>
+                                <h2>Welcome to the Popup</h2>
+                                <p>This is a full-screen popup box with a dark background.</p>
+                                <button id="closePopupBtn2">Close Popup</button>
+                            </div>
+                        </div>
+                        <script>
+                        // Get the popup and buttons
+                        const popup = document.getElementById('popup');
+                        const openPopupBtn = document.getElementById('openPopupBtn');
+                        const closePopupBtn = document.getElementById('closePopupBtn');
+                        const closePopupBtn2 = document.getElementById('closePopupBtn2');
+
+                        // Open the popup when the button is clicked
+                        openPopupBtn.addEventListener('click', () => {
+                            popup.style.display = 'flex'; // Show the popup
+                        });
+
+                        // Close the popup when the close button (×) is clicked
+                        closePopupBtn.addEventListener('click', () => {
+                            popup.style.display = 'none'; // Hide the popup
+                        });
+
+                        // Close the popup when the second close button is clicked
+                        closePopupBtn2.addEventListener('click', () => {
+                            popup.style.display = 'none'; // Hide the popup
+                        });
+                        </script>
+                    </div>
                     <br>
                     <?php
                     $i = 1;
