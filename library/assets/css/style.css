@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+  font-family: "Inter", serif;
+  background-color: #F1F3F7;
+}
+.w-80 {
+  width: 80% !important;
+}
+.w-90 {
+  width: 90% !important;
+}
+
+
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    background-color: var(--gray-dark);
+    transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .offcanvas-collapse.open {
+    -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem); /* Account for horizontal padding on navbar */
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: var(--secondary);
+}
+
+.nav-underline .nav-link:hover {
+  color: var(--blue);
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.bg-purple { background-color: var(--purple); }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
+
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: 1440px;
+  }
+}
+
+
+/* Sidebar */
+
+.sidebar {
+  
+  background-color: white;
+  padding-top: 20px;
+}
+
+.sidebar .label {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: #1773EA;
+  color: white;
+}
+
+.sidebar ul li.active {
+  background-color: #1773EA;
+  color: white;
+}
+
+
+.main-card{
+  background-color: transparent;
+}
+
+     /* Container for the horizontal scroll */
+     .date-scroll-container {
+      overflow-x: auto; /* Enables horizontal scroll */
+      white-space: nowrap; /* Prevents wrapping */
+      padding: 10px 0; /* Adds padding on top and bottom */
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: thin;     /* Firefox */
+      scrollbar-color: #007bff #f1f1f1; /* Firefox */
+      max-width: 100%; /* Ensure it doesn't exceed container width */
+    }
+
+    /* Hide the default scrollbar (for Webkit browsers) */
+    .date-scroll-container::-webkit-scrollbar {
+      height: 8px;  /* Horizontal scrollbar height */
+    }
+
+    .date-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #007bff;
+      border-radius: 10px;
+    }
+
+    .date-scroll-container::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    /* Individual date items */
+    .date-item {
+      display: inline-block;
+      width: 40px; /* Adjust width of each date item */
+      margin: 0 5px;
+      text-align: center;
+      padding: 5px;
+      background-color: #59A9FF;
+      color: white;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Hover effect for date items */
+    .date-item:hover {
+      background-color: #0056b3;
+    }
+
+    /* Make sure dates stay in one row */
+    .date-item.active {
+      background-color: #0056b3;
+    }
+
+    /* Ensure the scroll area works well on small screens */
+    @media (max-width: 576px) {
+      .date-item {
+        width: 40px; /* Adjust item width on small screens */
+        font-size: 0.9rem; /* Smaller text size */
+      }
+    }
+
+
+     /* Custom styling for tags with silver-grey background */
+     .badge-silver-grey {
+      background-color: #c0c0c0; /* Silver grey background */
+      color: #fff; /* Dark text for readability */
+      font-size: 0.7rem; /* Adjust font size */
+      padding: 5px 10px; /* Add padding around the text */
+      border-radius: 20px; /* Rounded corners for tags */
+      margin: 5px 5px 5px 0px; /* Space between tags */
+      font-weight: 400;
+    }
+
+    .badge-silver-grey:hover {
+      background-color: #a0a0a0; /* Darken the background on hover */
+      color: white; /* White text on hover */
+      cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    }
+
+    .mood-text{
+      font-size: 13px;
+    }
+    .text-area{
+      color: #1A1A1A !important;
+      font-size: 13px;
+
+    }
+
+    /* Style the audio player container */
+.audio-player-container {
+  width: 100%;
+}
+
+/* Style the audio element */
+audio {
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+}
+
+
+/* Styling for the quotation container */
+.quote-container {
+  background-color: #fff;
+  border-left: 2px solid #4CAF50; /* Green border on the left */
+  padding: 5px 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 10px;
+}
+
+/* Styling for the blockquote element */
+blockquote {
+  font-style: italic;
+  color: #555;
+  margin: 0;
+}
+
+.gallery-img{
+  width: 100%;
+  height: 75px;
+  object-fit: cover;
+}
