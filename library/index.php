@@ -262,7 +262,7 @@
                     $g = 1;
                     while ($g < 10) {
                     ?>
-                    <div class="col-md-4 mb-1 p-1">
+                    <div class="col-4 col-md-4 mb-1 p-1">
                         <img src="https://picsum.photos/200/00?random=<?php echo $g; ?>" class="gallery-img" alt="">
                     </div>
                     <?php
